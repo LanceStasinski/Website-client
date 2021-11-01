@@ -5,7 +5,7 @@ import classes from "./NavLinks.module.css";
 
 const NavLinks: React.FC = () => {
   return (
-    <ul>
+    <ul className={classes['nav-links']}>
       <li>
         <NavLink to="/" exact>
           ABOUT

@@ -3,7 +3,7 @@ import React from "react";
 import classes from './MainHeader.module.css'
 
 const MainHeader: React.FC = (props) => {
-  return <header>{props.children}</header>;
+  return <header className={classes['main-header']}>{props.children}</header>;
 };
 
 export default MainHeader;
