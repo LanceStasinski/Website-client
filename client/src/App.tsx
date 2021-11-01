@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
 
 function App() {
   let token = true;
@@ -15,7 +16,8 @@ function App() {
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact></Route>
         <Route path="/blog/create" exact></Route>
-        <Route path='/blog/:blogId'></Route>
+        <Route path="/blog/:blogId" exact></Route>
+        <Route path='/contact' exact></Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -27,6 +29,7 @@ function App() {
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact></Route>
         <Route path="/blog/auth" exact></Route>
+        <Route path='/contact' exact></Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -34,9 +37,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      {routes}
+      <MainNavigation>
+        <main>{routes}</main>
+      </MainNavigation>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
