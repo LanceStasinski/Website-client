@@ -1,27 +1,27 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
+import NavItem from "./NavItem";
 import classes from "./NavLinks.module.css";
 
 const NavLinks: React.FC = () => {
   return (
     <ul className={classes['nav-links']}>
       <li>
-        <NavLink to="/" exact>
+        <NavItem to="/" exact>
           ABOUT
-        </NavLink>
+        </NavItem>
       </li>
       <li>
-        <NavLink to="/cv">CV</NavLink>
+        <NavItem to="/cv">CV</NavItem>
       </li>
       <li>
-        <NavLink to="/portfolio">PORTFOLIO</NavLink>
+        <NavItem to="/portfolio">PORTFOLIO</NavItem>
       </li>
       <li>
-        <NavLink to="/blog">BLOG</NavLink>
+        <NavItem to="/blog">BLOG</NavItem>
       </li>
       <li>
-        <NavLink to="/contact">CONTACT</NavLink>
+        <NavItem to="/contact">CONTACT</NavItem>
       </li>
     </ul>
   );

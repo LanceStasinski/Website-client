@@ -21,9 +21,7 @@
   padding: 0.5rem;
 }
 
-.nav-links a:hover,
-.nav-links a:active,
-.nav-links a.active {
+.nav-links a:hover {
   background: rgb(115, 238, 115);
   border-color: #292929;
   color: #292929;
