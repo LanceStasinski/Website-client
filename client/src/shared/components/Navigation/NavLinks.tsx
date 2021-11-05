@@ -7,11 +7,6 @@ const NavLinks: React.FC = () => {
   return (
     <ul className={classes['nav-links']}>
       <li>
-        <NavItem to="/" exact>
-          ABOUT
-        </NavItem>
-      </li>
-      <li>
         <NavItem to="/cv">CV</NavItem>
       </li>
       <li>
