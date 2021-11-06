@@ -1,0 +1,29 @@
+.drawer-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: right;
+}
+
+.drawer-nav-links a {
+  margin: 1rem;
+  width: 100px;
+  border: 1px solid black;
+  background-color: transparent;
+  color: black;
+  font-size: 15px;
+  padding: 0.25rem;
+}
+
+.drawer-nav-links a:hover
+.drawer-nav-links a:active,
+.active {
+  background-color: white;
+  border-color: black;
+  color: black;
+}
