@@ -12,7 +12,7 @@ const SideDrawer: React.FC<{ show: boolean; onClick: () => void }> = (
     <CSSTransition
       in={props.show}
       timeout={200}
-      classNames="slide-in-right"
+      classNames="slide-in-down"
       mountOnEnter
       unmountOnExit
       nodeRef={nodeRef}
