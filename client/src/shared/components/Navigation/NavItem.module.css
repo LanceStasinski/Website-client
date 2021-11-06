@@ -1,5 +1,5 @@
 .active-link {
-  background: rgb(115, 238, 115);
-  border-color: #292929;
-  color: #292929;
+  background: white !important;
+  border-color: #292929 !important;
+  color: #292929 !important;
 }
