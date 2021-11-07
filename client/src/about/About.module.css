@@ -1,0 +1,21 @@
+.about {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.about h2 {
+  color: #f7e0ad;
+}
+
+@media only screen and (min-width: 990px) {
+  .about {
+    left: 0px;
+    width: 40vw;
+    margin-top: 10vh;
+    padding: 1rem 1rem 1rem 3rem;
+  }
+
+  .about p {
+    line-height: 35px;
+  }
+}

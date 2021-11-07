@@ -53,10 +53,13 @@
 
   .main-nav {
     display: block;
+    margin-right: 1rem;
   }
 
   .main-title a{
-    font-size: 30px;
+    font-size: 28px;
+    margin-left: 3rem;
+    letter-spacing: 0.7rem;
   }
 }
 
