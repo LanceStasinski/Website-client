@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap');
+
 .about {
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
 }
 
+.about p {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .about h2 {
   color: #f7e0ad;
+  font-family: 'Prompt', sans-serif;
 }
 
 @media only screen and (min-width: 990px) {
@@ -15,8 +22,12 @@
     padding: 1rem 1rem 1rem 3rem;
   }
 
+  .about h2 {
+    font-size: 26px;
+  }
   .about p {
     line-height: 35px;
+    font-size: 18px;
   }
 
   .about-background {
