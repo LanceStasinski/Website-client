@@ -2,3 +2,7 @@
   color: #f7e0ad !important;
   border-bottom: #f7e0ad solid 1px;
 }
+
+.drawer-nav-item:hover {
+  color: #f7e0ad
+}

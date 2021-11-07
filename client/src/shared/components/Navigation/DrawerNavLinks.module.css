@@ -22,7 +22,5 @@
 .drawer-nav-links a:hover
 .drawer-nav-links a:active,
 .active {
-  background-color: white;
-  border-color: black;
-  color: black;
+  color: #f7e0ad;
 }

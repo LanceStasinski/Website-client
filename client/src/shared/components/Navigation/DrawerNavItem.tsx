@@ -10,6 +10,7 @@ const DrawerNavItem: React.FC<{ to: string; exact?: boolean }> = (props) => {
       to={props.to}
       exact={!!props.exact}
       activeClassName={classes["active-link"]}
+      className={classes['drawer-nav-item']}
     >
       {props.children}
     </NavLink>
