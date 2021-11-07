@@ -18,4 +18,17 @@
   .about p {
     line-height: 35px;
   }
+
+  .about-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -5;
+  }
+
+  .about-background img {
+    max-width: 100%;
+    height: auto;
+  }
 }
