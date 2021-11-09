@@ -1,0 +1,14 @@
+.social-background {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.social-background:hover {
+  background-color: #f7e0ad;
+}
