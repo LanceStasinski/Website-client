@@ -17,18 +17,14 @@ const About: React.FC = () => {
           backgroundRepeat: "no-repeat",
           width: "100%",
           position: "fixed",
-          backgroundPosition: 'right 0',
+          backgroundPosition: "right 0",
           backgroundSize: "cover",
-          height: '100%',
+          height: "100%",
           zIndex: -5,
           right: 0,
-          top: 0
+          top: 0,
         }}
       >
-        {/* <img
-          src={backgroundImage}
-          alt="Lance working with his cat, Billie, in the background"
-        /> */}
       </div>
       <div className={classes.about}>
         <h2>Hello World</h2>
@@ -39,6 +35,11 @@ const About: React.FC = () => {
           site contains information about me, the projects I've built so far,
           and a blog where I explain concepts that I have found challenging
           while learning to code.
+        </p>
+        <p>
+          Here's another paragraph. Maybe I can talk about how I got into coding
+          and design. I can maybe talk about how this is a react app with a
+          Nodejs server and a MongoDB database. I'm open to job solicitations.
         </p>
         <ul className={classes["social-links"]}>
           <li>
