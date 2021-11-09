@@ -11,11 +11,24 @@ import twitterIcon from "../assets/social-icons/twitter.png";
 const About: React.FC = () => {
   return (
     <React.Fragment>
-      <div className={classes["about-background"]}>
-        <img
+      <div
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          position: "fixed",
+          backgroundPosition: 'right 0',
+          backgroundSize: "cover",
+          height: '100%',
+          zIndex: -5,
+          right: 0,
+          top: 0
+        }}
+      >
+        {/* <img
           src={backgroundImage}
           alt="Lance working with his cat, Billie, in the background"
-        />
+        /> */}
       </div>
       <div className={classes.about}>
         <h2>Hello World</h2>
