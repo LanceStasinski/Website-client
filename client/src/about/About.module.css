@@ -27,7 +27,7 @@
   .about {
     left: 0px;
     width: 40vw;
-    margin-top: 10vh;
+    margin-top: 3vh;
     padding: 1rem 1rem 1rem 3rem;
   }
 
@@ -48,7 +48,6 @@
   }
 
   .about-background img {
-    max-width: 100%;
-    height: auto;
+    min-width: 100%;
   }
 }
