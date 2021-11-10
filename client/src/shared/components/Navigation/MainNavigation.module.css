@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
 
 .menu-btn {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background: transparent;
   border: none;
   display: flex;
@@ -25,7 +25,7 @@
   font-family: "Prompt", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 25px;
+  font-size: 18px;
   letter-spacing: 0.2rem;
   margin-left: 1rem;
 }
@@ -36,6 +36,18 @@
 
 .main-nav {
   display: none;
+}
+
+@media only screen and (min-width: 360px) {
+  .main-title a {
+    font-size: 25px;
+    letter-spacing: 0.3rem;
+  }
+
+  .menu-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 @media only screen and (min-width: 672px) {

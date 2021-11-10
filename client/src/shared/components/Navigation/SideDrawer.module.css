@@ -4,7 +4,7 @@
   padding-right: 1rem;
   top: 10vh;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.73);
+  background: #454545;
 }
 
 @media only screen and (min-width: 990px) {
