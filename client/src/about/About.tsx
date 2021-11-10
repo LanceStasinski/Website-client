@@ -24,22 +24,26 @@ const About: React.FC = () => {
           right: 0,
           top: 0,
         }}
-      >
-      </div>
+      ></div>
       <div className={classes.about}>
         <h2>Hello World</h2>
         <p>
           My name is Lance Stasinski and welcome to my personal website. I'm a
-          quantitative biologist turned web developer, and I have found a love
-          for building fullstack applications with elegant user interfaces. This
-          site contains information about me, the projects I've built so far,
-          and a blog where I explain concepts that I have found challenging
-          while learning to code.
+          quantitative biologist turned self-taught web developer. I gained an
+          appreciation for programming while analyzing high-dimensional datasets
+          in the R statistical computing language. Since then, I have
+          transitioned my programming expertise to building full stack web
+          applications, and I have found a passion for building elegant user
+          interfaces along the way. This site contains information about me, the
+          projects I've built so far, and a blog where I explain concepts that I
+          have found challenging while learning to code.
         </p>
         <p>
-          Here's another paragraph. Maybe I can talk about how I got into coding
-          and design. I can maybe talk about how this is a react app with a
-          Nodejs server and a MongoDB database. I'm open to job solicitations.
+          While you're here, feel free to peruse my CV and resume, explore and
+          test my portfolio projects, or read my blog that details concepts that
+          I have found challenging and have overcome. You can get in touch with
+          me by visiting the CONTACT page or you can connect with me over social
+          media linked below.
         </p>
         <ul className={classes["social-links"]}>
           <li>
