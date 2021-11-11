@@ -44,4 +44,5 @@ describe("MainNavigation component", () => {
     const asideElement = document.getElementsByTagName('aside');
     expect(asideElement[0]).toBeVisible()
   })
+
 });
