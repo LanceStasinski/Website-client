@@ -19,6 +19,40 @@
   text-decoration: none;
 }
 
+.drawer-nav-links a:hover {
+  color: #f7e0ad;
+}
+
+.drawer-nav-links-auth {
+  background-color: #f7e0ad;
+  color: #454545 !important;
+  padding: 5px 8px;
+}
+
+.drawer-nav-links-auth:hover {
+  transform: scale(1.05);
+}
+
+.drawer-nav-links-auth a {
+  color: #454545;
+}
+
+.drawer-nav-links-auth a:hover {
+  color: #454545;
+}
+
+.drawer-nav-links button {
+  background-color: #f7e0ad;
+  border: none;
+  font-size: 25px;
+  color: #454545;
+  padding: 5px 8px;
+}
+
+.drawer-nav-links button:hover {
+  transform: scale(1.05);
+}
+
 .drawer-nav-links a:hover
 .drawer-nav-links a:active,
 .active {

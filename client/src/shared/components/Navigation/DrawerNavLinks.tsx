@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import DrawerNavItem from "./DrawerNavItem";
 import classes from "./DrawerNavLinks.module.css";
+import { AuthContext } from "../../context/auth-context";
 
 const DrawerNavLinks: React.FC = () => {
+  const authCtx = useContext(AuthContext);
+
   return (
-    <ul className={classes['drawer-nav-links']}>
+    <ul className={classes["drawer-nav-links"]}>
       <li>
         <DrawerNavItem to="/cv">CV</DrawerNavItem>
       </li>
@@ -17,6 +21,21 @@ const DrawerNavLinks: React.FC = () => {
       <li>
         <DrawerNavItem to="/contact">CONTACT</DrawerNavItem>
       </li>
+      {!authCtx.isLoggedIn && (
+        <li className={classes["drawer-nav-links-auth"]}>
+          <DrawerNavItem
+            to="/auth"
+            important={true}
+          >
+            LOGIN
+          </DrawerNavItem>
+        </li>
+      )}
+      {authCtx.isLoggedIn && (
+        <li>
+          <button onClick={authCtx.logout}>LOGOUT</button>
+        </li>
+      )}
     </ul>
   );
 };
