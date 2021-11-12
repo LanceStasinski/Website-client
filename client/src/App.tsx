@@ -4,13 +4,13 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
-// import { AuthContext } from "./shared/context/auth-context";
-// import { useAuth } from "./shared/hooks/auth-hook";
+import { AuthContext } from "./shared/context/auth-context";
+import { useAuth } from "./shared/hooks/auth-hook";
 
 const About = lazy(() => import("./about/About"));
 
 function App() {
-  let token = true;
+  const { token, login, logout, userId } = useAuth();
 
   let routes;
 
@@ -46,6 +46,13 @@ function App() {
   }
 
   return (
+    <AuthContext.Provider value={{
+      isLoggedIn: !!token,
+      login: login,
+      logout: logout,
+      userId: userId,
+      token: token
+    }}>
     <BrowserRouter>
       <MainNavigation />
       <main>
@@ -53,7 +60,7 @@ function App() {
           {routes}
         </Suspense>
       </main>
-    </BrowserRouter>
+    </BrowserRouter></AuthContext.Provider>
   );
 }
 
