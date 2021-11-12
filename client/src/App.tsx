@@ -14,7 +14,7 @@ function App() {
 
   let routes;
 
-  if (token) {
+  if (token && userId === process.env.REACT_APP_ADMIN_USER) {
     routes = (
       <Switch>
         <Route path="/" exact>
@@ -40,6 +40,7 @@ function App() {
         <Route path="/blog" exact></Route>
         <Route path="/blog/auth" exact></Route>
         <Route path="/contact" exact></Route>
+        <Route path="/auth" exact></Route>
         <Redirect to="/" />
       </Switch>
     );
