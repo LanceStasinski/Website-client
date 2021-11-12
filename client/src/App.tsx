@@ -1,9 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import "./App.css";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
-import About from "./about/About";
+import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
+// import { AuthContext } from "./shared/context/auth-context";
+// import { useAuth } from "./shared/hooks/auth-hook";
+
+const About = lazy(() => import("./about/About"));
 
 function App() {
   let token = true;
@@ -44,7 +48,11 @@ function App() {
   return (
     <BrowserRouter>
       <MainNavigation />
-      <main>{routes}</main>
+      <main>
+        <Suspense fallback={<LoadingSpinner asOverlay={false} />}>
+          {routes}
+        </Suspense>
+      </main>
     </BrowserRouter>
   );
 }
