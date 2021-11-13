@@ -6,7 +6,8 @@
 @media only screen and (min-width: 990px) {
   .nav-links {
     list-style: none;
-    margin-right: 1rem;
+    margin-right: 3rem;
+    padding-left: 0;
     padding: 0;
     width: 100%;
     height: 100%;
@@ -16,9 +17,22 @@
     align-items: center;
   }
 
+  .nav-links_auth a{
+    background-color: #f7e0ad !important;
+    color: #454545 !important;
+    border: 1pt solid #f7e0ad !important;
+  }
+
+  .nav-links_auth a:hover,
+  .nav-links_auth a:active {
+    color: #f7e0ad !important;
+    border: 1pt solid #f7e0ad !important;
+    background-color: transparent !important;
+  }
+
   .nav-links a {
     margin: 0 0.5rem;
-    width: 100px;
+    width: 90px;
     border: 1px solid white;
     border-radius: 15px;
     background-color: transparent;
@@ -35,11 +49,29 @@
     border-color: black;
     color: black;
   }
+
+  .nav-links button {
+    border: 1pt solid #f7e0ad;
+    border-radius: 15px;
+    font-size: 15px;
+    background-color: #f7e0ad;
+    width: 100px;
+    padding: .48rem;
+  }
+
+  .nav-links button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: solid 1pt #f7e0ad;
+    color: #f7e0ad;
+  }
 }
 
-@media only screen and (min-width: 1296px) {
-  .nav-links li {
+@media only screen and (min-width: 1670px) {
+  .nav-links a,
+  .nav-links button {
     width: 150px;
     font-size: 22px;
+    margin-right: 1rem;
   }
 }

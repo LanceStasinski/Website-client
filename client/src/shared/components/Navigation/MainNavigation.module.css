@@ -70,16 +70,17 @@
   .main-nav {
     display: block;
     margin-right: 1rem;
+    padding-left: 0;
   }
 
   .main-title a{
-    font-size: 26px;
+    font-size: 23px;
     margin-left: 3rem;
-    letter-spacing: 0.7rem;
+    letter-spacing: 0.5rem;
   }
 }
 
-@media only screen and (min-width: 1296px) {
+@media only screen and (min-width: 1335px) {
   .main-title a {
     font-size: 45px;
     letter-spacing: 1rem;
