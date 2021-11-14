@@ -6,8 +6,9 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+import Auth from "./pages/auth/Auth";
 
-const About = lazy(() => import("./about/About"));
+const About = lazy(() => import("./pages/about/About"));
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -40,7 +41,7 @@ function App() {
         <Route path="/blog" exact></Route>
         <Route path="/blog/auth" exact></Route>
         <Route path="/contact" exact></Route>
-        <Route path="/auth" exact></Route>
+        <Route path="/auth" exact><Auth /></Route>
         <Redirect to="/" />
       </Switch>
     );

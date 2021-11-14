@@ -3,11 +3,11 @@ import React from "react";
 import classes from "./About.module.css";
 
 import SocialIcon from "./SocialIcon";
-import backgroundImage from "../assets/about-background.JPG";
-import githubIcon from "../assets/social-icons/github.png";
-import linkedinIcon from "../assets/social-icons/linkedin.png";
-import twitterIcon from "../assets/social-icons/twitter.png";
-import headshot from "../assets/headshot-3.jpg";
+import backgroundImage from "../../assets/about-background.JPG";
+import githubIcon from "../../assets/social-icons/github.png";
+import linkedinIcon from "../../assets/social-icons/linkedin.png";
+import twitterIcon from "../../assets/social-icons/twitter.png";
+import headshot from "../../assets/headshot-3.jpg";
 
 const About: React.FC = () => {
   return (
