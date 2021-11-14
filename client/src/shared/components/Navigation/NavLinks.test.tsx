@@ -3,26 +3,49 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import NavLinks from "./NavLinks";
+import { AuthContext } from "../../context/auth-context";
 
 describe("NavLinks component", () => {
-  test("renders cv link", () => {
-    render(<BrowserRouter><Route><NavLinks /></Route></BrowserRouter>);
+  test("renders all links", () => {
+    render(
+      <BrowserRouter>
+        <Route>
+          <NavLinks />
+        </Route>
+      </BrowserRouter>
+    );
     const CVLink = screen.getByText(/cv/i);
     expect(CVLink).toBeInTheDocument();
+    const portfolioLink = screen.getByText(/portfolio/i);
+    expect(portfolioLink).toBeInTheDocument();
+    const blogLink = screen.getByText(/blog/i);
+    expect(blogLink).toBeInTheDocument();
+    const contactLink = screen.getByText(/contact/i);
+    expect(contactLink).toBeInTheDocument();
+    const loginLink = screen.getByText(/login/i);
+    expect(loginLink).toBeInTheDocument();
   });
-  test("renders portfolio link", () => {
-    render(<BrowserRouter><Route><NavLinks /></Route></BrowserRouter>);
-    const CVLink = screen.getByText(/portfolio/i);
-    expect(CVLink).toBeInTheDocument();
-  });
-  test("renders blog link", () => {
-    render(<BrowserRouter><Route><NavLinks /></Route></BrowserRouter>);
-    const CVLink = screen.getByText(/blog/i);
-    expect(CVLink).toBeInTheDocument();
-  });
-  test("renders contact link", () => {
-    render(<BrowserRouter><Route><NavLinks /></Route></BrowserRouter>);
-    const CVLink = screen.getByText(/contact/i);
-    expect(CVLink).toBeInTheDocument();
+
+  test("renders logout button", () => {
+    const logout = () => {};
+    const login = () => {};
+
+    render(
+      <AuthContext.Provider value={{
+        isLoggedIn: true,
+        login: login,
+        logout: logout,
+        userId: null,
+        token: null
+      }}>
+        <BrowserRouter>
+          <Route>
+            <NavLinks />
+          </Route>
+        </BrowserRouter>
+      </AuthContext.Provider>
+    );
+    const logoutBtn = screen.getByText(/logout/i);
+    expect(logoutBtn).toBeInTheDocument();
   });
 });
