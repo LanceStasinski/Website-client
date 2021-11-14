@@ -7,7 +7,7 @@ import Backdrop from "./Backdrop";
 
 type Props = {
   show: boolean;
-  onCancel: () => {};
+  onCancel: () => void;
   className?: string;
   style?: React.CSSProperties;
   headerClass?: string;
