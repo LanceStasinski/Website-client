@@ -9,10 +9,10 @@ type Props = {
   inverse?: boolean;
   danger?: boolean;
   to?: string;
-  exact: boolean;
+  exact?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 const Button: React.FC<Props> = (props) => {
