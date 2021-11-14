@@ -70,3 +70,5 @@ const Modal: React.FC<Props> = (props) => {
     </React.Fragment>
   );
 };
+
+export default Modal;
