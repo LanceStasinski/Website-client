@@ -1,0 +1,27 @@
+.modal {
+  z-index: 100;
+  position: fixed;
+  top: 22vh;
+  left: 10%;
+  width: 80%;
+  background-color: white;
+}
+
+.modal__header {
+  padding: 1rem 0.5rem;
+  background: #454545;
+  color: #f7e0ad;
+}
+
+.modal__header h2 {
+  margin: 0.5rem;
+}
+
+.modal__content {
+  padding: 1rem 0.5rem;
+}
+
+.modal__footer {
+  padding: 1rem 0.5rem;
+  background-color: #454545;
+}
