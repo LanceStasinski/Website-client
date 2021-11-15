@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
+
+.auth {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 80% !important;
+  margin: 7rem auto !important;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.auth-card-header {
+  background-color: #454545;
+}
+
+.auth-card h2 {
+  font-family: "Prompt", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  color: #f7e0ad;
+  background-color: #454545;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form label {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0.5rem auto;
+  text-align: center;
+  font-size: larger;
+}
+
+.auth-form input {
+  width: 60%;
+  align-self: center;
+  background-color: #f8f8f8;
+  border-color: #aaa;
+  padding: 0.25rem 0.15rem;
+  font-size: larger;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border: 2.3pt solid #454545;
+}
+
+.auth-form button {
+  width: 35%;
+  align-self: center;
+  margin: 1rem auto;
+  font-family: 'Montserrat', sans-serif;
+  padding: .5rem 1rem;
+}
+
+@media only screen and (min-width: 990px) {
+  .auth-card {
+    width: 60% !important;
+  }
+
+  .auth-form input {
+    width: 40%;
+  }
+
+  .auth-form button {
+    width: 15%;
+  }
+}

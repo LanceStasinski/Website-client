@@ -11,7 +11,7 @@ type Props = {
   to?: string;
   exact?: boolean;
   type?: "button" | "submit" | "reset";
-  onClick?: () => void;
+  onClick?: any;
   disabled?: boolean;
 };
 
