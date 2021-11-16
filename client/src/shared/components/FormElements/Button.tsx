@@ -13,6 +13,7 @@ type Props = {
   type?: "button" | "submit" | "reset";
   onClick?: any;
   disabled?: boolean;
+  className?: string;
 };
 
 const Button: React.FC<Props> = (props) => {
@@ -20,6 +21,7 @@ const Button: React.FC<Props> = (props) => {
     return (
       <a
         className={`
+          ${props.className}
           ${classes.button}
           ${classes[`button--${props.size || "default"}`]}
           ${props.inverse && classes["button--inverse"]}
@@ -36,6 +38,7 @@ const Button: React.FC<Props> = (props) => {
       <Link
         to={props.to}
         className={`
+          ${props.className}
           ${classes.button}
           ${classes[`button--${props.size || "default"}`]}
           ${props.inverse && classes["button--inverse"]}
@@ -49,6 +52,7 @@ const Button: React.FC<Props> = (props) => {
   return (
     <button
       className={`
+        ${props.className}
         ${classes.button}
         ${classes[`button--${props.size || "default"}`]}
         ${props.inverse && classes["button--inverse"]}

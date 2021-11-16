@@ -2,12 +2,13 @@
 
 .auth {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .auth-card {
   width: 80% !important;
-  margin: 7rem auto !important;
+  margin: 7rem auto 2rem auto !important;
   display: flex;
   flex-direction: column;
   align-content: flex-start;
@@ -75,6 +76,13 @@
   margin-left: 20%;
 }
 
+.switch-btn {
+  font-family: 'Montserrat', sans-serif;
+  width: 30%;
+  padding: .5rem 1rem;
+  align-self: center;
+}
+
 @media only screen and (min-width: 990px) {
   .auth-card {
     width: 60% !important;
@@ -90,5 +98,9 @@
 
   .auth-form p {
     margin-left: 30%;
+  }
+
+  .switch-btn {
+    width: 12%;
   }
 }

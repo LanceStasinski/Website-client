@@ -25,6 +25,7 @@
 .button--inverse {
   background: #f7e0ad;
   color: #454545;
+  border-color: #454545;
 }
 
 .button--inverse:hover,
