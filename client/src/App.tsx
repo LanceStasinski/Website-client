@@ -6,9 +6,9 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
-import Auth from "./pages/auth/Auth";
 
 const About = lazy(() => import("./pages/about/About"));
+const Auth = lazy(() => import('./pages/auth/Auth'))
 
 function App() {
   const { token, login, logout, userId } = useAuth();
