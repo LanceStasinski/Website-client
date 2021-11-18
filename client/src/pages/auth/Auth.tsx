@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, FormEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import classes from "./Auth.module.css";
@@ -12,12 +12,23 @@ interface LoginInput {
 }
 
 const Auth: React.FC = () => {
-  // error - password.current evaluating to null
+  const authCtx = useContext(AuthContext);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
 
   const switchViewHandler = () => {
     setIsLoggingIn((prevState) => !prevState);
   };
+
+  const loginHandler = async (event: FormEvent) => {
+    event.preventDefault();
+    // if (isLoggingIn) {
+    //   try {
+    //     const responseData = await
+    //   } catch (error) {
+
+    //   }
+    // }
+  }
 
   const {
     register,
