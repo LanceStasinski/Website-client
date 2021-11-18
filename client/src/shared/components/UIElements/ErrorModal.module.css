@@ -1,0 +1,9 @@
+.error-backdrop {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.error-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+

@@ -32,6 +32,7 @@
 .button--inverse:active {
   color: #f7e0ad;
   background: #454545;
+  border-color: #f7e0ad;
 }
 
 .button--danger {

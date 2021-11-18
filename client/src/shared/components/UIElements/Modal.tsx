@@ -17,6 +17,7 @@ type Props = {
   footerClass?: string;
   footer?: ReactNode;
   nodeRef?: React.MutableRefObject<null>;
+  backdropClass?: string;
 };
 
 const ModalOverlay: React.FC<Props> = (props) => {
@@ -39,7 +40,7 @@ const ModalOverlay: React.FC<Props> = (props) => {
         <div className={`${classes["modal__content"]} ${props.className}`}>
           {props.children}
         </div>
-        <footer className={`${classes["modal__footer"]} ${props.className}`}>
+        <footer className={`${classes["modal__footer"]} ${props.footerClass}`}>
           {props.footer}
         </footer>
       </form>
@@ -56,13 +57,18 @@ const Modal: React.FC<Props> = (props) => {
   const nodeRef = React.useRef(null);
   return (
     <React.Fragment>
-      {props.show && <Backdrop onClick={props.onCancel} />}
+      {props.show && (
+        <Backdrop
+          onClick={props.onCancel}
+          backdropClass={props.backdropClass}
+        />
+      )}
       <CSSTransition
         in={props.show}
         mountOnEnter
         unmountOnExit
         timeout={300}
-        classNames='modal-transition'
+        classNames="modal-transition"
         nodeRef={nodeRef}
       >
         <ModalOverlay {...props} nodeRef={nodeRef} />

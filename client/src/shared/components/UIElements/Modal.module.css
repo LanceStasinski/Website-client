@@ -15,6 +15,8 @@
 
 .modal__header h2 {
   margin: 0.5rem;
+  font-size: larger;
+  font-weight: 500;
 }
 
 .modal__content {
@@ -24,4 +26,15 @@
 .modal__footer {
   padding: 1rem 0.5rem;
   background-color: #454545;
+}
+
+.modal p {
+  font-size: larger;
+}
+
+@media only screen and (min-width: 990px) {
+  .modal {
+    width: 60%;
+    left: 20%;
+  }
 }
