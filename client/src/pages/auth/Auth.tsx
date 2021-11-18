@@ -5,30 +5,62 @@ import classes from "./Auth.module.css";
 import { AuthContext } from "../../shared/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
+import { useHttpClient } from "../../shared/hooks/http-hook";
 
 interface LoginInput {
   username: string;
   password: string;
 }
 
+const REST_API = process.env.REACT_APP_REST_API;
+
 const Auth: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const switchViewHandler = () => {
     setIsLoggingIn((prevState) => !prevState);
   };
 
-  const loginHandler = async (event: FormEvent) => {
+  const loginHandler = async (
+    event: FormEvent,
+    userData: { username: string; password: string; confirmPassword?: string }
+  ) => {
     event.preventDefault();
-    // if (isLoggingIn) {
-    //   try {
-    //     const responseData = await
-    //   } catch (error) {
-
-    //   }
-    // }
-  }
+    if (isLoggingIn) {
+      try {
+        const responseData = await sendRequest(
+          `${REST_API}/auth/login`,
+          "POST",
+          JSON.stringify({
+            username: userData.username,
+            password: userData.password,
+          }),
+          {
+            "Content-Type": "application/json",
+          }
+        );
+        authCtx.login(responseData.userId, responseData.token);
+      } catch (error) {} //error caught by useHttpClient hook
+    } else {
+      try {
+        const responseData = await sendRequest(
+          `${REST_API}/auth/signup`,
+          "POST",
+          JSON.stringify({
+            username: userData.username,
+            password: userData.password,
+            confirmPassword: userData.confirmPassword,
+          }),
+          {
+            "Content-Type": "application/json"
+          }
+        );
+        authCtx.login(responseData.userId, responseData.token)
+      } catch (error) {}
+    }
+  };
 
   const {
     register,
@@ -83,7 +115,11 @@ const Auth: React.FC = () => {
             </Button>
           </form>
         </Card>
-        <Button inverse onClick={switchViewHandler} className={classes["switch-btn"]}>
+        <Button
+          inverse
+          onClick={switchViewHandler}
+          className={classes["switch-btn"]}
+        >
           {isLoggingIn ? "SIGNUP" : "LOGIN"}
         </Button>
       </div>
