@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, FormEvent } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import classes from "./Auth.module.css";
@@ -6,10 +6,13 @@ import { AuthContext } from "../../shared/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import ErrorModal from '../../shared/components/UIElements/ErrorModal'
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner'
 
-interface LoginInput {
+interface AuthInput {
   username: string;
   password: string;
+  confirmPassword?: string | undefined;
 }
 
 const REST_API = process.env.REACT_APP_REST_API;
@@ -24,10 +27,8 @@ const Auth: React.FC = () => {
   };
 
   const loginHandler = async (
-    event: FormEvent,
     userData: { username: string; password: string; confirmPassword?: string }
   ) => {
-    event.preventDefault();
     if (isLoggingIn) {
       try {
         const responseData = await sendRequest(
@@ -70,11 +71,13 @@ const Auth: React.FC = () => {
   } = useForm({ mode: "onChange" });
   const password = useRef<any>();
   password.current = watch("password", "");
-  const onSubmit: SubmitHandler<LoginInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<AuthInput> = (data) => loginHandler(data);
   return (
     <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
       <div className={classes.auth}>
         <Card className={classes["auth-card"]}>
+          {isLoading && <LoadingSpinner asOverlay />}
           <div className={classes["auth-card-header"]}>
             <h2>{isLoggingIn ? "LOGIN" : "SIGNUP"}</h2>
           </div>
@@ -110,7 +113,7 @@ const Auth: React.FC = () => {
             {!isLoggingIn && errors.confirmPassword && (
               <p>{errors.confirmPassword.message}</p>
             )}
-            <Button type="submit" onClick={onSubmit} disabled={!isValid}>
+            <Button type="submit" disabled={!isValid}>
               submit
             </Button>
           </form>
