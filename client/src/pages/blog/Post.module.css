@@ -1,0 +1,34 @@
+.post header {
+  display: flex;
+  justify-content: space-between;
+  color: #f7e0ad;
+  background-color: #454545;
+}
+
+.post footer {
+  display: flex;
+  justify-content: center;
+}
+
+.chevron {
+  position:relative;
+  display:block;
+  height:50px; /*Height should be double border thickness*/
+}
+.chevron::before,
+.chevron::after {
+  position:absolute;
+  display:block;
+  content:"";
+  border:25px solid transparent; /*Adjust chevron size*/
+}
+/*Change the four instances of 'top' below to rotate chevron*/
+/*Use (top/right/bottom/left) where you want the back of the chevron to be*/
+.chevron::before {
+  top:0;
+  border-top-color:#b00; /*Chevron Color*/
+}
+.chevron::after {
+  top:-10px; /*Adjust thickness*/
+  border-top-color:#fff; /*Match chevron background colour*/
+}

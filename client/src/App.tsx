@@ -9,6 +9,7 @@ import { useAuth } from "./shared/hooks/auth-hook";
 
 const About = lazy(() => import("./pages/about/About"));
 const Auth = lazy(() => import("./pages/auth/Auth"));
+const Blog = lazy(() => import('./pages/blog/Blog'))
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -23,7 +24,7 @@ function App() {
         </Route>
         <Route path="/cv" exact></Route>
         <Route path="/portfolio" exact></Route>
-        <Route path="/blog" exact></Route>
+        <Route path="/blog" exact><Blog /></Route>
         <Route path="/blog/create" exact></Route>
         <Route path="/blog/:blogId" exact></Route>
         <Route path="/contact" exact></Route>
@@ -38,7 +39,7 @@ function App() {
         </Route>
         <Route path="/cv" exact></Route>
         <Route path="/portfolio" exact></Route>
-        <Route path="/blog" exact></Route>
+        <Route path="/blog" exact><Blog /></Route>
         <Route path="/contact" exact></Route>
         <Redirect to="/" />
       </Switch>
@@ -51,7 +52,7 @@ function App() {
         </Route>
         <Route path="/cv" exact></Route>
         <Route path="/portfolio" exact></Route>
-        <Route path="/blog" exact></Route>
+        <Route path="/blog" exact><Blog /></Route>
         <Route path="/contact" exact></Route>
         <Route path="/auth" exact>
           <Auth />
