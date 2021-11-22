@@ -31,11 +31,14 @@ const DUMMY_POSTS = [
         content: 'const x = "this is some code" \n console.log(x)',
       },
     ],
-    citation: {
-      text: "this is a citation",
-      linkUrl:
-        "https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html",
-    },
+    references: [
+      {
+        authors: "Author 1, Author 2",
+        date: "2020",
+        title: "title",
+        url: '"https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html",',
+      },
+    ],
   },
   {
     title: "Second Post",
@@ -64,11 +67,14 @@ const DUMMY_POSTS = [
         content: 'const x = "this is some more code" \n console.log(x)',
       },
     ],
-    citation: {
-      text: "this is a citation",
-      linkUrl:
-        "https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html",
-    },
+    references: [
+      {
+        authors: "Author 1, Author 2",
+        date: "2020",
+        title: "title",
+        url: '"https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html",',
+      },
+    ],
   },
 ];
 
@@ -86,7 +92,7 @@ const Blog: React.FC = () => {
             title={post.title}
             date={post.date}
             content={post.content}
-            citation={post.citation}
+            references={post.references}
           />
         );
       })}

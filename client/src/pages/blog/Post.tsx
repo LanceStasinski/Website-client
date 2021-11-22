@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
-import classes from './Post.module.css'
+import classes from "./Post.module.css";
 
 interface PostInfo {
   title: string;
@@ -11,7 +11,7 @@ interface PostInfo {
     content: string;
     alt?: string;
   }[];
-  citation: { text: string; linkUrl?: string };
+  references: { authors: string; date: string; title: string; url: string }[];
 }
 
 const MONTHS = [
@@ -31,6 +31,44 @@ const MONTHS = [
 
 const Post: React.FC<PostInfo> = (props) => {
   const date = new Date(props.date);
+  const [displayInfo, setDisplayInfo] = useState(false);
+
+  const expandHandler = () => {
+    setDisplayInfo(prevState => !prevState);
+  };
+
+  const content = (
+    <article>
+      {props.content.map((ct) => {
+        if (ct.type === "paragraph") {
+          return <p>{ct.content}</p>;
+        } else if (ct.type === "image") {
+          return <img src={ct.content} alt={ct.alt} />;
+        } else if (ct.type === "heading") {
+          return <h4>{ct.content}</h4>;
+        } else if (ct.type === "code") {
+          return (
+            <pre>
+              <code>{ct.content}</code>
+            </pre>
+          );
+        } else {
+          return <div>{`Error: Content type ${ct.type} not supported.`}</div>;
+        }
+      })}
+      <div>
+        <h4>References</h4>
+        {props.references.map((ref) => {
+          return (
+            <cite>
+              {ref.authors}. ({ref.date}). {ref.title}. Retrieved from{" "}
+              <a href={ref.url}>{ref.url}</a>
+            </cite>
+          );
+        })}
+      </div>
+    </article>
+  );
 
   return (
     <Card className={classes.post}>
@@ -40,8 +78,9 @@ const Post: React.FC<PostInfo> = (props) => {
           MONTHS[date.getMonth()]
         } ${date.getDate()}, ${date.getFullYear()}`}</h3>
       </header>
-      <footer>
-        <i className={classes.chevron}/>
+      {displayInfo && content}
+      <footer onClick={expandHandler}>
+        <i className={classes.chevron} />
       </footer>
     </Card>
   );

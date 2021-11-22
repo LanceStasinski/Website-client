@@ -13,9 +13,14 @@
   padding-right: 1rem;
 }
 
-.post h2 {
+.post h3 {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
+}
+
+.post article {
+  display: flex;
+  flex-direction: column;
 }
 
 .post footer {
