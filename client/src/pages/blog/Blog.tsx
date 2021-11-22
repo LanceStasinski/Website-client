@@ -77,7 +77,9 @@ const Blog: React.FC = () => {
   const isAdmin = authCtx.token && authCtx.userId === ADMIN_USER;
   console.log(isAdmin);
   return (
-    <React.Fragment>
+    <div className={classes.blog}>
+      <h2>BLOG</h2>
+      <hr />
       {DUMMY_POSTS.map((post) => {
         return (
           <Post
@@ -89,7 +91,7 @@ const Blog: React.FC = () => {
         );
       })}
       {isAdmin && <Button>Add Post</Button>}
-    </React.Fragment>
+    </div>
   );
 };
 

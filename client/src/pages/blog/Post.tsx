@@ -35,10 +35,10 @@ const Post: React.FC<PostInfo> = (props) => {
   return (
     <Card className={classes.post}>
       <header>
-        <h2>{props.title}</h2>
-        <h2>{`${
+        <h3>{props.title}</h3>
+        <h3>{`${
           MONTHS[date.getMonth()]
-        } ${date.getDate()}, ${date.getFullYear()}`}</h2>
+        } ${date.getDate()}, ${date.getFullYear()}`}</h3>
       </header>
       <footer>
         <i className={classes.chevron}/>
