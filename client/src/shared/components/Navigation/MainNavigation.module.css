@@ -25,9 +25,8 @@
   font-family: "Prompt", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   letter-spacing: 0.2rem;
-  margin-left: 1rem;
 }
 
 .main-title a:hover {
@@ -69,13 +68,11 @@
 
   .main-nav {
     display: block;
-    margin-right: 1rem;
     padding-left: 0;
   }
 
   .main-title a{
     font-size: 23px;
-    margin-left: 3rem;
     letter-spacing: 0.5rem;
   }
 }

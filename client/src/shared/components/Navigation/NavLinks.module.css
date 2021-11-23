@@ -6,7 +6,6 @@
 @media only screen and (min-width: 990px) {
   .nav-links {
     list-style: none;
-    margin-right: 3rem;
     padding-left: 0;
     padding: 0;
     width: 100%;
@@ -32,16 +31,16 @@
 
   .nav-links a {
     margin: 0 0.5rem;
-    width: 90px;
+    padding: 0.5rem 0;
+    width: 70px;
     border: 1px solid white;
     border-radius: 15px;
     background-color: transparent;
     color: white;
-    font-size: 15px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     text-decoration: none;
-    padding: 0.25rem;
   }
 
   .nav-links a:hover {
@@ -56,7 +55,7 @@
     font-size: 15px;
     background-color: #f7e0ad;
     width: 100px;
-    padding: .48rem;
+    padding: .5rem;
   }
 
   .nav-links button:hover {
@@ -70,8 +69,8 @@
 @media only screen and (min-width: 1670px) {
   .nav-links a,
   .nav-links button {
-    width: 150px;
-    font-size: 22px;
+    width: 90px;
+    font-size: 15px;
     margin-right: 1rem;
   }
 }

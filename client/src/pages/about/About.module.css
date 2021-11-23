@@ -3,7 +3,7 @@
 .about {
   color: #777;
   width: 70%;
-  margin-left: 15%;
+  margin-left: 20%;
 }
 
 .background-image {
@@ -51,7 +51,7 @@
     width: 50vw;
     margin-top: 7vh;
     margin-bottom: 3vh;
-    padding: 1rem 1rem 2rem 3rem;
+    padding: 1rem 1rem 2rem 10%;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
   }
