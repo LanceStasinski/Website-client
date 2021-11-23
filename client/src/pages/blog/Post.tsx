@@ -12,7 +12,7 @@ interface PostInfo {
     type: string;
     content: string;
     alt?: string;
-    language?:string
+    language?: string;
   }[];
   references: { authors: string; date: string; title: string; url: string }[];
 }
@@ -89,7 +89,11 @@ const Post: React.FC<PostInfo> = (props) => {
       </header>
       {displayInfo && content}
       <footer onClick={expandHandler}>
-        <i className={classes.chevron} />
+        <i
+          className={
+            displayInfo ? classes["chevron-down"] : classes["chevron-up"]
+          }
+        />
       </footer>
     </Card>
   );
