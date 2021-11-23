@@ -55,3 +55,29 @@ code {
   opacity: 0;
   transition: all 300ms;
 }
+
+.post-transition-enter {
+  opacity: 0;
+  transform:scaleY(0);
+  max-height: 0px;
+}
+
+.post-transition-enter-active {
+  opacity: 1;
+  transform: scaleY(1);
+  max-height: 100%;
+  transition: all 200ms;
+}
+
+.post-transition-exit {
+  opacity: 1;
+  transform: scaleY(1);
+  max-height: 100%
+}
+
+.post-transition-exit-active {
+  transform: scaleY(0);
+  opacity: 0;
+  max-height: 0px;
+  transition: all 200ms;
+}

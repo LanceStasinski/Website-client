@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Highlight from "react-highlight";
+import { CSSTransition } from "react-transition-group";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./Post.module.css";
@@ -36,47 +37,58 @@ const Post: React.FC<PostInfo> = (props) => {
   const date = new Date(props.date);
   const [displayInfo, setDisplayInfo] = useState(false);
 
+  const nodeRef = useRef(null);
+
   const expandHandler = () => {
     setDisplayInfo((prevState) => !prevState);
   };
 
   const content = (
-    <article>
-      {props.content.map((ct) => {
-        if (ct.type === "paragraph") {
-          return <p>{ct.content}</p>;
-        } else if (ct.type === "image") {
-          return <img src={ct.content} alt={ct.alt} />;
-        } else if (ct.type === "heading") {
-          return <h4>{ct.content}</h4>;
-        } else if (ct.type === "code") {
-          return (
-            <pre>
-              <code>
-                <Highlight className={ct.language}>{ct.content}</Highlight>
-              </code>
-            </pre>
-          );
-        } else {
-          return <div>{`Error: Content type ${ct.type} not supported.`}</div>;
-        }
-      })}
-      <div>
-        <h4>References</h4>
-        <ul>
-          {props.references.map((ref) => {
+    <CSSTransition
+      in={displayInfo}
+      timeout={300}
+      mountOnEnter
+      unmountOnExit
+      nodeRef={nodeRef}
+      classNames='post-transition'
+    >
+      <article ref={nodeRef}>
+        {props.content.map((ct) => {
+          if (ct.type === "paragraph") {
+            return <p>{ct.content}</p>;
+          } else if (ct.type === "image") {
+            return <img src={ct.content} alt={ct.alt} />;
+          } else if (ct.type === "heading") {
+            return <h4>{ct.content}</h4>;
+          } else if (ct.type === "code") {
             return (
-              <li>
-                <cite>
-                  {ref.authors}. ({ref.date}). <i>{ref.title}</i>. Retrieved
-                  from <a href={ref.url}>{ref.url}</a>
-                </cite>
-              </li>
+              <pre>
+                <code>
+                  <Highlight className={ct.language}>{ct.content}</Highlight>
+                </code>
+              </pre>
             );
-          })}
-        </ul>
-      </div>
-    </article>
+          } else {
+            return <div>{`Error: Content type ${ct.type} not supported.`}</div>;
+          }
+        })}
+        <div>
+          <h4>References</h4>
+          <ul>
+            {props.references.map((ref) => {
+              return (
+                <li key={ref.title}>
+                  <cite>
+                    {ref.authors}. ({ref.date}). <i>{ref.title}</i>. Retrieved
+                    from <a href={ref.url}>{ref.url}</a>
+                  </cite>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </article>
+    </CSSTransition>
   );
 
   return (
@@ -87,7 +99,7 @@ const Post: React.FC<PostInfo> = (props) => {
           MONTHS[date.getMonth()]
         } ${date.getDate()}, ${date.getFullYear()}`}</h3>
       </header>
-      {displayInfo && content}
+      {content}
       <footer onClick={expandHandler}>
         <i
           className={
