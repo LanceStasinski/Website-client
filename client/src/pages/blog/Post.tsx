@@ -34,7 +34,7 @@ const Post: React.FC<PostInfo> = (props) => {
   const [displayInfo, setDisplayInfo] = useState(false);
 
   const expandHandler = () => {
-    setDisplayInfo(prevState => !prevState);
+    setDisplayInfo((prevState) => !prevState);
   };
 
   const content = (
@@ -58,14 +58,18 @@ const Post: React.FC<PostInfo> = (props) => {
       })}
       <div>
         <h4>References</h4>
-        {props.references.map((ref) => {
-          return (
-            <cite>
-              {ref.authors}. ({ref.date}). {ref.title}. Retrieved from{" "}
-              <a href={ref.url}>{ref.url}</a>
-            </cite>
-          );
-        })}
+        <ul>
+          {props.references.map((ref) => {
+            return (
+              <li>
+                <cite>
+                  {ref.authors}. ({ref.date}). <i>{ref.title}</i>. Retrieved from{" "}
+                  <a href={ref.url}>{ref.url}</a>
+                </cite>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </article>
   );

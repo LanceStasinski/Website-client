@@ -6,11 +6,10 @@
 
 .post header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   color: #f7e0ad;
   background-color: #454545;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 1rem;
 }
 
 .post h3 {
@@ -21,6 +20,31 @@
 .post article {
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
+  font-family: "Montserrat";
+}
+
+.post h4 {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+}
+
+.post ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post cite {
+  font-style: normal;
+}
+
+.post a {
+  word-break: break-all;
+}
+
+.post img {
+  max-width: 100%;
 }
 
 .post footer {
@@ -30,29 +54,37 @@
 
 .chevron {
   margin-top: 1rem;
-  position:relative;
-  display:block;
-  height:30px; /*Height should be double border thickness*/
+  position: relative;
+  display: block;
+  height: 30px; /*Height should be double border thickness*/
 }
 .chevron::before,
 .chevron::after {
-  position:absolute;
-  display:block;
-  content:"";
+  position: absolute;
+  display: block;
+  content: "";
   border: 20px solid transparent; /*Adjust chevron size*/
 }
 /*Change the four instances of 'top' below to rotate chevron*/
 /*Use (top/right/bottom/left) where you want the back of the chevron to be*/
 .chevron::before {
-  top:0;
-  border-top-color:#454545; /*Chevron Color*/
+  top: 0;
+  border-top-color: #454545; /*Chevron Color*/
 }
 .chevron::after {
-  top:-10px; /*Adjust thickness*/
-  border-top-color:#fff; /*Match chevron background colour*/
+  top: -10px; /*Adjust thickness*/
+  border-top-color: #fff; /*Match chevron background colour*/
 }
 
 .post footer:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+@media only screen and (min-width: 990px) {
+  .post header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
