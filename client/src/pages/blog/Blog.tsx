@@ -28,7 +28,9 @@ const DUMMY_POSTS = [
       },
       {
         type: "code",
-        content: 'const x = "this is some code" \n console.log(x)',
+        content: `const x = "this is some code"
+console.log(x)`,
+        language: 'javascript'
       },
     ],
     references: [
@@ -65,6 +67,7 @@ const DUMMY_POSTS = [
       {
         type: "code",
         content: 'const x = "this is some more code" \n console.log(x)',
+        language: 'javascript'
       },
     ],
     references: [

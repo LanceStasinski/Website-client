@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import Highlight from "react-highlight";
+
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./Post.module.css";
 
@@ -10,6 +12,7 @@ interface PostInfo {
     type: string;
     content: string;
     alt?: string;
+    language?:string
   }[];
   references: { authors: string; date: string; title: string; url: string }[];
 }
@@ -49,7 +52,9 @@ const Post: React.FC<PostInfo> = (props) => {
         } else if (ct.type === "code") {
           return (
             <pre>
-              <code>{ct.content}</code>
+              <code>
+                <Highlight className={ct.language}>{ct.content}</Highlight>
+              </code>
             </pre>
           );
         } else {
@@ -63,8 +68,8 @@ const Post: React.FC<PostInfo> = (props) => {
             return (
               <li>
                 <cite>
-                  {ref.authors}. ({ref.date}). <i>{ref.title}</i>. Retrieved from{" "}
-                  <a href={ref.url}>{ref.url}</a>
+                  {ref.authors}. ({ref.date}). <i>{ref.title}</i>. Retrieved
+                  from <a href={ref.url}>{ref.url}</a>
                 </cite>
               </li>
             );
