@@ -176,7 +176,6 @@ const MONTHS = [
 const Blog: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const isAdmin = authCtx.token && authCtx.userId === ADMIN_USER;
-  console.log(isAdmin);
   return (
     <div className={classes.blog}>
       <h2>BLOG</h2>
@@ -188,8 +187,8 @@ const Blog: React.FC = () => {
               <Link to={`/blog/${post.id}`}>
                 <Card className={classes["blog-card"]}>
                   <header>
-                    <h3>{post.title}</h3>
-                    <h3>{`${
+                    <h3 className={classes['blog-title']}>{post.title}</h3>
+                    <h3 className={classes['blog-title']}>{`${
                       MONTHS[post.date.getMonth()]
                     } ${post.date.getDate()}, ${post.date.getFullYear()}`}</h3>
                   </header>

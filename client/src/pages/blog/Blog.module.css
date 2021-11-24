@@ -35,9 +35,12 @@
 .blog header{
   display: flex;
   flex-direction: column;
-  color: #f7e0ad;
   background-color: #454545;
   padding: 0 1rem;
+}
+
+.blog-title {
+  color: #f7e0ad !important;
 }
 
 .blog article {
