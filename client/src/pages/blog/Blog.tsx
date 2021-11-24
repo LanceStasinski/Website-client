@@ -181,26 +181,28 @@ const Blog: React.FC = () => {
     <div className={classes.blog}>
       <h2>BLOG</h2>
       <hr />
-      <div className={classes.posts}>
+      <ul className={classes.posts}>
         {DUMMY_POSTS.map((post) => {
           return (
-            <Link to={`/blog/${post.id}`}>
-              <Card className={classes["blog-card"]}>
-                <header>
-                  <h3>{post.title}</h3>
-                  <h3>{`${
-                    MONTHS[post.date.getMonth()]
-                  } ${post.date.getDate()}, ${post.date.getFullYear()}`}</h3>
-                </header>
-                <article>{post.blurb}</article>
-                <footer>
-                  <p>click to read more</p>
-                </footer>
-              </Card>
-            </Link>
+            <li key={post.id}>
+              <Link to={`/blog/${post.id}`}>
+                <Card className={classes["blog-card"]}>
+                  <header>
+                    <h3>{post.title}</h3>
+                    <h3>{`${
+                      MONTHS[post.date.getMonth()]
+                    } ${post.date.getDate()}, ${post.date.getFullYear()}`}</h3>
+                  </header>
+                  <article>{post.blurb}</article>
+                  <footer>
+                    <p>click to read more</p>
+                  </footer>
+                </Card>
+              </Link>
+            </li>
           );
         })}
-      </div>
+      </ul>
       {isAdmin && (
         <div className={classes["add-post"]}>
           <Button>Add Post</Button>
