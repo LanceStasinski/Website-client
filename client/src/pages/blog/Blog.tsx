@@ -3,14 +3,17 @@ import React, { useContext } from "react";
 import classes from "./Blog.module.css";
 import { AuthContext } from "../../shared/context/auth-context";
 import Button from "../../shared/components/FormElements/Button";
-import Post from "./Post";
+import Card from "../../shared/components/UIElements/Card";
+import { Link } from "react-router-dom";
 
 const ADMIN_USER = process.env.REACT_APP_ADMIN_USER;
 
 const DUMMY_POSTS = [
   {
+    id: "b1",
     title: "First Post",
     date: new Date(),
+    blurb: "Blurb about the first post",
     content: [
       {
         type: "paragraph",
@@ -30,7 +33,7 @@ const DUMMY_POSTS = [
         type: "code",
         content: `const x = "this is some code"
 console.log(x)`,
-        language: 'javascript'
+        language: "javascript",
       },
     ],
     references: [
@@ -43,8 +46,10 @@ console.log(x)`,
     ],
   },
   {
+    id: "b2",
     title: "Second Post",
     date: new Date(),
+    blurb: "Blurb about second post",
     content: [
       {
         type: "paragraph",
@@ -67,7 +72,79 @@ console.log(x)`,
       {
         type: "code",
         content: 'const x = "this is some more code" \n console.log(x)',
-        language: 'javascript'
+        language: "javascript",
+      },
+    ],
+    references: [
+      {
+        authors: "Author 1, Author 2",
+        date: "2020",
+        title: "title",
+        url: '"https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html",',
+      },
+    ],
+  },
+  {
+    id: "b3",
+    title: "Third Post",
+    date: new Date(),
+    blurb: "Blurb about the third post",
+    content: [
+      {
+        type: "paragraph",
+        content: "This is a paragraph",
+      },
+      {
+        type: "image",
+        content:
+          "https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp",
+        alt: "mountains",
+      },
+      {
+        type: "heading",
+        content: "This is a heading",
+      },
+      {
+        type: "code",
+        content: `const x = "this is some code"
+console.log(x)`,
+        language: "javascript",
+      },
+    ],
+    references: [
+      {
+        authors: "Author 1, Author 2",
+        date: "2020",
+        title: "title",
+        url: '"https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/in_text_citations_the_basics.html",',
+      },
+    ],
+  },
+  {
+    id: "b4",
+    title: "Fourth Post",
+    date: new Date(),
+    blurb: "Blurb about the fourth post",
+    content: [
+      {
+        type: "paragraph",
+        content: "This is a paragraph",
+      },
+      {
+        type: "image",
+        content:
+          "https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf-970-80.jpg.webp",
+        alt: "mountains",
+      },
+      {
+        type: "heading",
+        content: "This is a heading",
+      },
+      {
+        type: "code",
+        content: `const x = "this is some code"
+console.log(x)`,
+        language: "javascript",
       },
     ],
     references: [
@@ -81,6 +158,21 @@ console.log(x)`,
   },
 ];
 
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const Blog: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const isAdmin = authCtx.token && authCtx.userId === ADMIN_USER;
@@ -89,17 +181,31 @@ const Blog: React.FC = () => {
     <div className={classes.blog}>
       <h2>BLOG</h2>
       <hr />
-      {DUMMY_POSTS.map((post) => {
-        return (
-          <Post
-            title={post.title}
-            date={post.date}
-            content={post.content}
-            references={post.references}
-          />
-        );
-      })}
-      {isAdmin && <Button>Add Post</Button>}
+      <div className={classes.posts}>
+        {DUMMY_POSTS.map((post) => {
+          return (
+            <Link to={`/blog/${post.id}`}>
+              <Card className={classes["blog-card"]}>
+                <header>
+                  <h3>{post.title}</h3>
+                  <h3>{`${
+                    MONTHS[post.date.getMonth()]
+                  } ${post.date.getDate()}, ${post.date.getFullYear()}`}</h3>
+                </header>
+                <article>{post.blurb}</article>
+                <footer>
+                  <p>click to read more</p>
+                </footer>
+              </Card>
+            </Link>
+          );
+        })}
+      </div>
+      {isAdmin && (
+        <div className={classes["add-post"]}>
+          <Button>Add Post</Button>
+        </div>
+      )}
     </div>
   );
 };

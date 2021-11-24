@@ -4,10 +4,75 @@
   width: 80vw;
   margin-left: 10%;
   margin-top: 7rem;
+  display: block;
 }
 
 .blog h2 {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
   color: #454545;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog a {
+  text-decoration: none;
+}
+
+.blog-card {
+  margin-top: 2rem !important;
+}
+
+.blog-card:hover {
+  transform: scale(1.01);
+}
+
+.blog header{
+  display: flex;
+  flex-direction: column;
+  color: #f7e0ad;
+  background-color: #454545;
+  padding: 0 1rem;
+}
+
+.blog article {
+  padding: 1rem;
+  color: #454545;
+}
+
+.blog footer {
+  text-align: center;
+  color: #aaa
+}
+
+.add-post {
+  display: flex;
+  justify-content: center;
+}
+
+.add-post button {
+  width: 10rem;
+  display: block;
+  margin-top: 2rem;
+}
+
+
+@media only screen and (min-width: 990px) {
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    gap: 2%;
+  }
+
+  .blog-card {
+    margin-top: 1vw !important;
+  }
+
+  .blog header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
