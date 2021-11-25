@@ -170,6 +170,17 @@ console.log(x)`,
   },
 ];
 
+const DUMMY_COMMENTS = [
+  {
+    userId: "u1",
+    text: "This is the first comment",
+  },
+  {
+    userId: 'u2',
+    text: 'This is the second comment'
+  }
+];
+
 // interface PostInfo {
 //   title: string;
 //   date: Date;
@@ -230,6 +241,9 @@ const Post: React.FC = () => {
           </ul>
         </div>
       </article>
+      <div>
+
+      </div>
     </div>
   );
 };
