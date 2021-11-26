@@ -5,7 +5,7 @@ import classes from "./Comment.module.css";
 
 interface Props {
   userId: string;
-  text: string;
+  commentId: string;
 }
 
 const Comment: React.FC<Props> = (props) => {
@@ -28,10 +28,12 @@ const Comment: React.FC<Props> = (props) => {
     //DELETE request
   };
 
+
+  // make sure userId matches userId fetched
   return (
     <div>
       {!isEditing && <p>{props.children}</p>}
-      {authCtx.isLoggedIn && authCtx.userId === props.userId && (
+      {authCtx.isLoggedIn  && props.userId === authCtx.userId && (
         <div>
           <button type="button" onClick={editHandler}>
             EDIT
@@ -41,9 +43,9 @@ const Comment: React.FC<Props> = (props) => {
           </button>
         </div>
       )}
-      {isEditing && authCtx.userId === props.userId && (
+      {isEditing && props.userId === authCtx.userId && (
         <form onSubmit={updateCommentHandler}>
-          <input type="text">{props.text}</input>
+          <input type="text">{props.children}</input>
           <div>
             <button type="submit">SUBMIT</button>
             <button type="button" onClick={cancelEditHandler}>

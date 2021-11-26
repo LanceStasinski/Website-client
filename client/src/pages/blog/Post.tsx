@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Highlight from "react-highlight";
 
 import classes from "./Post.module.css";
+import CommentSection from "./CommentSection";
+
 
 const MONTHS = [
   "January",
@@ -172,10 +174,12 @@ console.log(x)`,
 
 const DUMMY_COMMENTS = [
   {
+    commentId: 'c1',
     userId: "u1",
     text: "This is the first comment",
   },
   {
+    commentId: 'c2',
     userId: 'u2',
     text: 'This is the second comment'
   }
@@ -241,9 +245,9 @@ const Post: React.FC = () => {
           </ul>
         </div>
       </article>
-      <div>
-
-      </div>
+      <section>
+        <CommentSection comments={DUMMY_COMMENTS}></CommentSection>
+      </section>
     </div>
   );
 };
