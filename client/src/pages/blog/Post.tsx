@@ -181,7 +181,7 @@ const DUMMY_COMMENTS = [
   {
     commentId: 'c2',
     userId: 'u2',
-    text: 'This is the second comment'
+    text: 'This is the second comment. A long long long long long long long long long long long long long long long long long long long long long long long long long long long  comment.'
   }
 ];
 

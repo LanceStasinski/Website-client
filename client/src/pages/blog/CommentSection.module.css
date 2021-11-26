@@ -1,3 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap");
+
 .comment-section {
   margin: 3rem 0;
+}
+
+.comment-section header {
+  background-color: #454545;
+}
+
+.comment-section header h3 {
+  color: #f7e0ad;
+  margin: 1rem;
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+}
+
+.comment-section form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.comment-section input {
+  padding: 1rem;
+  border: none;
+  background-color: #ddd;
+  border-radius: 50px;
+  font-size: large;
+  width: 85%;
+  color: #454545;
+}
+
+.comment-section input:focus {
+  outline: none;
+  color: #454545;
+}
+
+.comment-section button,
+.comment-section a {
+  margin-right: 1rem;
 }

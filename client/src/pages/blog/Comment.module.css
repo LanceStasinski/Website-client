@@ -1,0 +1,10 @@
+.comment {
+  background-color: #ddd;
+  margin: 1rem;
+  border-radius: 50px;
+}
+
+.comment p {
+  padding: 1rem;
+  color: #454545;
+}

@@ -31,7 +31,7 @@ const Comment: React.FC<Props> = (props) => {
 
   // make sure userId matches userId fetched
   return (
-    <div>
+    <div className={classes.comment}>
       {!isEditing && <p>{props.children}</p>}
       {authCtx.isLoggedIn  && props.userId === authCtx.userId && (
         <div>
