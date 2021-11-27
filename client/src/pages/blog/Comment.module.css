@@ -1,10 +1,23 @@
 .comment {
+  /* background-color: #ddd;
+  margin: 1rem;
+  border-radius: 50px; */
+}
+
+.comment-single {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-single h3 {
+  margin: 1rem 0 0 2rem;
+  font-size: smaller;
+}
+
+.comment-single p {
+  padding: 1rem;
+  color: #454545;
   background-color: #ddd;
   margin: 1rem;
   border-radius: 50px;
-}
-
-.comment p {
-  padding: 1rem;
-  color: #454545;
 }

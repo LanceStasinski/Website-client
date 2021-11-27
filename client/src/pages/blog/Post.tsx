@@ -175,11 +175,13 @@ console.log(x)`,
 const DUMMY_COMMENTS = [
   {
     commentId: 'c1',
+    username: 'user1',
     userId: "u1",
     text: "This is the first comment",
   },
   {
     commentId: 'c2',
+    username: 'user2',
     userId: 'u2',
     text: 'This is the second comment. A long long long long long long long long long long long long long long long long long long long long long long long long long long long  comment.'
   }

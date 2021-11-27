@@ -6,6 +6,7 @@ import classes from "./Comment.module.css";
 interface Props {
   userId: string;
   commentId: string;
+  userName: string;
 }
 
 const Comment: React.FC<Props> = (props) => {
@@ -28,12 +29,11 @@ const Comment: React.FC<Props> = (props) => {
     //DELETE request
   };
 
-
   // make sure userId matches userId fetched
   return (
     <div className={classes.comment}>
-      {!isEditing && <p>{props.children}</p>}
-      {authCtx.isLoggedIn  && props.userId === authCtx.userId && (
+      {!isEditing && <div className={classes['comment-single']}><h3>{props.userName}</h3><p>{props.children}</p></div>}
+      {authCtx.isLoggedIn && props.userId === authCtx.userId && (
         <div>
           <button type="button" onClick={editHandler}>
             EDIT

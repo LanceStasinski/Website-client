@@ -8,7 +8,7 @@ import classes from "./CommentSection.module.css";
 import Button from "../../shared/components/FormElements/Button";
 
 interface Props {
-  comments: { commentId: string; userId: string; text: string }[];
+  comments: { commentId: string; username: string, userId: string; text: string }[];
 }
 
 const CommentSection: React.FC<Props> = (props) => {
@@ -24,7 +24,7 @@ const CommentSection: React.FC<Props> = (props) => {
           {props.comments.map((comment) => {
             return (
               <li key={comment.commentId}>
-                <Comment userId={comment.userId} commentId={comment.commentId}>
+                <Comment userName={comment.username} userId={comment.userId} commentId={comment.commentId}>
                   {comment.text}
                 </Comment>
               </li>
