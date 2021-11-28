@@ -52,10 +52,12 @@
   .nav-links button {
     border: 1pt solid #f7e0ad;
     border-radius: 15px;
-    font-size: 15px;
+    margin-left: 0.5rem;
+    font-size: 12px;
     background-color: #f7e0ad;
-    width: 100px;
-    padding: .5rem;
+    width: 70px;
+    padding: .54rem 0;
+    text-align: center;
   }
 
   .nav-links button:hover {
