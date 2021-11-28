@@ -214,21 +214,21 @@ const Post: React.FC = () => {
       <article>
         {post!.content.map((ct) => {
           if (ct.type === "paragraph") {
-            return <p>{ct.content}</p>;
+            return <p key={Math.random()}>{ct.content}</p>;
           } else if (ct.type === "image") {
-            return <img src={ct.content} alt={ct.alt} />;
+            return <img src={ct.content} alt={ct.alt} key={Math.random()}/>;
           } else if (ct.type === "heading") {
-            return <h3>{ct.content}</h3>;
+            return <h3 key={Math.random()}>{ct.content}</h3>;
           } else if (ct.type === "code") {
             return (
-              <pre>
+              <pre key={Math.random()}>
                 <code>
                   <Highlight className={ct.language}>{ct.content}</Highlight>
                 </code>
               </pre>
             );
           } else {
-            return <div>{`Error: Content type ${ct.type} not supported.`}</div>;
+            return <div key={Math.random()}>{`Error: Content type ${ct.type} not supported.`}</div>;
           }
         })}
         <div>
