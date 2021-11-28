@@ -17,9 +17,7 @@
 
 .comment-section form {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   margin: 1rem;
 }
 
@@ -29,7 +27,6 @@
   background-color: #ddd;
   border-radius: 50px;
   font-size: large;
-  width: 85%;
   color: #454545;
 }
 
@@ -40,5 +37,47 @@
 
 .comment-section button,
 .comment-section a {
-  margin-right: 1rem;
+  margin-top: 1rem;
+  width: 7rem;
+  align-self: center;
+}
+
+.comment-section button {
+  padding: 0.75rem !important;
+}
+
+.comment-section a {
+  border: 1pt solid #454545;
+  background-color: #454545;
+  border-radius: 12px;
+  padding: 0.75rem 0;
+  text-decoration: none;
+  text-align: center;
+  color: #f7e0ad;
+}
+
+.comment-section a:hover {
+  background-color: #f7e0ad;
+  color: #454545;
+}
+
+@media only screen and (min-width: 990px) {
+  .comment-section form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+  }
+
+  .comment-section input {
+    font-size: large;
+    width: 85%;
+    color: #454545;
+  }
+
+  .comment-section button,
+  .comment-section a {
+    margin: 0 0 0 1rem;
+  }
 }
