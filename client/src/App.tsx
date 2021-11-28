@@ -13,7 +13,7 @@ const Blog = lazy(() => import('./pages/blog/Blog'))
 const Post = lazy(() => import('./pages/blog/Post'))
 
 function App() {
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId, username } = useAuth();
 
   let routes;
 
@@ -70,6 +70,7 @@ function App() {
       value={{
         isLoggedIn: !!token,
         login: login,
+        username: username,
         logout: logout,
         userId: userId,
         token: token,

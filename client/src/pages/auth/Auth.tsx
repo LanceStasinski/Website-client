@@ -6,8 +6,8 @@ import { AuthContext } from "../../shared/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import ErrorModal from '../../shared/components/UIElements/ErrorModal'
-import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner'
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 
 interface AuthInput {
   username: string;
@@ -26,9 +26,11 @@ const Auth: React.FC = () => {
     setIsLoggingIn((prevState) => !prevState);
   };
 
-  const loginHandler = async (
-    userData: { username: string; password: string; confirmPassword?: string }
-  ) => {
+  const loginHandler = async (userData: {
+    username: string;
+    password: string;
+    confirmPassword?: string;
+  }) => {
     if (isLoggingIn) {
       try {
         const responseData = await sendRequest(
@@ -42,7 +44,11 @@ const Auth: React.FC = () => {
             "Content-Type": "application/json",
           }
         );
-        authCtx.login(responseData.userId, responseData.token);
+        authCtx.login(
+          responseData.userId,
+          responseData.token,
+          responseData.username
+        );
       } catch (error) {} //error caught by useHttpClient hook
     } else {
       try {
@@ -55,10 +61,14 @@ const Auth: React.FC = () => {
             confirmPassword: userData.confirmPassword,
           }),
           {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           }
         );
-        authCtx.login(responseData.userId, responseData.token)
+        authCtx.login(
+          responseData.userId,
+          responseData.token,
+          responseData.username
+        );
       } catch (error) {}
     }
   };
