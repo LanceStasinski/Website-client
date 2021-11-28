@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import Comment from "./Comment";
 import Card from "../../shared/components/UIElements/Card";
@@ -8,11 +9,28 @@ import classes from "./CommentSection.module.css";
 import Button from "../../shared/components/FormElements/Button";
 
 interface Props {
-  comments: { commentId: string; username: string, userId: string; text: string }[];
+  comments: {
+    commentId: string;
+    username: string;
+    userId: string;
+    text: string;
+  }[];
+}
+
+interface CommentInput {
+  newComment: string;
 }
 
 const CommentSection: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
+
+  const {
+    register,
+    formState: { isValid },
+    handleSubmit,
+  } = useForm({ mode: "onChange" });
+
+  const onSubmit: SubmitHandler<CommentInput> = (data) => console.log(data);
 
   return (
     <Card className={classes["comment-section"]}>
@@ -24,7 +42,11 @@ const CommentSection: React.FC<Props> = (props) => {
           {props.comments.map((comment) => {
             return (
               <li key={comment.commentId}>
-                <Comment userName={comment.username} userId={comment.userId} commentId={comment.commentId}>
+                <Comment
+                  userName={comment.username}
+                  userId={comment.userId}
+                  commentId={comment.commentId}
+                >
                   {comment.text}
                 </Comment>
               </li>
@@ -33,12 +55,17 @@ const CommentSection: React.FC<Props> = (props) => {
         </ul>
       </div>
       <hr />
-      <form>
-        <input id="newComment" placeholder="Add a comment..." />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          {...register("newComment", { required: true })}
+          placeholder="Add a comment..."
+        />
         {authCtx.isLoggedIn ? (
-          <Button type="submit">submit</Button>
+          <Button type="submit" disabled={!isValid}>
+            submit
+          </Button>
         ) : (
-          <Link to='/auth'>LOGIN</Link>
+          <Link to="/auth">LOGIN</Link>
         )}
       </form>
     </Card>
