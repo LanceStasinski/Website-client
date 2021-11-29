@@ -11,6 +11,7 @@ const About = lazy(() => import("./pages/about/About"));
 const Auth = lazy(() => import("./pages/auth/Auth"));
 const Blog = lazy(() => import('./pages/blog/Blog'))
 const Post = lazy(() => import('./pages/blog/Post'))
+const CreatePost = lazy(() => import('./pages/blog/CreatePost'))
 
 function App() {
   const { token, login, logout, userId, username } = useAuth();
@@ -26,7 +27,7 @@ function App() {
         <Route path="/cv" exact></Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact><Blog /></Route>
-        <Route path="/blog/create" exact></Route>
+        <Route path="/blog/create" exact><CreatePost /></Route>
         <Route path="/blog/:blogId" exact><Post /></Route>
         <Route path="/contact" exact></Route>
         <Redirect to="/" />
