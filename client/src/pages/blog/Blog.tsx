@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 
 import classes from "./Blog.module.css";
 import { AuthContext } from "../../shared/context/auth-context";
-import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
 import { Link } from "react-router-dom";
 
@@ -204,7 +203,7 @@ const Blog: React.FC = () => {
       </ul>
       {isAdmin && (
         <div className={classes["add-post"]}>
-          <Button>Add Post</Button>
+          <Link to='/blog/create'>Add Post</Link>
         </div>
       )}
     </div>
