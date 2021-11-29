@@ -26,11 +26,15 @@ const CommentSection: React.FC<Props> = (props) => {
 
   const {
     register,
+    reset,
     formState: { isValid },
     handleSubmit,
   } = useForm({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<CommentInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<CommentInput> = (data) => {
+    reset({ newComment: null });
+    console.log(data);
+  };
 
   return (
     <Card className={classes["comment-section"]}>
