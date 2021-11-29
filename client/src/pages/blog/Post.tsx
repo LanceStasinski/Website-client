@@ -6,7 +6,6 @@ import Highlight from "react-highlight";
 import classes from "./Post.module.css";
 import CommentSection from "./CommentSection";
 
-
 const MONTHS = [
   "January",
   "February",
@@ -174,17 +173,17 @@ console.log(x)`,
 
 const DUMMY_COMMENTS = [
   {
-    commentId: 'c1',
-    username: 'user1',
+    commentId: "c1",
+    username: "user1",
     userId: "u1",
     text: "This is the first comment",
   },
   {
-    commentId: 'c2',
-    username: 'user2',
-    userId: 'u2',
-    text: 'This is the second comment. A long long long long long long long long long long long long long long long long long long long long long long long long long long long  comment.'
-  }
+    commentId: "c2",
+    username: "user2",
+    userId: "u2",
+    text: "This is the second comment. A long long long long long long long long long long long long long long long long long long long long long long long long long long long  comment.",
+  },
 ];
 
 // interface PostInfo {
@@ -202,6 +201,7 @@ const DUMMY_COMMENTS = [
 const Post: React.FC = () => {
   const postId = useParams<{ blogId: string }>().blogId;
   const post = DUMMY_POSTS.find((element) => element.id === postId);
+
   return (
     <div className={classes.post}>
       <header>
@@ -216,7 +216,7 @@ const Post: React.FC = () => {
           if (ct.type === "paragraph") {
             return <p key={Math.random()}>{ct.content}</p>;
           } else if (ct.type === "image") {
-            return <img src={ct.content} alt={ct.alt} key={Math.random()}/>;
+            return <img src={ct.content} alt={ct.alt} key={Math.random()} />;
           } else if (ct.type === "heading") {
             return <h3 key={Math.random()}>{ct.content}</h3>;
           } else if (ct.type === "code") {
@@ -228,7 +228,11 @@ const Post: React.FC = () => {
               </pre>
             );
           } else {
-            return <div key={Math.random()}>{`Error: Content type ${ct.type} not supported.`}</div>;
+            return (
+              <div
+                key={Math.random()}
+              >{`Error: Content type ${ct.type} not supported.`}</div>
+            );
           }
         })}
         <div>
@@ -248,7 +252,10 @@ const Post: React.FC = () => {
         </div>
       </article>
       <section>
-        <CommentSection comments={DUMMY_COMMENTS}></CommentSection>
+        <CommentSection
+          postId={postId}
+          comments={DUMMY_COMMENTS}
+        ></CommentSection>
       </section>
     </div>
   );
