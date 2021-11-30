@@ -8,7 +8,7 @@ const InputFields: React.FC<{ inputNumber: number }> = (props) => {
   return (
     <section>
       <div className={classes["section-header"]}>
-        <h3>Content #{props.inputNumber + 1}</h3>
+        <h3>Content #{props.inputNumber}</h3>
         <Button type="button" danger>
           Remove
         </Button>
@@ -41,7 +41,7 @@ const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
   return (
     <section>
       <div className={classes["section-header"]}>
-        <h3>Reference #{props.refNumber + 1}</h3>
+        <h3>Reference #{props.refNumber}</h3>
         <Button type="button" danger>
           Remove
         </Button>
@@ -76,15 +76,29 @@ const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
   );
 };
 const CreatePost: React.FC = () => {
-  const [contentFields, setContentFields] = useState([1]);
-  const [refFields, setRefFields] = useState([1]);
+  let inputNumber = 1;
+  let refNumber = 1;
+  const [contentFields, setContentFields] = useState([
+    <InputFields key={`content${inputNumber}`} inputNumber={inputNumber} />,
+  ]);
+  const [refFields, setRefFields] = useState([
+    <ReferenceFields key={`ref${refNumber}`} refNumber={refNumber} />,
+  ]);
 
   const addContent = () => {
-    setContentFields([...contentFields, 1]);
+    inputNumber += 1;
+    setContentFields([
+      ...contentFields,
+      <InputFields key={`content${inputNumber}`} inputNumber={inputNumber} />,
+    ]);
   };
 
   const addReference = () => {
-    setRefFields([...refFields, 1]);
+    refNumber += 1;
+    setRefFields([
+      ...refFields,
+      <ReferenceFields key={`ref${refNumber}`} refNumber={refNumber} />,
+    ]);
   };
 
   return (
@@ -101,9 +115,7 @@ const CreatePost: React.FC = () => {
             <label htmlFor="blurb">Blurb:</label>
             <textarea name="blurb" id="blurb" />
           </section>
-          {contentFields.map((num, index) => {
-            return <InputFields key={`content${index}`} inputNumber={index} />;
-          })}
+          {contentFields}
           <Button
             type="button"
             className={classes["add-btn"]}
@@ -111,9 +123,7 @@ const CreatePost: React.FC = () => {
           >
             Add Content
           </Button>
-          {refFields.map((num, index) => {
-            return <ReferenceFields key={`ref${index}`} refNumber={index} />;
-          })}
+          {refFields}
           <Button
             type="button"
             className={classes["add-btn"]}
