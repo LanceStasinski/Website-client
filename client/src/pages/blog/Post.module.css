@@ -1,5 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
 
+.post-not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-not-found {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem !important;
+}
+
+.post-not-found h2 {
+  text-align: center;
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  color: #454545;
+}
+
+.post-not-found a {
+  width: 20%;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
 .post {
   width: 80%;
   margin: 7rem 10%;

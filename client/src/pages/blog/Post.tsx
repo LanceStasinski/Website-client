@@ -5,6 +5,8 @@ import Highlight from "react-highlight";
 
 import classes from "./Post.module.css";
 import CommentSection from "./CommentSection";
+import Card from "../../shared/components/UIElements/Card";
+import Button from "../../shared/components/FormElements/Button";
 
 const MONTHS = [
   "January",
@@ -203,61 +205,77 @@ const Post: React.FC = () => {
   const post = DUMMY_POSTS.find((element) => element.id === postId);
 
   return (
-    <div className={classes.post}>
-      <header>
-        <h2>{post!.title}</h2>
-        <h2>{`${
-          MONTHS[post!.date.getMonth()]
-        } ${post!.date.getDate()}, ${post!.date.getFullYear()}`}</h2>
-      </header>
-      <hr />
-      <article>
-        {post!.content.map((ct) => {
-          if (ct.type === "paragraph") {
-            return <p key={Math.random()}>{ct.content}</p>;
-          } else if (ct.type === "image") {
-            return <img src={ct.content} alt={ct.alt} key={Math.random()} />;
-          } else if (ct.type === "heading") {
-            return <h3 key={Math.random()}>{ct.content}</h3>;
-          } else if (ct.type === "code") {
-            return (
-              <pre key={Math.random()}>
-                <code>
-                  <Highlight className={ct.language}>{ct.content}</Highlight>
-                </code>
-              </pre>
-            );
-          } else {
-            return (
-              <div
-                key={Math.random()}
-              >{`Error: Content type ${ct.type} not supported.`}</div>
-            );
-          }
-        })}
-        <div>
-          <h3>References</h3>
-          <ul>
-            {post!.references.map((ref) => {
-              return (
-                <li key={ref.title}>
-                  <cite>
-                    {ref.authors}. ({ref.date}). <i>{ref.title}</i>. Retrieved
-                    from <a href={ref.url}>{ref.url}</a>
-                  </cite>
-                </li>
-              );
-            })}
-          </ul>
+    <React.Fragment>
+      {!post && (
+        <div className={classes['post-not-found-wrapper']}>
+          <Card className={classes['post-not-found']}>
+            <h2>Post Not Found!</h2>
+            <Button to="/blog">Back</Button>
+          </Card>
         </div>
-      </article>
-      <section>
-        <CommentSection
-          postId={postId}
-          comments={DUMMY_COMMENTS}
-        ></CommentSection>
-      </section>
-    </div>
+      )}
+      {post && (
+        <div className={classes.post}>
+          <header>
+            <h2>{post!.title}</h2>
+            <h2>{`${
+              MONTHS[post!.date.getMonth()]
+            } ${post!.date.getDate()}, ${post!.date.getFullYear()}`}</h2>
+          </header>
+          <hr />
+          <article>
+            {post!.content.map((ct) => {
+              if (ct.type === "paragraph") {
+                return <p key={Math.random()}>{ct.content}</p>;
+              } else if (ct.type === "image") {
+                return (
+                  <img src={ct.content} alt={ct.alt} key={Math.random()} />
+                );
+              } else if (ct.type === "heading") {
+                return <h3 key={Math.random()}>{ct.content}</h3>;
+              } else if (ct.type === "code") {
+                return (
+                  <pre key={Math.random()}>
+                    <code>
+                      <Highlight className={ct.language}>
+                        {ct.content}
+                      </Highlight>
+                    </code>
+                  </pre>
+                );
+              } else {
+                return (
+                  <div
+                    key={Math.random()}
+                  >{`Error: Content type ${ct.type} not supported.`}</div>
+                );
+              }
+            })}
+            <div>
+              <h3>References</h3>
+              <ul>
+                {post!.references.map((ref) => {
+                  return (
+                    <li key={ref.title}>
+                      <cite>
+                        {ref.authors}. ({ref.date}). <i>{ref.title}</i>.
+                        Retrieved from <a href={ref.url}>{ref.url}</a>
+                      </cite>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </article>
+          <section>
+            <CommentSection
+              postId={postId}
+              comments={DUMMY_COMMENTS}
+            ></CommentSection>
+          </section>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 export default Post;
