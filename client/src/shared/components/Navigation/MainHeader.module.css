@@ -3,6 +3,7 @@
   padding: 0 10%;
   height: 10vh;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   top: 0;
