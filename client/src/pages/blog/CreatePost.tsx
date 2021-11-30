@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
 import Button from "../../shared/components/FormElements/Button";
 
-const InputFields: React.FC<{ inputNumber: number }> = (props) => {
+const InputFields: React.FC<{
+  inputNumber: number;
+  onRemove: (event: FormEvent) => void;
+}> = (props) => {
   return (
     <section>
       <div className={classes["section-header"]}>
         <h3>Content #{props.inputNumber}</h3>
-        <Button type="button" danger>
+        <Button
+          type="button"
+          danger
+          arrayNumber={props.inputNumber}
+          onClick={props.onRemove}
+        >
           Remove
         </Button>
       </div>
@@ -19,7 +27,7 @@ const InputFields: React.FC<{ inputNumber: number }> = (props) => {
         id={`types${props.inputNumber}`}
       >
         <option value="paragraph">Paragraph</option>
-        <option value="image">Image</option>
+        <option value="imageUrl">Image URL</option>
         <option value="code">Code</option>
         <option value="heading">Heading</option>
       </select>
@@ -76,22 +84,40 @@ const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
   );
 };
 const CreatePost: React.FC = () => {
-  let inputNumber = 1;
+  const [inputNumber, setInputNumber] = useState(1);
   let refNumber = 1;
   const [contentFields, setContentFields] = useState([
-    <InputFields key={`content${inputNumber}`} inputNumber={inputNumber} />,
+    <InputFields
+      key={`content${inputNumber}`}
+      inputNumber={inputNumber}
+      onRemove={removeContentHandler}
+    />,
   ]);
   const [refFields, setRefFields] = useState([
     <ReferenceFields key={`ref${refNumber}`} refNumber={refNumber} />,
   ]);
 
+
   const addContent = () => {
-    inputNumber += 1;
+
+    console.log(inputNumber);
     setContentFields([
       ...contentFields,
-      <InputFields key={`content${inputNumber}`} inputNumber={inputNumber} />,
+      <InputFields
+        key={`content${inputNumber}`}
+        inputNumber={inputNumber}
+        onRemove={removeContentHandler}
+      />,
     ]);
   };
+
+  function removeContentHandler(event: FormEvent) {
+    const contentNumber = event.currentTarget.getAttribute("arrayNumber");
+    console.log(contentNumber);
+    setContentFields(
+      contentFields.filter((item) => item.key !== `content${contentNumber}`)
+    );
+  }
 
   const addReference = () => {
     refNumber += 1;

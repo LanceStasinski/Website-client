@@ -14,6 +14,7 @@ type Props = {
   onClick?: any;
   disabled?: boolean;
   className?: string;
+  arrayNumber?: number
 };
 
 const Button: React.FC<Props> = (props) => {
