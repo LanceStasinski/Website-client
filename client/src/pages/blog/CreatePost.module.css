@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.create-post {
+  width: 60% !important;
+  margin: 7rem 0 5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-post header {
+  background-color: #454545;
+  color: #f7e0ad;
+  border-bottom: 1pt solid #f7e0ad;
+}
+
+.create-post header h2 {
+  margin: 1rem;
+}
+
+.create-post header hr {
+  border-top: 1px solid #f7e0ad;
+  width: calc(100% - 2rem);
+}
+
+.create-post h2,
+.create-post h3 {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+}
+
+.create-post form {
+  background-color: #454545;
+}
+
+.create-post section {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 1rem;
+  padding: 0 1rem;
+  border-radius: 6px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header button {
+  height: 50%;
+  margin-left: 2rem;
+  margin-right: 0 !important;
+}
+
+.create-post label {
+  font-family: "Montserrat", sans-serif;
+}
+
+.create-post input,
+.create-post textarea,
+.create-post select {
+  font-family: "Montserrat", sans-serif;
+  margin: 0.25rem 0 1rem 0;
+}
+
+.create-post select {
+  width: 20%;
+}
+
+.create-post select:focus {
+  outline: none;
+}
+
+.create-post input:focus,
+.create-post textarea:focus {
+  outline: 1pt solid #888;
+}
+
+.create-post input,
+.create-post textarea {
+  padding: 0.5rem;
+}
+
+.add-btn {
+  border-color: #f7e0ad !important;
+  width: 18% !important;
+  margin: 0 1rem;
+}
+
+.submit-btn {
+  border: none;
+  width: 100%;
+  margin-top: 2rem;
+  border-bottom-left-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top: 1pt solid #f7e0ad !important;
+  height: 4rem;
+}
