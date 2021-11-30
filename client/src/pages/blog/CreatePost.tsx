@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
@@ -8,7 +8,7 @@ const InputFields: React.FC<{ inputNumber: number }> = (props) => {
   return (
     <section>
       <div className={classes["section-header"]}>
-        <h3>Content #{props.inputNumber}</h3>
+        <h3>Content #{props.inputNumber + 1}</h3>
         <Button type="button" danger>
           Remove
         </Button>
@@ -40,8 +40,8 @@ const InputFields: React.FC<{ inputNumber: number }> = (props) => {
 const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
   return (
     <section>
-      <div className={classes['section-header']}>
-        <h3>Reference #{props.refNumber}</h3>
+      <div className={classes["section-header"]}>
+        <h3>Reference #{props.refNumber + 1}</h3>
         <Button type="button" danger>
           Remove
         </Button>
@@ -76,10 +76,16 @@ const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
   );
 };
 const CreatePost: React.FC = () => {
-  const contentFields = [];
-  const refFields = [];
-  let inputNumber = 1;
-  let refNumber = 1;
+  const [contentFields, setContentFields] = useState([1]);
+  const [refFields, setRefFields] = useState([1]);
+
+  const addContent = () => {
+    setContentFields([...contentFields, 1]);
+  };
+
+  const addReference = () => {
+    setRefFields([...refFields, 1]);
+  };
 
   return (
     <div className={classes.wrapper}>
@@ -95,11 +101,29 @@ const CreatePost: React.FC = () => {
             <label htmlFor="blurb">Blurb:</label>
             <textarea name="blurb" id="blurb" />
           </section>
-          <InputFields inputNumber={inputNumber} />
-          <Button type='button' className={classes['add-btn']}>Add Content</Button>
-          <ReferenceFields refNumber={refNumber} />
-          <Button type='button' className={classes['add-btn']}>Add Reference</Button>
-          <Button type='submit' className={classes['submit-btn']}>CREATE</Button>
+          {contentFields.map((num, index) => {
+            return <InputFields key={`content${index}`} inputNumber={index} />;
+          })}
+          <Button
+            type="button"
+            className={classes["add-btn"]}
+            onClick={addContent}
+          >
+            Add Content
+          </Button>
+          {refFields.map((num, index) => {
+            return <ReferenceFields key={`ref${index}`} refNumber={index} />;
+          })}
+          <Button
+            type="button"
+            className={classes["add-btn"]}
+            onClick={addReference}
+          >
+            Add Reference
+          </Button>
+          <Button type="submit" className={classes["submit-btn"]}>
+            CREATE
+          </Button>
         </form>
       </Card>
     </div>
