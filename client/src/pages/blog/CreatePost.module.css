@@ -6,7 +6,7 @@
 }
 
 .create-post {
-  width: 60% !important;
+  width: 80% !important;
   margin: 7rem 0 5rem 0;
   display: flex;
   flex-direction: column;
@@ -48,14 +48,15 @@
 
 .section-header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column-reverse;
+
 }
 
 .section-header button {
   height: 50%;
-  margin-left: 2rem;
+  width: 50%;
+  padding: 0;
+  margin-top: 1rem;
   margin-right: 0 !important;
 }
 
@@ -90,7 +91,7 @@
 
 .add-btn {
   border-color: #f7e0ad !important;
-  width: 18% !important;
+  width: 50% !important;
   margin: 0 1rem;
 }
 
@@ -104,4 +105,24 @@
   border-top-left-radius: 0 !important;
   border-top: 1pt solid #f7e0ad !important;
   height: 4rem;
+}
+
+@media only screen and (min-width: 990px) {
+  .section-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .section-header button {
+    height: 50%;
+    width: auto;
+    padding: 0.5rem;
+    margin-left: 2rem;
+    margin-right: 0 !important;
+  }
+
+  .add-btn {
+    width: 20% !important;
+  }
 }
