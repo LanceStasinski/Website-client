@@ -1,4 +1,11 @@
-import React, { useState, FormEvent, useReducer, Reducer, ReducerState } from "react";
+import React, {
+  useState,
+  FormEvent,
+  useReducer,
+  Reducer,
+  ReducerState,
+  useEffect,
+} from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
@@ -6,7 +13,7 @@ import Button from "../../shared/components/FormElements/Button";
 
 const InputFields: React.FC<{
   inputNumber: number;
-  onRemove: (event: FormEvent) => void;
+  // onRemove: (event: FormEvent) => void;
 }> = (props) => {
   return (
     <section>
@@ -16,7 +23,7 @@ const InputFields: React.FC<{
           type="button"
           danger
           arrayNumber={props.inputNumber}
-          onClick={props.onRemove}
+          // onClick={props.onRemove}
         >
           Remove
         </Button>
@@ -91,29 +98,38 @@ type State = {
 
 type Action = {
   type: "ADD" | "REMOVE";
-  payload: {inputType: "content" | "reference";
-  fieldNumber?: number;}
+  payload: { inputType: "content" | "reference"; fieldNumber?: number };
 };
 
-const reducer = (state: State, action: Action) => {
-  let numContentFields = 1;
-  let numRefFields = 1;
+const reducer: Reducer<State, Action> = (state: State, action: Action) => {
   switch (action.type) {
     case "ADD":
       if (action.payload.inputType === "content") {
-        numContentFields += 1;
-        return state.contentFields.push(numContentFields);
-      } else if (action.payload.inputType === 'reference'){
-        numRefFields += 1;
-        return state.refFields.push(numRefFields);
+        state = {
+          ...state,
+          contentFields: state.contentFields.concat(
+            state.contentFields[state.contentFields.length - 1] + 1
+          ),
+        };
+      } else if (action.payload.inputType === "reference") {
+        state = {
+          ...state,
+          refFields: state.refFields.concat(
+            state.refFields[state.refFields.length - 1] + 1
+          ),
+        };
       }
-      break;
+      return state;
     case "REMOVE":
-      if (action.payload.inputType === 'content') {
-        return state.contentFields.filter(item => item !== action.payload.fieldNumber)
-      } else if (action.payload.inputType === 'reference') {
-        return state.refFields.filter(item => item !== action.payload.fieldNumber)
+      if (action.payload.inputType === "content") {
+        state.contentFields.filter(
+          (item) => item !== action.payload.fieldNumber
+        );
       }
+      if (action.payload.inputType === "reference") {
+        state.refFields.filter((item) => item !== action.payload.fieldNumber);
+      }
+      return state;
   }
 };
 
@@ -121,8 +137,16 @@ const CreatePost: React.FC = () => {
   const initialState = {
     contentFields: [1],
     refFields: [1],
-  }
-  const [state, dispatch] = useReducer<R extends Reducer<any, any>>(reducer: R, initialState: ReducerState<R>)
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const onAddContent = () => {
+    dispatch({ type: "ADD", payload: { inputType: "content" } });
+  };
+
+  const onAddReference = () => {
+    dispatch({ type: "ADD", payload: { inputType: "reference" } });
+  };
 
   return (
     <div className={classes.wrapper}>
@@ -138,19 +162,25 @@ const CreatePost: React.FC = () => {
             <label htmlFor="blurb">Blurb:</label>
             <textarea name="blurb" id="blurb" />
           </section>
-          {contentFields}
+
+          {state.contentFields.map((item) => (
+            <InputFields key={`content${item}`} inputNumber={item} />
+          ))}
+
           <Button
             type="button"
             className={classes["add-btn"]}
-            onClick={addContent}
+            onClick={onAddContent}
           >
             Add Content
           </Button>
-          {refFields}
+          {state.refFields.map((item) => (
+            <ReferenceFields key={`ref${item}`} refNumber={item} />
+          ))}
           <Button
             type="button"
             className={classes["add-btn"]}
-            onClick={addReference}
+            onClick={onAddReference}
           >
             Add Reference
           </Button>
