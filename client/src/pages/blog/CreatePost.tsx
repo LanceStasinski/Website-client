@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useReducer, Reducer, ReducerState } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
@@ -83,49 +83,46 @@ const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
     </section>
   );
 };
-const CreatePost: React.FC = () => {
-  const [inputNumber, setInputNumber] = useState(1);
-  let refNumber = 1;
-  const [contentFields, setContentFields] = useState([
-    <InputFields
-      key={`content${inputNumber}`}
-      inputNumber={inputNumber}
-      onRemove={removeContentHandler}
-    />,
-  ]);
-  const [refFields, setRefFields] = useState([
-    <ReferenceFields key={`ref${refNumber}`} refNumber={refNumber} />,
-  ]);
 
+type State = {
+  contentFields: number[];
+  refFields: number[];
+};
 
-  const addContent = () => {
+type Action = {
+  type: "ADD" | "REMOVE";
+  payload: {inputType: "content" | "reference";
+  fieldNumber?: number;}
+};
 
-    console.log(inputNumber);
-    setContentFields([
-      ...contentFields,
-      <InputFields
-        key={`content${inputNumber}`}
-        inputNumber={inputNumber}
-        onRemove={removeContentHandler}
-      />,
-    ]);
-  };
-
-  function removeContentHandler(event: FormEvent) {
-    const contentNumber = event.currentTarget.getAttribute("arrayNumber");
-    console.log(contentNumber);
-    setContentFields(
-      contentFields.filter((item) => item.key !== `content${contentNumber}`)
-    );
+const reducer = (state: State, action: Action) => {
+  let numContentFields = 1;
+  let numRefFields = 1;
+  switch (action.type) {
+    case "ADD":
+      if (action.payload.inputType === "content") {
+        numContentFields += 1;
+        return state.contentFields.push(numContentFields);
+      } else if (action.payload.inputType === 'reference'){
+        numRefFields += 1;
+        return state.refFields.push(numRefFields);
+      }
+      break;
+    case "REMOVE":
+      if (action.payload.inputType === 'content') {
+        return state.contentFields.filter(item => item !== action.payload.fieldNumber)
+      } else if (action.payload.inputType === 'reference') {
+        return state.refFields.filter(item => item !== action.payload.fieldNumber)
+      }
   }
+};
 
-  const addReference = () => {
-    refNumber += 1;
-    setRefFields([
-      ...refFields,
-      <ReferenceFields key={`ref${refNumber}`} refNumber={refNumber} />,
-    ]);
-  };
+const CreatePost: React.FC = () => {
+  const initialState = {
+    contentFields: [1],
+    refFields: [1],
+  }
+  const [state, dispatch] = useReducer<R extends Reducer<any, any>>(reducer: R, initialState: ReducerState<R>)
 
   return (
     <div className={classes.wrapper}>
