@@ -30,11 +30,19 @@ const InputFields: React.FC<{
       >
         <option value="paragraph">Paragraph</option>
         <option value="imageUrl">Image URL</option>
+        <option value="image">Image</option>
         <option value="code">Code</option>
         <option value="heading">Heading</option>
       </select>
       <label htmlFor={`content${props.inputNumber}`}>Content:</label>
       <textarea name="content" id={`content${props.inputNumber}`} />
+      <label htmlFor={`image${props.inputNumber}`}>Image:</label>
+      <input
+        type="file"
+        accept=".jpg, .png, .jpeg, .gif"
+        name={`image${props.inputNumber}`}
+        id={`image${props.inputNumber}`}
+      />
       <label htmlFor={`alt${props.inputNumber}`}>
         Alternative text (if applicable):
       </label>
