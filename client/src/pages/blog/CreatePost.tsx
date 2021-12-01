@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  FormEvent,
-  useReducer,
-  Reducer,
-  ReducerState,
-  useEffect,
-} from "react";
+import React, { useReducer, Reducer } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
@@ -117,14 +110,18 @@ const reducer: Reducer<State, Action> = (state: State, action: Action) => {
         state = {
           ...state,
           contentFields: state.contentFields.concat(
-            state.contentFields[state.contentFields.length - 1] + 1
+            state.contentFields.length > 0
+              ? state.contentFields[state.contentFields.length - 1] + 1
+              : 1
           ),
         };
       } else if (action.payload.inputType === "reference") {
         state = {
           ...state,
           refFields: state.refFields.concat(
-            state.refFields[state.refFields.length - 1] + 1
+            state.refFields.length > 0
+              ? state.refFields[state.refFields.length - 1] + 1
+              : 1
           ),
         };
       }
