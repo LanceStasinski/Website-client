@@ -13,7 +13,7 @@ import Button from "../../shared/components/FormElements/Button";
 
 const InputFields: React.FC<{
   inputNumber: number;
-  // onRemove: (event: FormEvent) => void;
+  onRemove: (fieldNumber: number) => void;
 }> = (props) => {
   return (
     <section>
@@ -23,7 +23,9 @@ const InputFields: React.FC<{
           type="button"
           danger
           arrayNumber={props.inputNumber}
-          // onClick={props.onRemove}
+          onClick={() => {
+            props.onRemove(props.inputNumber);
+          }}
         >
           Remove
         </Button>
@@ -52,12 +54,19 @@ const InputFields: React.FC<{
   );
 };
 
-const ReferenceFields: React.FC<{ refNumber: number }> = (props) => {
+const ReferenceFields: React.FC<{
+  refNumber: number;
+  onRemove: (fieldNumber: number) => void;
+}> = (props) => {
   return (
     <section>
       <div className={classes["section-header"]}>
         <h3>Reference #{props.refNumber}</h3>
-        <Button type="button" danger>
+        <Button
+          type="button"
+          danger
+          onClick={() => props.onRemove(props.refNumber)}
+        >
           Remove
         </Button>
       </div>
@@ -122,12 +131,20 @@ const reducer: Reducer<State, Action> = (state: State, action: Action) => {
       return state;
     case "REMOVE":
       if (action.payload.inputType === "content") {
-        state.contentFields.filter(
-          (item) => item !== action.payload.fieldNumber
-        );
+        state = {
+          ...state,
+          contentFields: state.contentFields.filter(
+            (item) => item !== action.payload.fieldNumber
+          ),
+        };
       }
       if (action.payload.inputType === "reference") {
-        state.refFields.filter((item) => item !== action.payload.fieldNumber);
+        state = {
+          ...state,
+          refFields: state.refFields.filter(
+            (item) => item !== action.payload.fieldNumber
+          ),
+        };
       }
       return state;
   }
@@ -148,6 +165,20 @@ const CreatePost: React.FC = () => {
     dispatch({ type: "ADD", payload: { inputType: "reference" } });
   };
 
+  const removeContentHandler = (fieldNumber: number) => {
+    dispatch({
+      type: "REMOVE",
+      payload: { inputType: "content", fieldNumber },
+    });
+  };
+
+  const removeRefHandler = (fieldNumber: number) => {
+    dispatch({
+      type: "REMOVE",
+      payload: { inputType: "reference", fieldNumber },
+    });
+  };
+
   return (
     <div className={classes.wrapper}>
       <Card className={classes["create-post"]}>
@@ -164,7 +195,11 @@ const CreatePost: React.FC = () => {
           </section>
 
           {state.contentFields.map((item) => (
-            <InputFields key={`content${item}`} inputNumber={item} />
+            <InputFields
+              key={`content${item}`}
+              inputNumber={item}
+              onRemove={removeContentHandler}
+            />
           ))}
 
           <Button
@@ -175,7 +210,11 @@ const CreatePost: React.FC = () => {
             Add Content
           </Button>
           {state.refFields.map((item) => (
-            <ReferenceFields key={`ref${item}`} refNumber={item} />
+            <ReferenceFields
+              key={`ref${item}`}
+              refNumber={item}
+              onRemove={removeRefHandler}
+            />
           ))}
           <Button
             type="button"
