@@ -103,7 +103,7 @@ const ReferenceFields: React.FC<{
       />
       <label htmlFor={`url${props.refNumber}`}>Url:</label>
       <input
-        type="text"
+        type="url"
         name={`url${props.refNumber}`}
         id={`url${props.refNumber}`}
       />
@@ -231,18 +231,37 @@ const CreatePost: React.FC = () => {
       content.push(fieldData);
     }
 
+    const references = [];
+    for (const ref of state.refFields) {
+      const authorInput = document.getElementById(
+        `authors${ref}`
+      ) as HTMLInputElement;
+      const dateInput = document.getElementById(
+        `date${ref}`
+      ) as HTMLInputElement;
+      const titleInput = document.getElementById(
+        `title${ref}`
+      ) as HTMLInputElement;
+      const urlInput = document.getElementById(`url${ref}`) as HTMLInputElement;
+
+      const refData = {
+        author: authorInput.value,
+        date: dateInput.value,
+        title: titleInput.value,
+        url: urlInput.value,
+      };
+      references.push(refData);
+    }
 
     const data = {
       title: title.value,
       blurb: blurb.value,
       date,
       content,
+      references,
     };
 
     console.log(data);
-    // formData.append('title', title.value);
-    // formData.append('blurb', blurb.value);
-    // formData.append('date', date.toDateString())
   };
 
   return (
