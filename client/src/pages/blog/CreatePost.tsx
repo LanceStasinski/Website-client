@@ -36,7 +36,9 @@ const InputFields: React.FC<{
       </select>
       <label htmlFor={`content${props.inputNumber}`}>Content:</label>
       <textarea name="content" id={`content${props.inputNumber}`} />
-      <label htmlFor={`image${props.inputNumber}`}>Image:</label>
+      <label htmlFor={`image${props.inputNumber}`}>
+        Image (if applicable):
+      </label>
       <input
         type="file"
         accept=".jpg, .png, .jpeg, .gif"
@@ -50,6 +52,14 @@ const InputFields: React.FC<{
         type="text"
         name={`alt${props.inputNumber}`}
         id={`alt${props.inputNumber}`}
+      />
+      <label htmlFor={`language${props.inputNumber}`}>
+        Code language (if applicable):
+      </label>
+      <input
+        type="text"
+        name={`language${props.inputNumber}`}
+        id={`language${props.inputNumber}`}
       />
     </section>
   );
@@ -207,15 +217,20 @@ const CreatePost: React.FC = () => {
       const altInput = document.getElementById(
         `alt${input}`
       ) as HTMLInputElement;
+      const languageInput = document.getElementById(
+        `language${input}`
+      ) as HTMLInputElement;
 
       const fieldData = {
         type: select.value,
         content: text.value,
         image: formData,
         alt: altInput.value,
+        language: languageInput.value,
       };
       content.push(fieldData);
     }
+
 
     const data = {
       title: title.value,
