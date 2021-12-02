@@ -1,8 +1,14 @@
-import React, { useReducer, Reducer, FormEvent } from "react";
+import React, { useReducer, Reducer, FormEvent, useContext } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
 import Button from "../../shared/components/FormElements/Button";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import { AuthContext } from "../../shared/context/auth-context";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+
+const REST_API = process.env.REACT_APP_REST_API;
 
 const InputFields: React.FC<{
   inputNumber: number;
@@ -166,6 +172,8 @@ const reducer: Reducer<State, Action> = (state: State, action: Action) => {
 };
 
 const CreatePost: React.FC = () => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const authCtx = useContext(AuthContext);
   const initialState = {
     contentFields: [1],
     refFields: [1],
@@ -194,74 +202,78 @@ const CreatePost: React.FC = () => {
     });
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    try {
+      const title = document.getElementById("title") as HTMLInputElement;
+      const blurb = document.getElementById("blurb") as HTMLTextAreaElement;
+      const date = new Date();
 
-    const title = document.getElementById("title") as HTMLInputElement;
-    const blurb = document.getElementById("blurb") as HTMLTextAreaElement;
-    const date = new Date();
+      const content = [];
+      for (const input of state.contentFields) {
+        const select = document.getElementById(
+          `types${input}`
+        ) as HTMLSelectElement;
+        const text = document.getElementById(
+          `content${input}`
+        ) as HTMLTextAreaElement;
+        const fileInput = document.getElementById(
+          `image${input}`
+        ) as HTMLInputElement;
+        const formData = new FormData();
+        formData.append("image", fileInput.value as string | Blob);
+        const altInput = document.getElementById(
+          `alt${input}`
+        ) as HTMLInputElement;
+        const languageInput = document.getElementById(
+          `language${input}`
+        ) as HTMLInputElement;
 
-    const content = [];
-    for (const input of state.contentFields) {
-      const select = document.getElementById(
-        `types${input}`
-      ) as HTMLSelectElement;
-      const text = document.getElementById(
-        `content${input}`
-      ) as HTMLTextAreaElement;
-      const fileInput = document.getElementById(
-        `image${input}`
-      ) as HTMLInputElement;
-      const formData = new FormData();
-      formData.append("image", fileInput.value as string | Blob);
-      const altInput = document.getElementById(
-        `alt${input}`
-      ) as HTMLInputElement;
-      const languageInput = document.getElementById(
-        `language${input}`
-      ) as HTMLInputElement;
+        const fieldData = {
+          type: select.value,
+          content: text.value,
+          image: formData,
+          alt: altInput.value,
+          language: languageInput.value,
+        };
+        content.push(fieldData);
+      }
 
-      const fieldData = {
-        type: select.value,
-        content: text.value,
-        image: formData,
-        alt: altInput.value,
-        language: languageInput.value,
+      const references = [];
+      for (const ref of state.refFields) {
+        const authorInput = document.getElementById(
+          `authors${ref}`
+        ) as HTMLInputElement;
+        const dateInput = document.getElementById(
+          `date${ref}`
+        ) as HTMLInputElement;
+        const titleInput = document.getElementById(
+          `title${ref}`
+        ) as HTMLInputElement;
+        const urlInput = document.getElementById(
+          `url${ref}`
+        ) as HTMLInputElement;
+
+        const refData = {
+          author: authorInput.value,
+          date: dateInput.value,
+          title: titleInput.value,
+          url: urlInput.value,
+        };
+        references.push(refData);
+      }
+
+      const data = {
+        title: title.value,
+        blurb: blurb.value,
+        date,
+        content,
+        references,
       };
-      content.push(fieldData);
-    }
-
-    const references = [];
-    for (const ref of state.refFields) {
-      const authorInput = document.getElementById(
-        `authors${ref}`
-      ) as HTMLInputElement;
-      const dateInput = document.getElementById(
-        `date${ref}`
-      ) as HTMLInputElement;
-      const titleInput = document.getElementById(
-        `title${ref}`
-      ) as HTMLInputElement;
-      const urlInput = document.getElementById(`url${ref}`) as HTMLInputElement;
-
-      const refData = {
-        author: authorInput.value,
-        date: dateInput.value,
-        title: titleInput.value,
-        url: urlInput.value,
-      };
-      references.push(refData);
-    }
-
-    const data = {
-      title: title.value,
-      blurb: blurb.value,
-      date,
-      content,
-      references,
-    };
-
-    console.log(data);
+      await sendRequest(`${REST_API}/blog/create-post`, "POST", data, {
+        Authorization: "Bearer " + authCtx.token,
+      });
+    } catch (error) {}
   };
 
   return (
