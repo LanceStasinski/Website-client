@@ -1,4 +1,4 @@
-import React, { useReducer, Reducer } from "react";
+import React, { useReducer, Reducer, FormEvent } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
@@ -9,7 +9,7 @@ const InputFields: React.FC<{
   onRemove: (fieldNumber: number) => void;
 }> = (props) => {
   return (
-    <section>
+    <section className="input-section">
       <div className={classes["section-header"]}>
         <h3>Content #{props.inputNumber}</h3>
         <Button
@@ -60,7 +60,7 @@ const ReferenceFields: React.FC<{
   onRemove: (fieldNumber: number) => void;
 }> = (props) => {
   return (
-    <section>
+    <section className="reference-section">
       <div className={classes["section-header"]}>
         <h3>Reference #{props.refNumber}</h3>
         <Button
@@ -184,13 +184,59 @@ const CreatePost: React.FC = () => {
     });
   };
 
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    const title = document.getElementById("title") as HTMLInputElement;
+    const blurb = document.getElementById("blurb") as HTMLTextAreaElement;
+    const date = new Date();
+
+    const content = [];
+    for (const input of state.contentFields) {
+      const select = document.getElementById(
+        `types${input}`
+      ) as HTMLSelectElement;
+      const text = document.getElementById(
+        `content${input}`
+      ) as HTMLTextAreaElement;
+      const fileInput = document.getElementById(
+        `image${input}`
+      ) as HTMLInputElement;
+      const formData = new FormData();
+      formData.append("image", fileInput.value as string | Blob);
+      const altInput = document.getElementById(
+        `alt${input}`
+      ) as HTMLInputElement;
+
+      const fieldData = {
+        type: select.value,
+        content: text.value,
+        image: formData,
+        alt: altInput.value,
+      };
+      content.push(fieldData);
+    }
+
+    const data = {
+      title: title.value,
+      blurb: blurb.value,
+      date,
+      content,
+    };
+
+    console.log(data);
+    // formData.append('title', title.value);
+    // formData.append('blurb', blurb.value);
+    // formData.append('date', date.toDateString())
+  };
+
   return (
     <div className={classes.wrapper}>
       <Card className={classes["create-post"]}>
         <header>
           <h2>Create Post</h2>
         </header>
-        <form>
+        <form onSubmit={handleSubmit}>
           <section>
             <h3>Heading information</h3>
             <label htmlFor="title">Title:</label>
@@ -206,7 +252,6 @@ const CreatePost: React.FC = () => {
               onRemove={removeContentHandler}
             />
           ))}
-
           <Button
             type="button"
             className={classes["add-btn"]}
