@@ -277,54 +277,58 @@ const CreatePost: React.FC = () => {
   };
 
   return (
-    <div className={classes.wrapper}>
-      <Card className={classes["create-post"]}>
-        <header>
-          <h2>Create Post</h2>
-        </header>
-        <form onSubmit={handleSubmit}>
-          <section>
-            <h3>Heading information</h3>
-            <label htmlFor="title">Title:</label>
-            <input type="text" name="title" id="title" />
-            <label htmlFor="blurb">Blurb:</label>
-            <textarea name="blurb" id="blurb" />
-          </section>
+    <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
+      <div className={classes.wrapper}>
+        <Card className={classes["create-post"]}>
+          {isLoading && <LoadingSpinner asOverlay />}
+          <header>
+            <h2>Create Post</h2>
+          </header>
+          <form onSubmit={handleSubmit}>
+            <section>
+              <h3>Heading information</h3>
+              <label htmlFor="title">Title:</label>
+              <input type="text" name="title" id="title" />
+              <label htmlFor="blurb">Blurb:</label>
+              <textarea name="blurb" id="blurb" />
+            </section>
 
-          {state.contentFields.map((item) => (
-            <InputFields
-              key={`content${item}`}
-              inputNumber={item}
-              onRemove={removeContentHandler}
-            />
-          ))}
-          <Button
-            type="button"
-            className={classes["add-btn"]}
-            onClick={onAddContent}
-          >
-            Add Content
-          </Button>
-          {state.refFields.map((item) => (
-            <ReferenceFields
-              key={`ref${item}`}
-              refNumber={item}
-              onRemove={removeRefHandler}
-            />
-          ))}
-          <Button
-            type="button"
-            className={classes["add-btn"]}
-            onClick={onAddReference}
-          >
-            Add Reference
-          </Button>
-          <Button type="submit" className={classes["submit-btn"]}>
-            CREATE
-          </Button>
-        </form>
-      </Card>
-    </div>
+            {state.contentFields.map((item) => (
+              <InputFields
+                key={`content${item}`}
+                inputNumber={item}
+                onRemove={removeContentHandler}
+              />
+            ))}
+            <Button
+              type="button"
+              className={classes["add-btn"]}
+              onClick={onAddContent}
+            >
+              Add Content
+            </Button>
+            {state.refFields.map((item) => (
+              <ReferenceFields
+                key={`ref${item}`}
+                refNumber={item}
+                onRemove={removeRefHandler}
+              />
+            ))}
+            <Button
+              type="button"
+              className={classes["add-btn"]}
+              onClick={onAddReference}
+            >
+              Add Reference
+            </Button>
+            <Button type="submit" className={classes["submit-btn"]}>
+              CREATE
+            </Button>
+          </form>
+        </Card>
+      </div>
+    </React.Fragment>
   );
 };
 
