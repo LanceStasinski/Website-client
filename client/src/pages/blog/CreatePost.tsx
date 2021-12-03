@@ -42,7 +42,7 @@ const InputFields: React.FC<{
       </select>
       <label htmlFor={`content${props.inputNumber}`}>Content:</label>
       <textarea name="content" id={`content${props.inputNumber}`} />
-      <label htmlFor={`image${props.inputNumber}`}>
+      {/* <label htmlFor={`image${props.inputNumber}`}>
         Image (if applicable):
       </label>
       <input
@@ -50,7 +50,7 @@ const InputFields: React.FC<{
         accept=".jpg, .png, .jpeg, .gif"
         name={`image${props.inputNumber}`}
         id={`image${props.inputNumber}`}
-      />
+      /> */}
       <label htmlFor={`alt${props.inputNumber}`}>
         Alternative text (if applicable):
       </label>
@@ -217,11 +217,11 @@ const CreatePost: React.FC = () => {
         const text = document.getElementById(
           `content${input}`
         ) as HTMLTextAreaElement;
-        const fileInput = document.getElementById(
-          `image${input}`
-        ) as HTMLInputElement;
-        const formData = new FormData();
-        formData.append("image", fileInput.value as string | Blob);
+        // const fileInput = document.getElementById(
+        //   `image${input}`
+        // ) as HTMLInputElement;
+        // const formData = new FormData();
+        // formData.append("image", fileInput.value as string | Blob);
         const altInput = document.getElementById(
           `alt${input}`
         ) as HTMLInputElement;
@@ -232,7 +232,7 @@ const CreatePost: React.FC = () => {
         const fieldData = {
           type: select.value,
           content: text.value,
-          image: formData,
+          // image: formData,
           alt: altInput.value,
           language: languageInput.value,
         };
@@ -270,9 +270,17 @@ const CreatePost: React.FC = () => {
         content,
         references,
       };
-      await sendRequest(`${REST_API}/blog/create-post`, "POST", data, {
-        Authorization: "Bearer " + authCtx.token,
-      });
+
+      const responseData = await sendRequest(
+        `${REST_API}/blog/create-post`,
+        "POST",
+        JSON.stringify(data),
+        {
+          Authorization: "Bearer " + authCtx.token,
+          "Content-Type": "application/json",
+        }
+      );
+      console.log(responseData);
     } catch (error) {}
   };
 
