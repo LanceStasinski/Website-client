@@ -239,16 +239,15 @@ const CreatePost: React.FC = () => {
       for (const formElement of formData) {
         console.log(formElement);
       }
-      // const responseData = await sendRequest(
-      //   `${REST_API}/blog/create-post`,
-      //   "POST",
-      //   JSON.stringify(data),
-      //   {
-      //     Authorization: "Bearer " + authCtx.token,
-      //     "Content-Type": "application/json",
-      //   }
-      // );
-      // console.log(responseData);
+      const responseData = await sendRequest(
+        `${REST_API}/blog/create-post`,
+        "POST",
+        formData,
+        {
+          Authorization: "Bearer " + authCtx.token,
+        }
+      );
+
     } catch (error) {}
   };
 
