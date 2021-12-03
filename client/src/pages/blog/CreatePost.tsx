@@ -54,8 +54,11 @@ const InputFields: React.FC<{
         <option value="code">Code</option>
         <option value="heading">Heading</option>
       </select>
-      <label htmlFor={`content${props.inputNumber}`}>Content:</label>
-      <textarea name="content" id={`content${props.inputNumber}`} />
+      <label htmlFor={`text${props.inputNumber}`}>Content:</label>
+      <textarea
+        name={`text${props.inputNumber}`}
+        id={`text${props.inputNumber}`}
+      />
       <label htmlFor={`image${props.inputNumber}`}>
         Image (if applicable):
       </label>
@@ -219,67 +222,19 @@ const CreatePost: React.FC = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     try {
-      const formData = new FormData();
-      const title = document.getElementById("title") as HTMLInputElement;
-      const blurb = document.getElementById("blurb") as HTMLTextAreaElement;
+      const form = document.forms[0];
+      const formData = new FormData(form);
+
       const date = new Date();
       const month = MONTHS[date.getMonth()];
       const day = date.getDate().toString();
       const year = date.getFullYear().toString();
-      formData.append("title", title.value);
-      formData.append("blurb", blurb.value);
-      formData.append('month', month);
-      formData.append('day', day);
-      formData.append('year', year);
 
-
-      for (const input of state.contentFields) {
-        const select = document.getElementById(
-          `types${input}`
-        ) as HTMLSelectElement;
-        const text = document.getElementById(
-          `content${input}`
-        ) as HTMLTextAreaElement;
-        const fileInput = document.getElementById(
-          `image${input}`
-        ) as HTMLInputElement;
-        const altInput = document.getElementById(
-          `alt${input}`
-        ) as HTMLInputElement;
-        const languageInput = document.getElementById(
-          `language${input}`
-        ) as HTMLInputElement;
-
-        formData.append(`types${input}`, select.value);
-        formData.append(`text${input}`, text.value);
-        formData.append(`image${input}`, fileInput.value as string | Blob);
-        formData.append(`alt${input}`, altInput.value);
-        formData.append(`language${input}`, languageInput.value);
-      }
-
-
-      for (const ref of state.refFields) {
-        const authorInput = document.getElementById(
-          `authors${ref}`
-        ) as HTMLInputElement;
-        const dateInput = document.getElementById(
-          `date${ref}`
-        ) as HTMLInputElement;
-        const titleInput = document.getElementById(
-          `title${ref}`
-        ) as HTMLInputElement;
-        const urlInput = document.getElementById(
-          `url${ref}`
-        ) as HTMLInputElement;
-
-        formData.append(`authors${ref}`, authorInput.value);
-        formData.append(`date${ref}`, dateInput.value);
-        formData.append(`title${ref}`, titleInput.value);
-        formData.append(`url${ref}`, urlInput.value);
-      }
-
-      formData.append('numContent', state.contentFields.length.toString())
-      formData.append('numReferences', state.refFields.length.toString())
+      formData.append("month", month);
+      formData.append("day", day);
+      formData.append("year", year);
+      formData.append("numContent", state.contentFields.length.toString());
+      formData.append("numReferences", state.refFields.length.toString());
 
       for (const formElement of formData) {
         console.log(formElement);
