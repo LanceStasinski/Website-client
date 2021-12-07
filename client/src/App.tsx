@@ -28,7 +28,7 @@ function App() {
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact><Blog /></Route>
         <Route path="/blog/create" exact><CreatePost /></Route>
-        <Route path="/blog/:blogId" exact><Post /></Route>
+        <Route path="/blog/:postId" exact><Post /></Route>
         <Route path="/contact" exact></Route>
         <Redirect to="/" />
       </Switch>
@@ -56,7 +56,7 @@ function App() {
         <Route path="/cv" exact></Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact><Blog /></Route>
-        <Route path="/blog/:blogId" exact><Post /></Route>
+        <Route path="/blog/:postId" exact><Post /></Route>
         <Route path="/contact" exact></Route>
         <Route path="/auth" exact>
           <Auth />
