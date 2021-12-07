@@ -13,19 +13,8 @@
   color: #454545;
 }
 
-.posts {
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  padding-left: 0;
-}
-
 .blog a {
   text-decoration: none;
-}
-
-.blog-card {
-  margin-top: 2rem !important;
 }
 
 .blog-card:hover {
@@ -37,10 +26,6 @@
   flex-direction: column;
   background-color: #454545;
   padding: 0 1rem;
-}
-
-.blog-title {
-  color: #f7e0ad !important;
 }
 
 .blog article {
@@ -77,16 +62,6 @@
 
 
 @media only screen and (min-width: 990px) {
-  .posts {
-    display: grid;
-    grid-template-columns: repeat(2, 49%);
-    gap: 2%;
-  }
-
-  .blog-card {
-    margin-top: 1vw !important;
-  }
-
   .blog header {
     flex-direction: row;
     justify-content: space-between;

@@ -1,0 +1,26 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.blog-card {
+  margin-top: 2rem !important;
+}
+
+.blog-title {
+  color: #f7e0ad !important;
+}
+
+@media only screen and (min-width: 990px) {
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    gap: 2%;
+  }
+
+  .blog-card {
+    margin-top: 1vw !important;
+  }
+}

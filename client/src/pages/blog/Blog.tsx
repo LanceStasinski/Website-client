@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import classes from "./Blog.module.css";
 import { AuthContext } from "../../shared/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
-import { Link } from "react-router-dom";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import BlogList from "./BlogList";
 
 const ADMIN_USER = process.env.REACT_APP_ADMIN_USER;
+const REST_API = process.env.REACT_APP_REST_API;
 
 const DUMMY_POSTS = [
   {
@@ -172,41 +177,45 @@ const MONTHS = [
   "December",
 ];
 
+export interface PostHeading {
+  _id: string;
+  title: string;
+  blurb: string;
+  month: string;
+  day: string | number;
+  year: string | number;
+}
+
 const Blog: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const isAdmin = authCtx.token && authCtx.userId === ADMIN_USER;
+  const [loadedPosts, setLoadedPosts] = useState<PostHeading[]>();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const responseData = await sendRequest(`${REST_API}/blog/posts`);
+        setLoadedPosts(responseData.posts);
+      } catch (error) {}
+    };
+    getPosts();
+  }, [sendRequest]);
   return (
-    <div className={classes.blog}>
-      <h2>BLOG</h2>
-      <hr />
-      <ul className={classes.posts}>
-        {DUMMY_POSTS.map((post) => {
-          return (
-            <li key={post.id}>
-              <Link to={`/blog/${post.id}`}>
-                <Card className={classes["blog-card"]}>
-                  <header>
-                    <h3 className={classes['blog-title']}>{post.title}</h3>
-                    <h3 className={classes['blog-title']}>{`${
-                      MONTHS[post.date.getMonth()]
-                    } ${post.date.getDate()}, ${post.date.getFullYear()}`}</h3>
-                  </header>
-                  <article>{post.blurb}</article>
-                  <footer>
-                    <p>click to read more</p>
-                  </footer>
-                </Card>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      {isAdmin && (
-        <div className={classes["add-post"]}>
-          <Link to='/blog/create'>Add Post</Link>
-        </div>
-      )}
-    </div>
+    <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
+      <div className={classes.blog}>
+        <h2>BLOG</h2>
+        <hr />
+        {isLoading && <LoadingSpinner asOverlay={false} />}
+        {!isLoading && <BlogList posts={loadedPosts} />}
+        {isAdmin && (
+          <div className={classes["add-post"]}>
+            <Link to="/blog/create">Add Post</Link>
+          </div>
+        )}
+      </div>
+    </React.Fragment>
   );
 };
 

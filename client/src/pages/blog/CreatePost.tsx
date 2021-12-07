@@ -236,10 +236,10 @@ const CreatePost: React.FC = () => {
       formData.append("numContent", state.contentFields.length.toString());
       formData.append("numReferences", state.refFields.length.toString());
 
-      for (const formElement of formData) {
-        console.log(formElement);
-      }
-      const responseData = await sendRequest(
+      // for (const formElement of formData) {
+      //   console.log(formElement);
+      // }
+      await sendRequest(
         `${REST_API}/blog/create-post`,
         "POST",
         formData,
