@@ -7,6 +7,8 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import InputFields from "./InputFields";
+import ReferenceFields from "./ReferenceFields";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const MONTHS = [
@@ -23,116 +25,6 @@ const MONTHS = [
   "November",
   "December",
 ];
-
-const InputFields: React.FC<{
-  inputNumber: number;
-  onRemove: (fieldNumber: number) => void;
-}> = (props) => {
-  return (
-    <section className="input-section">
-      <div className={classes["section-header"]}>
-        <h3>Content #{props.inputNumber}</h3>
-        <Button
-          type="button"
-          danger
-          arrayNumber={props.inputNumber}
-          onClick={() => {
-            props.onRemove(props.inputNumber);
-          }}
-        >
-          Remove
-        </Button>
-      </div>
-      <label htmlFor={`types${props.inputNumber}`}>Content Type:</label>
-      <select
-        name={`types${props.inputNumber}`}
-        id={`types${props.inputNumber}`}
-      >
-        <option value="paragraph">Paragraph</option>
-        <option value="imageUrl">Image URL</option>
-        <option value="image">Image</option>
-        <option value="code">Code</option>
-        <option value="heading">Heading</option>
-      </select>
-      <label htmlFor={`text${props.inputNumber}`}>Content:</label>
-      <textarea
-        name={`text${props.inputNumber}`}
-        id={`text${props.inputNumber}`}
-      />
-      <label htmlFor={`image${props.inputNumber}`}>
-        Image (if applicable):
-      </label>
-      <input
-        type="file"
-        accept=".jpg, .png, .jpeg, .gif"
-        name={`image${props.inputNumber}`}
-        id={`image${props.inputNumber}`}
-      />
-      <label htmlFor={`alt${props.inputNumber}`}>
-        Alternative text (if applicable):
-      </label>
-      <input
-        type="text"
-        name={`alt${props.inputNumber}`}
-        id={`alt${props.inputNumber}`}
-      />
-      <label htmlFor={`language${props.inputNumber}`}>
-        Code language (if applicable):
-      </label>
-      <input
-        type="text"
-        name={`language${props.inputNumber}`}
-        id={`language${props.inputNumber}`}
-      />
-    </section>
-  );
-};
-
-const ReferenceFields: React.FC<{
-  refNumber: number;
-  onRemove: (fieldNumber: number) => void;
-}> = (props) => {
-  return (
-    <section className="reference-section">
-      <div className={classes["section-header"]}>
-        <h3>Reference #{props.refNumber}</h3>
-        <Button
-          type="button"
-          danger
-          onClick={() => props.onRemove(props.refNumber)}
-        >
-          Remove
-        </Button>
-      </div>
-
-      <label htmlFor={`authors${props.refNumber}`}>Authors:</label>
-      <input
-        name={`authors${props.refNumber}`}
-        id={`authors${props.refNumber}`}
-        type="text"
-        placeholder="Last Name, First Initial., Last Name, First Initial."
-      />
-      <label htmlFor={`date${props.refNumber}`}>Date:</label>
-      <input
-        type="text"
-        name={`date${props.refNumber}`}
-        id={`date${props.refNumber}`}
-      />
-      <label htmlFor={`title${props.refNumber}`}>Title:</label>
-      <input
-        type="text"
-        name={`title${props.refNumber}`}
-        id={`title${props.refNumber}`}
-      />
-      <label htmlFor={`url${props.refNumber}`}>Url:</label>
-      <input
-        type="url"
-        name={`url${props.refNumber}`}
-        id={`url${props.refNumber}`}
-      />
-    </section>
-  );
-};
 
 type State = {
   contentFields: number[];
@@ -236,18 +128,9 @@ const CreatePost: React.FC = () => {
       formData.append("numContent", state.contentFields.length.toString());
       formData.append("numReferences", state.refFields.length.toString());
 
-      // for (const formElement of formData) {
-      //   console.log(formElement);
-      // }
-      await sendRequest(
-        `${REST_API}/blog/create-post`,
-        "POST",
-        formData,
-        {
-          Authorization: "Bearer " + authCtx.token,
-        }
-      );
-
+      await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
+        Authorization: "Bearer " + authCtx.token,
+      });
     } catch (error) {}
   };
 
