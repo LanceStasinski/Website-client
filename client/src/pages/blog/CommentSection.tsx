@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -11,16 +11,18 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 
+interface Comment {
+  comment: string;
+  creatorId: string;
+  postId: string;
+  username: string;
+  __V: number;
+  _id: string;
+}
+
 interface Props {
   postId: string;
-  comments: {
-    comment: string;
-    creatorId: string;
-    postId: string;
-    username: string;
-    __V: number;
-    _id: string;
-  }[];
+  comments: Comment [];
 }
 
 interface CommentInput {
@@ -32,6 +34,21 @@ const REST_API = process.env.REACT_APP_REST_API;
 const CommentSection: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [loadedComments, setLoadedComments] = useState(props.comments)
+
+  const deleteCommentHandler = async (commentId: string) => {
+    try {
+      await sendRequest(
+        `${REST_API}/blog/comment/${commentId}`,
+        "DELETE",
+        {},
+        { Authorization: "Bearer " + authCtx.token }
+      );
+      setLoadedComments((prevComments) =>
+        prevComments!.filter((comment) => comment._id !== commentId)
+      );
+    } catch (error) {}
+  };
 
   const postCommentHandler = async (commentData: { newComment: string }) => {
     try {
@@ -73,19 +90,20 @@ const CommentSection: React.FC<Props> = (props) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Card className={classes["comment-section"]}>
-        {isLoading && <LoadingSpinner asOverlay />}
+        {isLoading && <LoadingSpinner asOverlay={false} />}
         <header>
           <h3>Comments</h3>
         </header>
         <div>
           <ul>
-            {props.comments.map((comment) => {
+            {loadedComments.map((comment) => {
               return (
                 <li key={comment._id}>
                   <Comment
                     userName={comment.username}
                     userId={comment.creatorId}
                     commentId={comment._id}
+                    onDelete={deleteCommentHandler}
                   >
                     {comment.comment}
                   </Comment>

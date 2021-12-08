@@ -12,27 +12,21 @@ interface Props {
   userId: string;
   commentId: string;
   userName: string;
+  onDelete: (commentId: string) => Promise<void>
 }
 
 const Comment: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  // const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  const deleteCommentHandler = async () => {
-    try {
-      await sendRequest(
-        `${REST_API}/blog/comment/${props.commentId}`,
-        "DELETE",
-        {},
-        { Authorization: "Bearer " + authCtx.token }
-      );
-    } catch (error) {}
+  const deleteComment = () => {
+    props.onDelete(props.commentId)
   };
 
   return (
     <React.Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      {/* {isLoading && <LoadingSpinner asOverlay={true} />} */}
+      {/* <ErrorModal error={error} onClear={clearError} /> */}
+
       <div className={classes["comment-wrapper"]}>
         <div className={classes.comment}>
           <div className={classes["comment-single"]}>
@@ -42,7 +36,7 @@ const Comment: React.FC<Props> = (props) => {
         </div>
         {authCtx.isLoggedIn && props.userId === authCtx.userId && (
           <div className={classes["delete-btn"]}>
-            <button type="button" onClick={deleteCommentHandler}>
+            <button type="button" onClick={deleteComment}>
               Delete
             </button>
           </div>

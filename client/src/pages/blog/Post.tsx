@@ -15,6 +15,15 @@ import { AuthContext } from "../../shared/context/auth-context";
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
 
+interface Comment {
+  comment: string;
+  creatorId: string;
+  postId: string;
+  username: string;
+  __V: number;
+  _id: string;
+}
+
 interface PostInfo {
   title: string;
   month: string;
@@ -32,19 +41,15 @@ interface PostInfo {
     _id: string;
   }[];
   references: { authors: string; date: string; title: string; url: string }[];
-  comments: {
-    comment: string;
-    creatorId: string;
-    postId: string;
-    username: string;
-    __V: number;
-    _id: string
-  }[];
+  comments: Comment[]
 }
+
+
 
 const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
+
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const authCtx = useContext(AuthContext);
 
@@ -59,6 +64,8 @@ const Post: React.FC = () => {
     };
     getPost();
   }, [sendRequest, postId]);
+
+
 
   return (
     <React.Fragment>
