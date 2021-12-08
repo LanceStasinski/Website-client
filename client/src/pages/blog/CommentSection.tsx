@@ -22,7 +22,7 @@ interface Comment {
 
 interface Props {
   postId: string;
-  comments: Comment [];
+  comments: Comment[];
 }
 
 interface CommentInput {
@@ -34,7 +34,7 @@ const REST_API = process.env.REACT_APP_REST_API;
 const CommentSection: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const [loadedComments, setLoadedComments] = useState(props.comments)
+  const [loadedComments, setLoadedComments] = useState(props.comments);
 
   const deleteCommentHandler = async (commentId: string) => {
     try {
@@ -52,7 +52,7 @@ const CommentSection: React.FC<Props> = (props) => {
 
   const postCommentHandler = async (commentData: { newComment: string }) => {
     try {
-      await sendRequest(
+      const responseData = await sendRequest(
         `${REST_API}/blog/comment`,
         "POST",
         JSON.stringify({
@@ -65,6 +65,10 @@ const CommentSection: React.FC<Props> = (props) => {
           Authorization: "Bearer " + authCtx.token,
         }
       );
+      setLoadedComments((prevComments) => [
+        ...prevComments,
+        responseData.createdComment,
+      ]);
     } catch (error) {}
   };
 
@@ -90,10 +94,10 @@ const CommentSection: React.FC<Props> = (props) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Card className={classes["comment-section"]}>
-        {isLoading && <LoadingSpinner asOverlay={false} />}
         <header>
           <h3>Comments</h3>
         </header>
+        {isLoading && <LoadingSpinner asOverlay={false} />}
         <div>
           <ul>
             {loadedComments.map((comment) => {
@@ -112,7 +116,7 @@ const CommentSection: React.FC<Props> = (props) => {
             })}
           </ul>
         </div>
-        {props.comments.length > 0 && <hr />}
+        {loadedComments.length > 0 && <hr />}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             {...register("newComment", { required: true })}
