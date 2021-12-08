@@ -39,7 +39,8 @@
   flex-direction: column;
 }
 
-.post h2, h3 {
+.post h2,
+h3 {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
   color: #454545;
@@ -49,7 +50,7 @@
   display: flex;
   flex-direction: column;
   font-family: "Montserrat";
-  color: #666
+  color: #666;
 }
 
 .post ul {
@@ -70,10 +71,33 @@
   max-width: 100%;
 }
 
+.admin-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.admin-buttons button {
+  width: 7rem;
+  margin-top: 2rem;
+  align-self: center;
+}
+
 @media only screen and (min-width: 990px) {
   .post header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .admin-buttons {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .admin-buttons button {
+    width: auto;
+    margin-top: 0;
   }
 }

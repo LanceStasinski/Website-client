@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 import Highlight from "react-highlight";
@@ -10,8 +10,10 @@ import Button from "../../shared/components/FormElements/Button";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import { AuthContext } from "../../shared/context/auth-context";
 
 const REST_API = process.env.REACT_APP_REST_API;
+const ADMIN = process.env.REACT_APP_ADMIN_USER;
 
 const DUMMY_COMMENTS = [
   {
@@ -52,6 +54,7 @@ const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const authCtx = useContext(AuthContext);
 
   useEffect(() => {
     const getPost = async () => {
@@ -124,6 +127,14 @@ const Post: React.FC = () => {
               </ul>
             </div>
           </article>
+          {authCtx.userId === ADMIN && (
+            <div className={classes["admin-buttons"]}>
+              <Button type="button">Edit</Button>
+              <Button type="button" danger>
+                Delete
+              </Button>
+            </div>
+          )}
           <section>
             <CommentSection
               postId={postId}
