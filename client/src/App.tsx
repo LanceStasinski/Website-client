@@ -9,9 +9,10 @@ import { useAuth } from "./shared/hooks/auth-hook";
 
 const About = lazy(() => import("./pages/about/About"));
 const Auth = lazy(() => import("./pages/auth/Auth"));
-const Blog = lazy(() => import('./pages/blog/Blog'))
-const Post = lazy(() => import('./pages/blog/Post'))
-const CreatePost = lazy(() => import('./pages/blog/CreatePost'))
+const Blog = lazy(() => import("./pages/blog/Blog"));
+const Post = lazy(() => import("./pages/blog/Post"));
+const CreatePost = lazy(() => import("./pages/blog/CreatePost"));
+const Cv = lazy(() => import("./pages/cv/Cv"));
 
 function App() {
   const { token, login, logout, userId, username } = useAuth();
@@ -24,11 +25,17 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact></Route>
+        <Route path="/cv" exact><Cv /></Route>
         <Route path="/portfolio" exact></Route>
-        <Route path="/blog" exact><Blog /></Route>
-        <Route path="/blog/create" exact><CreatePost /></Route>
-        <Route path="/blog/:postId" exact><Post /></Route>
+        <Route path="/blog" exact>
+          <Blog />
+        </Route>
+        <Route path="/blog/create" exact>
+          <CreatePost />
+        </Route>
+        <Route path="/blog/:postId" exact>
+          <Post />
+        </Route>
         <Route path="/contact" exact></Route>
         <Redirect to="/" />
       </Switch>
@@ -39,10 +46,14 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact></Route>
+        <Route path="/cv" exact><Cv /></Route>
         <Route path="/portfolio" exact></Route>
-        <Route path="/blog" exact><Blog /></Route>
-        <Route path="/blog/:postId" exact><Post /></Route>
+        <Route path="/blog" exact>
+          <Blog />
+        </Route>
+        <Route path="/blog/:postId" exact>
+          <Post />
+        </Route>
         <Route path="/contact" exact></Route>
         <Redirect to="/" />
       </Switch>
@@ -53,10 +64,14 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact></Route>
+        <Route path="/cv" exact><Cv /></Route>
         <Route path="/portfolio" exact></Route>
-        <Route path="/blog" exact><Blog /></Route>
-        <Route path="/blog/:postId" exact><Post /></Route>
+        <Route path="/blog" exact>
+          <Blog />
+        </Route>
+        <Route path="/blog/:postId" exact>
+          <Post />
+        </Route>
         <Route path="/contact" exact></Route>
         <Route path="/auth" exact>
           <Auth />

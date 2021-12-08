@@ -11,7 +11,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 
-interface Comment {
+interface CommentInterface {
   comment: string;
   creatorId: string;
   postId: string;
@@ -22,7 +22,7 @@ interface Comment {
 
 interface Props {
   postId: string;
-  comments: Comment[];
+  comments: CommentInterface[];
 }
 
 interface CommentInput {
@@ -97,7 +97,7 @@ const CommentSection: React.FC<Props> = (props) => {
         <header>
           <h3>Comments</h3>
         </header>
-        {isLoading && <LoadingSpinner asOverlay={false} />}
+        {isLoading && <LoadingSpinner asOverlay/>}
         <div>
           <ul>
             {loadedComments.map((comment) => {

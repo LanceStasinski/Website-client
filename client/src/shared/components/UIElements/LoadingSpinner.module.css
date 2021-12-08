@@ -1,3 +1,16 @@
+.loading-spinner__overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 @keyframes ldio-3vi3igwauhw {
     0% { transform: rotate(0deg) }
    50% { transform: rotate(22.5deg) }

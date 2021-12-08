@@ -1,32 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { AuthContext } from "../../shared/context/auth-context";
 import classes from "./Comment.module.css";
-import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
-import { useHttpClient } from "../../shared/hooks/http-hook";
-
-const REST_API = process.env.REACT_APP_REST_API;
 
 interface Props {
   userId: string;
   commentId: string;
   userName: string;
-  onDelete: (commentId: string) => Promise<void>
+  onDelete: (commentId: string) => Promise<void>;
 }
 
 const Comment: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
-  // const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const deleteComment = () => {
-    props.onDelete(props.commentId)
+    props.onDelete(props.commentId);
   };
 
   return (
     <React.Fragment>
-      {/* <ErrorModal error={error} onClear={clearError} /> */}
-
       <div className={classes["comment-wrapper"]}>
         <div className={classes.comment}>
           <div className={classes["comment-single"]}>

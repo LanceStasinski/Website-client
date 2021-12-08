@@ -41,10 +41,8 @@ interface PostInfo {
     _id: string;
   }[];
   references: { authors: string; date: string; title: string; url: string }[];
-  comments: Comment[]
+  comments: Comment[];
 }
-
-
 
 const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
@@ -64,8 +62,6 @@ const Post: React.FC = () => {
     };
     getPost();
   }, [sendRequest, postId]);
-
-
 
   return (
     <React.Fragment>
