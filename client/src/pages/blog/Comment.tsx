@@ -31,28 +31,19 @@ const Comment: React.FC<Props> = (props) => {
 
   // make sure userId matches userId fetched
   return (
-    <div className={classes.comment}>
-      {!isEditing && <div className={classes['comment-single']}><h3>{props.userName}</h3><p>{props.children}</p></div>}
+    <div className={classes['comment-wrapper']}>
+      <div className={classes.comment}>
+        <div className={classes["comment-single"]}>
+          <h3>{props.userName}</h3>
+          <p>{props.children}</p>
+        </div>
+      </div>
       {authCtx.isLoggedIn && props.userId === authCtx.userId && (
-        <div>
-          <button type="button" onClick={editHandler}>
-            EDIT
-          </button>
+        <div className={classes['delete-btn']}>
           <button type="button" onClick={deleteCommentHandler}>
             Delete
           </button>
         </div>
-      )}
-      {isEditing && props.userId === authCtx.userId && (
-        <form onSubmit={updateCommentHandler}>
-          <input type="text">{props.children}</input>
-          <div>
-            <button type="submit">SUBMIT</button>
-            <button type="button" onClick={cancelEditHandler}>
-              CANCEL
-            </button>
-          </div>
-        </form>
       )}
     </div>
   );

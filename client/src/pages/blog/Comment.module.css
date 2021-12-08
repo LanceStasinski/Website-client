@@ -1,7 +1,14 @@
+.comment-wrapper {
+  margin: 1rem;
+}
+
 .comment {
   background-color: #dedede;
-  margin: 1rem;
-  border-radius: 50px;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  margin: 0;
 }
 
 .comment-single {
@@ -13,9 +20,29 @@
 
 .comment-single h3 {
   font-size: smaller;
-  margin: 0.5rem 0 0 0;
+  margin: 0;
 }
 
 .comment p {
-  color: #666
+  color: #555;
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.delete-btn button {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none;
+  color: #888;
+  border: none;
+}
+
+.delete-btn button:hover {
+  color: #830000;
+  cursor: pointer;
 }

@@ -19,7 +19,7 @@ interface Props {
     postId: string;
     username: string;
     __V: number;
-    _id: string
+    _id: string;
   }[];
 }
 
@@ -63,6 +63,12 @@ const CommentSection: React.FC<Props> = (props) => {
     reset({ newComment: null });
   };
 
+  let placeholder = !authCtx.isLoggedIn
+    ? "Login to add a comment."
+    : authCtx.isLoggedIn && props.comments.length === 0
+    ? "Be the first to add a comment..."
+    : "Add a comment...";
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -88,11 +94,11 @@ const CommentSection: React.FC<Props> = (props) => {
             })}
           </ul>
         </div>
-        <hr />
+        {props.comments.length > 0 && <hr />}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             {...register("newComment", { required: true })}
-            placeholder="Add a comment..."
+            placeholder={placeholder}
           />
           {authCtx.isLoggedIn ? (
             <Button type="submit" disabled={!isValid}>
