@@ -14,10 +14,12 @@ import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 interface Props {
   postId: string;
   comments: {
-    commentId: string;
+    comment: string;
+    creatorId: string;
+    postId: string;
     username: string;
-    userId: string;
-    text: string;
+    __V: number;
+    _id: string
   }[];
 }
 
@@ -31,19 +33,23 @@ const CommentSection: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  // const postCommentHandler = async (commentData: { newComment: string }) => {
-  //   try {
-  //     const responseData = await sendRequest(
-  //       `${REST_API}/blog/comment`,
-  //       "POST",
-  //       JSON.stringify({
-  //         newComment: commentData.newComment,
-  //         userId: authCtx.userId,
-  //         postId: props.postId
-  //       })
-  //     );
-  //   } catch (error) {}
-  // };
+  const postCommentHandler = async (commentData: { newComment: string }) => {
+    try {
+      await sendRequest(
+        `${REST_API}/blog/comment`,
+        "POST",
+        JSON.stringify({
+          newComment: commentData.newComment,
+          userId: authCtx.userId,
+          postId: props.postId,
+        }),
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + authCtx.token,
+        }
+      );
+    } catch (error) {}
+  };
 
   const {
     register,
@@ -53,8 +59,8 @@ const CommentSection: React.FC<Props> = (props) => {
   } = useForm({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<CommentInput> = (data) => {
+    postCommentHandler(data);
     reset({ newComment: null });
-    console.log(data);
   };
 
   return (
@@ -69,13 +75,13 @@ const CommentSection: React.FC<Props> = (props) => {
           <ul>
             {props.comments.map((comment) => {
               return (
-                <li key={comment.commentId}>
+                <li key={comment._id}>
                   <Comment
                     userName={comment.username}
-                    userId={comment.userId}
-                    commentId={comment.commentId}
+                    userId={comment.creatorId}
+                    commentId={comment._id}
                   >
-                    {comment.text}
+                    {comment.comment}
                   </Comment>
                 </li>
               );

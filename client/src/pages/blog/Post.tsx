@@ -15,21 +15,6 @@ import { AuthContext } from "../../shared/context/auth-context";
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
 
-const DUMMY_COMMENTS = [
-  {
-    commentId: "c1",
-    username: "user1",
-    userId: "u1",
-    text: "This is the first comment",
-  },
-  {
-    commentId: "c2",
-    username: "user2",
-    userId: "u2",
-    text: "This is the second comment. A long long long long long long long long long long long long long long long long long long long long long long long long long long long  comment.",
-  },
-];
-
 interface PostInfo {
   title: string;
   month: string;
@@ -47,7 +32,14 @@ interface PostInfo {
     _id: string;
   }[];
   references: { authors: string; date: string; title: string; url: string }[];
-  comments: any[];
+  comments: {
+    comment: string;
+    creatorId: string;
+    postId: string;
+    username: string;
+    __V: number;
+    _id: string
+  }[];
 }
 
 const Post: React.FC = () => {
@@ -138,7 +130,7 @@ const Post: React.FC = () => {
           <section>
             <CommentSection
               postId={postId}
-              comments={DUMMY_COMMENTS}
+              comments={loadedPost.comments}
             ></CommentSection>
           </section>
         </div>
