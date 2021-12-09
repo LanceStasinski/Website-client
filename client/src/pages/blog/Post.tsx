@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-
+import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import Highlight from "react-highlight";
 
@@ -14,6 +14,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
+const REST_SERVER = process.env.REACT_APP_REST_SERVER;
 
 interface Comment {
   comment: string;
@@ -48,6 +49,7 @@ interface PostInfo {
 const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
+  const [loadedComments, setLoadedComments] = useState<Comment[]>([]);
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const authCtx = useContext(AuthContext);
@@ -59,15 +61,70 @@ const Post: React.FC = () => {
           `${REST_API}/blog/posts/${postId}`
         );
         setLoadedPost(responseData.post);
+        setLoadedComments(responseData.post.comments);
+        const socket = io(`${REST_SERVER}`);
+        socket.on("comments", (data) => {
+          if (data.action === "create") {
+            addComment(data.comment);
+          } else if (data.action === "delete") {
+            deleteComment(data.commentId);
+          }
+        });
       } catch (error) {}
-    }
+    };
     getPost();
   }, [sendRequest, postId]);
+
+  const addCommentHandler = useCallback(
+    async (commentData: { newComment: string }) => {
+      try {
+        await sendRequest(
+          `${REST_API}/blog/comment`,
+          "POST",
+          JSON.stringify({
+            newComment: commentData.newComment,
+            userId: authCtx.userId,
+            postId: postId,
+            date: new Date().toLocaleDateString(),
+          }),
+          {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + authCtx.token,
+          }
+        );
+      } catch (error) {}
+    },
+    [authCtx.token, authCtx.userId, postId, sendRequest]
+  );
+
+  const deleteCommentHandler = useCallback(
+    async (commentId: string) => {
+      try {
+        await sendRequest(
+          `${REST_API}/blog/comment/${commentId}`,
+          "DELETE",
+          {},
+          { Authorization: "Bearer " + authCtx.token }
+        );
+      } catch (error) {}
+    },
+    [authCtx.token, sendRequest]
+  );
+
+  const addComment = (comment: Comment) => {
+    setLoadedComments((prevComments) => [...prevComments!, comment]);
+  };
+
+  const deleteComment = (commentId: string) => {
+    setLoadedComments((prevComments) =>
+      prevComments!.filter((comment) => comment._id !== commentId)
+    );
+  };
 
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner asOverlay={false} />}
+      {isLoading && <LoadingSpinner asOverlay={true} />}
       {!isLoading && !loadedPost && (
         <div className={classes["post-not-found-wrapper"]}>
           <Card className={classes["post-not-found"]}>
@@ -134,7 +191,9 @@ const Post: React.FC = () => {
           <section>
             <CommentSection
               postId={postId}
-              comments={loadedPost.comments}
+              comments={loadedComments!}
+              onDeleteComment={deleteCommentHandler}
+              onAddComment={addCommentHandler}
             ></CommentSection>
           </section>
         </div>
