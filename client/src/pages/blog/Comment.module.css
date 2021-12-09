@@ -23,6 +23,16 @@
   margin: 0;
 }
 
+.comment-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date {
+  color: #666;
+}
+
 .comment p {
   color: #555;
 }

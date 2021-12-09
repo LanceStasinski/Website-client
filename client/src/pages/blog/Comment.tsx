@@ -9,6 +9,7 @@ interface Props {
   userId: string;
   commentId: string;
   userName: string;
+  date: string;
   onDelete: (commentId: string) => Promise<void>;
 }
 
@@ -52,7 +53,10 @@ const Comment: React.FC<Props> = (props) => {
       <div className={classes["comment-wrapper"]}>
         <div className={classes.comment}>
           <div className={classes["comment-single"]}>
-            <h3>{props.userName}</h3>
+            <div className={classes['comment-header']}>
+              <h3>{props.userName}</h3>
+              <h3 className={classes.date}>{props.date}</h3>
+            </div>
             <p>{props.children}</p>
           </div>
         </div>

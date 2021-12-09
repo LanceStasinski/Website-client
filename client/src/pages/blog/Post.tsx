@@ -22,6 +22,7 @@ interface Comment {
   username: string;
   __V: number;
   _id: string;
+  date: string;
 }
 
 interface PostInfo {

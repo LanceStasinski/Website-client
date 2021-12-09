@@ -18,6 +18,7 @@ interface CommentInterface {
   username: string;
   __V: number;
   _id: string;
+  date: string;
 }
 
 interface Props {
@@ -59,6 +60,7 @@ const CommentSection: React.FC<Props> = (props) => {
           newComment: commentData.newComment,
           userId: authCtx.userId,
           postId: props.postId,
+          date: new Date().toLocaleDateString()
         }),
         {
           "Content-Type": "application/json",
@@ -108,6 +110,7 @@ const CommentSection: React.FC<Props> = (props) => {
                     userId={comment.creatorId}
                     commentId={comment._id}
                     onDelete={deleteCommentHandler}
+                    date={comment.date}
                   >
                     {comment.comment}
                   </Comment>
