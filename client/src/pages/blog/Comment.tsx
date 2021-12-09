@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { AuthContext } from "../../shared/context/auth-context";
 import classes from "./Comment.module.css";
+import Modal from "../../shared/components/UIElements/Modal";
+import Button from "../../shared/components/FormElements/Button";
 
 interface Props {
   userId: string;
@@ -12,13 +14,41 @@ interface Props {
 
 const Comment: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const deleteComment = () => {
     props.onDelete(props.commentId);
+    setShowConfirmModal(false);
+  };
+
+  const showModal = () => {
+    setShowConfirmModal(true);
+  };
+
+  const cancelDeleteHandler = () => {
+    setShowConfirmModal(false);
   };
 
   return (
     <React.Fragment>
+      <Modal
+        show={showConfirmModal}
+        onCancel={cancelDeleteHandler}
+        header="Are you sure?"
+        footer={
+          <React.Fragment>
+            <Button type="button" onClick={cancelDeleteHandler}>
+              CANCEL
+            </Button>
+            <Button type="button" danger onClick={deleteComment}>
+              DELETE
+            </Button>
+          </React.Fragment>
+        }
+        backdropClass={classes["modal-backdrop"]}
+      >
+        <p>Do you want to delete this comment? This cannot be undone.</p>
+      </Modal>
       <div className={classes["comment-wrapper"]}>
         <div className={classes.comment}>
           <div className={classes["comment-single"]}>
@@ -28,7 +58,7 @@ const Comment: React.FC<Props> = (props) => {
         </div>
         {authCtx.isLoggedIn && props.userId === authCtx.userId && (
           <div className={classes["delete-btn"]}>
-            <button type="button" onClick={deleteComment}>
+            <button type="button" onClick={showModal}>
               Delete
             </button>
           </div>

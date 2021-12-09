@@ -46,3 +46,7 @@
   color: #830000;
   cursor: pointer;
 }
+
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.8) !important ;
+}

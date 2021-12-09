@@ -86,7 +86,7 @@ const CommentSection: React.FC<Props> = (props) => {
 
   let placeholder = !authCtx.isLoggedIn
     ? "Login to add a comment."
-    : authCtx.isLoggedIn && props.comments.length === 0
+    : authCtx.isLoggedIn && loadedComments.length === 0
     ? "Be the first to add a comment..."
     : "Add a comment...";
 
