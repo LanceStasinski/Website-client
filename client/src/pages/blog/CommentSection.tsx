@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { io } from "socket.io-client";
 
 import Comment from "./Comment";
 import Card from "../../shared/components/UIElements/Card";
@@ -31,11 +32,24 @@ interface CommentInput {
 }
 
 const REST_API = process.env.REACT_APP_REST_API;
+const REST_SERVER = process.env.REACT_APP_REST_SERVER;
 
 const CommentSection: React.FC<Props> = (props) => {
   const authCtx = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedComments, setLoadedComments] = useState(props.comments);
+
+  const socket = io(`${REST_SERVER}`);
+  socket.on("comments", (data) => {
+    console.log(data)
+    if (data.action === "create") {
+      setLoadedComments(prevComments => [...prevComments, data.comment])
+    } else if (data.action === 'delete') {
+      setLoadedComments((prevComments) =>
+        prevComments!.filter((comment) => comment._id !== data.commentId)
+      );
+    }
+  })
 
   const deleteCommentHandler = async (commentId: string) => {
     try {
@@ -44,9 +58,6 @@ const CommentSection: React.FC<Props> = (props) => {
         "DELETE",
         {},
         { Authorization: "Bearer " + authCtx.token }
-      );
-      setLoadedComments((prevComments) =>
-        prevComments!.filter((comment) => comment._id !== commentId)
       );
     } catch (error) {}
   };
@@ -60,17 +71,17 @@ const CommentSection: React.FC<Props> = (props) => {
           newComment: commentData.newComment,
           userId: authCtx.userId,
           postId: props.postId,
-          date: new Date().toLocaleDateString()
+          date: new Date().toLocaleDateString(),
         }),
         {
           "Content-Type": "application/json",
           Authorization: "Bearer " + authCtx.token,
         }
       );
-      setLoadedComments((prevComments) => [
-        ...prevComments,
-        responseData.createdComment,
-      ]);
+      // setLoadedComments((prevComments) => [
+      //   ...prevComments,
+      //   responseData.createdComment,
+      // ]);
     } catch (error) {}
   };
 
@@ -99,7 +110,7 @@ const CommentSection: React.FC<Props> = (props) => {
         <header>
           <h3>Comments</h3>
         </header>
-        {isLoading && <LoadingSpinner asOverlay/>}
+        {isLoading && <LoadingSpinner asOverlay />}
         <div>
           <ul>
             {loadedComments.map((comment) => {

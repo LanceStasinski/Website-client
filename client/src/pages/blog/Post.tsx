@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 
 import { useParams } from "react-router-dom";
 import Highlight from "react-highlight";
@@ -60,7 +60,7 @@ const Post: React.FC = () => {
         );
         setLoadedPost(responseData.post);
       } catch (error) {}
-    };
+    }
     getPost();
   }, [sendRequest, postId]);
 
