@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
 import { io } from "socket.io-client";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Highlight from "react-highlight";
 
 import classes from "./Post.module.css";
@@ -52,9 +52,9 @@ const Post: React.FC = () => {
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
   const [loadedComments, setLoadedComments] = useState<Comment[]>([]);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const history = useHistory();
   const authCtx = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   useEffect(() => {
     const getPost = async () => {
@@ -123,7 +123,19 @@ const Post: React.FC = () => {
     );
   };
 
-  const deletePostHandler = () => {};
+  const deletePostHandler = async () => {
+    try {
+      await sendRequest(
+        `${REST_API}/blog/delete/${postId}`,
+        "DELETE",
+        {},
+        {
+          Authorization: "Bearer " + authCtx.token,
+        }
+      );
+      history.push("/blog");
+    } catch (error) {}
+  };
 
   const showDeleteWarning = () => {
     setShowConfirmModal(true);
@@ -141,7 +153,7 @@ const Post: React.FC = () => {
         header="Delete post?"
         footer={
           <React.Fragment>
-            <Button type='button' onClick={cancelDeleteHandler}>
+            <Button type="button" onClick={cancelDeleteHandler}>
               CANCEL
             </Button>
             <Button type="button" onClick={deletePostHandler} danger>
