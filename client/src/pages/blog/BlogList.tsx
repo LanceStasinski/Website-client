@@ -8,7 +8,7 @@ import { PostHeading } from "./Blog";
 const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
   if (!props.posts) {
     return (
-      <Card>
+      <Card className={classes["blog-404"]}>
         <h2>No posts found.</h2>
       </Card>
     );
