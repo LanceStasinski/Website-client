@@ -124,7 +124,7 @@ const Post: React.FC = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner asOverlay={true} />}
+      {isLoading && !loadedPost && <LoadingSpinner asOverlay />}
       {!isLoading && !loadedPost && (
         <div className={classes["post-not-found-wrapper"]}>
           <Card className={classes["post-not-found"]}>
@@ -133,7 +133,7 @@ const Post: React.FC = () => {
           </Card>
         </div>
       )}
-      {!isLoading && loadedPost && (
+      {loadedPost && (
         <div className={classes.post}>
           <header>
             <h2>{loadedPost!.title}</h2>
