@@ -9,6 +9,10 @@
   margin-top: 2rem !important;
 }
 
+.blog-card:hover{
+  transform: scale(1.01);
+}
+
 .blog-title {
   color: #f7e0ad !important;
 }

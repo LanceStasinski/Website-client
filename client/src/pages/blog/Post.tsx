@@ -11,6 +11,7 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
+import Modal from "../../shared/components/UIElements/Modal";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -50,6 +51,7 @@ const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
   const [loadedComments, setLoadedComments] = useState<Comment[]>([]);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const authCtx = useContext(AuthContext);
@@ -121,8 +123,36 @@ const Post: React.FC = () => {
     );
   };
 
+  const deletePostHandler = () => {};
+
+  const showDeleteWarning = () => {
+    setShowConfirmModal(true);
+  };
+
+  const cancelDeleteHandler = () => {
+    setShowConfirmModal(false);
+  };
+
   return (
     <React.Fragment>
+      <Modal
+        show={showConfirmModal}
+        onCancel={cancelDeleteHandler}
+        header="Delete post?"
+        footer={
+          <React.Fragment>
+            <Button type='button' onClick={cancelDeleteHandler}>
+              CANCEL
+            </Button>
+            <Button type="button" onClick={deletePostHandler} danger>
+              DELETE
+            </Button>
+          </React.Fragment>
+        }
+        backdropClass={classes["modal-backdrop"]}
+      >
+        Are you sure you want to delete this post?
+      </Modal>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && !loadedPost && <LoadingSpinner asOverlay />}
       {!isLoading && !loadedPost && (
@@ -183,7 +213,7 @@ const Post: React.FC = () => {
           {authCtx.userId === ADMIN && (
             <div className={classes["admin-buttons"]}>
               <Button type="button">Edit</Button>
-              <Button type="button" danger>
+              <Button type="button" danger onClick={showDeleteWarning}>
                 Delete
               </Button>
             </div>
