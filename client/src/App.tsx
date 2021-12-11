@@ -5,7 +5,9 @@ import "./App.css";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
+import { PostContext } from "./shared/context/post-context";
 import { useAuth } from "./shared/hooks/auth-hook";
+import { usePost } from "./shared/hooks/post-hook";
 
 const About = lazy(() => import("./pages/about/About"));
 const Auth = lazy(() => import("./pages/auth/Auth"));
@@ -16,6 +18,7 @@ const Cv = lazy(() => import("./pages/cv/Cv"));
 
 function App() {
   const { token, login, logout, userId, username } = useAuth();
+  const { post, setContext, clearContext } = usePost();
 
   let routes;
 
@@ -25,17 +28,27 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact><Cv /></Route>
+        <Route path="/cv" exact>
+          <Cv />
+        </Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact>
           <Blog />
         </Route>
-        <Route path="/blog/create" exact>
-          <CreatePost />
-        </Route>
-        <Route path="/blog/:postId" exact>
-          <Post />
-        </Route>
+        <PostContext.Provider
+          value={{
+            post,
+            setContext,
+            clearContext,
+          }}
+        >
+          <Route path="/blog/create" exact>
+            <CreatePost />
+          </Route>
+          <Route path="/blog/:postId" exact>
+            <Post />
+          </Route>
+        </PostContext.Provider>
         <Route path="/contact" exact></Route>
         <Redirect to="/" />
       </Switch>
@@ -46,7 +59,9 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact><Cv /></Route>
+        <Route path="/cv" exact>
+          <Cv />
+        </Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact>
           <Blog />
@@ -64,7 +79,9 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact><Cv /></Route>
+        <Route path="/cv" exact>
+          <Cv />
+        </Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact>
           <Blog />

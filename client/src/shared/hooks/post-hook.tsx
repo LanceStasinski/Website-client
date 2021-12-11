@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-interface Content {
+export interface Content {
   type: string;
   text?: string;
   image?: {
@@ -12,14 +12,14 @@ interface Content {
   language?: string;
 }
 
-interface Reference {
+export interface Reference {
   authors: string;
   date: string;
   title: string;
   url: string;
 }
 
-interface Post {
+export interface Post {
   title: string;
   blurb: string;
   content: Content[];
