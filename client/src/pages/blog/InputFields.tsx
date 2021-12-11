@@ -1,12 +1,22 @@
-import React from "react";
+import React, { createRef, useState } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import classes from "./CreatePost.module.css";
+import { Content } from "../../shared/hooks/post-hook";
 
 const InputFields: React.FC<{
   inputNumber: number;
   onRemove: (fieldNumber: number) => void;
+  prevContent?: Content;
 }> = (props) => {
+  const typeRef = createRef<HTMLSelectElement>();
+  const [selectValue, setSelectValue] = useState(
+    props.prevContent ? props.prevContent.type : "paragraph"
+  );
+  const selectChangeHandler = () => {
+    setSelectValue(typeRef.current!.value);
+  };
+
   return (
     <section className="input-section">
       <div className={classes["section-header"]}>
@@ -26,6 +36,9 @@ const InputFields: React.FC<{
       <select
         name={`types${props.inputNumber}`}
         id={`types${props.inputNumber}`}
+        value={selectValue}
+        ref={typeRef}
+        onChange={selectChangeHandler}
       >
         <option value="paragraph">Paragraph</option>
         <option value="imageUrl">Image URL</option>

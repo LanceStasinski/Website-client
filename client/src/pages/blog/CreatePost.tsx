@@ -3,7 +3,6 @@ import React, {
   Reducer,
   FormEvent,
   useContext,
-  useState,
 } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -93,7 +92,6 @@ const CreatePost: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const postCtx = useContext(PostContext);
   const history = useHistory();
-  const [isEditing, setIsEditing] = useState(false);
   const prevPost = postCtx.post;
 
   console.log(postCtx.post);
@@ -179,6 +177,7 @@ const CreatePost: React.FC = () => {
                 key={`content${item}`}
                 inputNumber={item}
                 onRemove={removeContentHandler}
+                prevContent={prevPost && prevPost.content[item - 1]}
               />
             ))}
             <Button
