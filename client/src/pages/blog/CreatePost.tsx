@@ -1,4 +1,10 @@
-import React, { useReducer, Reducer, FormEvent, useContext } from "react";
+import React, {
+  useReducer,
+  Reducer,
+  FormEvent,
+  useContext,
+  useState,
+} from "react";
 import { useHistory } from "react-router-dom";
 
 import Card from "../../shared/components/UIElements/Card";
@@ -87,10 +93,20 @@ const CreatePost: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const postCtx = useContext(PostContext);
   const history = useHistory();
-  console.log(postCtx.post)
+  const [isEditing, setIsEditing] = useState(false);
+  const prevPost = postCtx.post;
+
+  console.log(postCtx.post);
+  let numCont: number[] = [];
+  let numRef: number [] = [];
+  if (prevPost) {
+    numCont = prevPost!.content.map((item, index) => index + 1);
+    numRef = prevPost!.references.map((item, index) => index + 1);
+  }
+
   const initialState = {
-    contentFields: [1],
-    refFields: [1],
+    contentFields: prevPost ? numCont : [1],
+    refFields: prevPost ? numRef : [1],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 

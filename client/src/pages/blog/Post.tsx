@@ -66,6 +66,8 @@ const Post: React.FC = () => {
   const postCtx = useContext(PostContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
+  postCtx.clearContext();
+
   useEffect(() => {
     const getPost = async () => {
       try {
