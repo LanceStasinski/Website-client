@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
+
 import { io } from "socket.io-client";
 import { useParams, useHistory } from "react-router-dom";
 import Highlight from "react-highlight";
@@ -12,6 +13,7 @@ import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 import Modal from "../../shared/components/UIElements/Modal";
+import { PostContext } from "../../shared/context/post-context";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -29,6 +31,7 @@ interface Comment {
 
 interface PostInfo {
   title: string;
+  blurb: string;
   month: string;
   day: string;
   year: string;
@@ -43,7 +46,13 @@ interface PostInfo {
     language?: string;
     _id: string;
   }[];
-  references: { authors: string; date: string; title: string; url: string }[];
+  references: {
+    authors: string;
+    date: string;
+    title: string;
+    url: string;
+    _id: string;
+  }[];
   comments: Comment[];
 }
 
@@ -54,6 +63,7 @@ const Post: React.FC = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const history = useHistory();
   const authCtx = useContext(AuthContext);
+  const postCtx = useContext(PostContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   useEffect(() => {
@@ -62,8 +72,8 @@ const Post: React.FC = () => {
         const responseData = await sendRequest(
           `${REST_API}/blog/posts/${postId}`
         );
-        console.log(responseData)
         setLoadedPost(responseData.post);
+
         setLoadedComments(responseData.post.comments);
         const socket = io(`${REST_SERVER}`);
         socket.on("comments", (data) => {
@@ -77,6 +87,16 @@ const Post: React.FC = () => {
     };
     getPost();
   }, [sendRequest, postId]);
+
+  const addComment = (comment: Comment) => {
+    setLoadedComments((prevComments) => [...prevComments!, comment]);
+  };
+
+  const deleteComment = (commentId: string) => {
+    setLoadedComments((prevComments) =>
+      prevComments!.filter((comment) => comment._id !== commentId)
+    );
+  };
 
   const addCommentHandler = useCallback(
     async (commentData: { newComment: string }) => {
@@ -114,16 +134,6 @@ const Post: React.FC = () => {
     [authCtx.token, sendRequest]
   );
 
-  const addComment = (comment: Comment) => {
-    setLoadedComments((prevComments) => [...prevComments!, comment]);
-  };
-
-  const deleteComment = (commentId: string) => {
-    setLoadedComments((prevComments) =>
-      prevComments!.filter((comment) => comment._id !== commentId)
-    );
-  };
-
   const deletePostHandler = async () => {
     try {
       await sendRequest(
@@ -144,6 +154,17 @@ const Post: React.FC = () => {
 
   const cancelDeleteHandler = () => {
     setShowConfirmModal(false);
+  };
+
+  const editPostHandler = () => {
+    postCtx.setContext(
+      postId,
+      loadedPost!.title,
+      loadedPost!.blurb,
+      loadedPost!.content,
+      loadedPost!.references
+    );
+    history.push("/blog/create");
   };
 
   return (
@@ -225,7 +246,9 @@ const Post: React.FC = () => {
           </article>
           {authCtx.userId === ADMIN && (
             <div className={classes["admin-buttons"]}>
-              <Button type="button">Edit</Button>
+              <Button type="button" onClick={editPostHandler}>
+                Edit
+              </Button>
               <Button type="button" danger onClick={showDeleteWarning}>
                 Delete
               </Button>

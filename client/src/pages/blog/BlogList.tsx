@@ -19,7 +19,7 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
       {props.posts.map((post) => {
         return (
           <li key={post._id}>
-            <Link to={`/blog/${post._id}`}>
+            <Link to={`/blog/post/${post._id}`}>
               <Card className={classes["blog-card"]}>
                 <header>
                   <h3 className={classes["blog-title"]}>{post.title}</h3>

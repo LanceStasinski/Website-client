@@ -17,9 +17,11 @@ export interface Reference {
   date: string;
   title: string;
   url: string;
+  _id: string;
 }
 
 export interface Post {
+  id: string;
   title: string;
   blurb: string;
   content: Content[];
@@ -31,12 +33,13 @@ export const usePost = () => {
 
   const setContext = useCallback(
     (
+      id: string,
       title: string,
       blurb: string,
       content: Content[],
       references: Reference[]
     ) => {
-      const postContent = { title, blurb, content, references };
+      const postContent = {id, title, blurb, content, references };
       setPost(postContent);
     },
     []

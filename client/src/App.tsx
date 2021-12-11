@@ -45,7 +45,7 @@ function App() {
           <Route path="/blog/create" exact>
             <CreatePost />
           </Route>
-          <Route path="/blog/:postId" exact>
+          <Route path="/blog/post/:postId" exact>
             <Post />
           </Route>
         </PostContext.Provider>
@@ -66,7 +66,7 @@ function App() {
         <Route path="/blog" exact>
           <Blog />
         </Route>
-        <Route path="/blog/:postId" exact>
+        <Route path="/blog/post/:postId" exact>
           <Post />
         </Route>
         <Route path="/contact" exact></Route>
@@ -86,7 +86,7 @@ function App() {
         <Route path="/blog" exact>
           <Blog />
         </Route>
-        <Route path="/blog/:postId" exact>
+        <Route path="/blog/post/:postId" exact>
           <Post />
         </Route>
         <Route path="/contact" exact></Route>

@@ -10,6 +10,7 @@ import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import InputFields from "./InputFields";
 import ReferenceFields from "./ReferenceFields";
+import { PostContext } from "../../shared/context/post-context";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const MONTHS = [
@@ -84,7 +85,9 @@ const reducer: Reducer<State, Action> = (state: State, action: Action) => {
 const CreatePost: React.FC = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const authCtx = useContext(AuthContext);
+  const postCtx = useContext(PostContext);
   const history = useHistory();
+  console.log(postCtx.post)
   const initialState = {
     contentFields: [1],
     refFields: [1],
