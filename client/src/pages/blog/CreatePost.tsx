@@ -1,4 +1,5 @@
 import React, { useReducer, Reducer, FormEvent, useContext } from "react";
+import { useHistory } from "react-router-dom";
 
 import Card from "../../shared/components/UIElements/Card";
 import classes from "./CreatePost.module.css";
@@ -83,6 +84,7 @@ const reducer: Reducer<State, Action> = (state: State, action: Action) => {
 const CreatePost: React.FC = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const authCtx = useContext(AuthContext);
+  const history = useHistory();
   const initialState = {
     contentFields: [1],
     refFields: [1],
@@ -131,6 +133,7 @@ const CreatePost: React.FC = () => {
       await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
         Authorization: "Bearer " + authCtx.token,
       });
+      history.push("/blog");
     } catch (error) {}
   };
 
