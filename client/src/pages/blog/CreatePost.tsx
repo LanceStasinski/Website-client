@@ -204,6 +204,7 @@ const CreatePost: React.FC = () => {
                 key={`ref${item}`}
                 refNumber={item}
                 onRemove={removeRefHandler}
+                prevRefs={prevPost && prevPost.references[item - 1]}
               />
             ))}
             <Button
