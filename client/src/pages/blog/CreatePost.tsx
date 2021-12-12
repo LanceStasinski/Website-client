@@ -179,6 +179,11 @@ const CreatePost: React.FC = () => {
     } catch (error) {}
   };
 
+  const cancelEditHandler = () => {
+    postCtx.clearContext();
+    history.goBack();
+  };
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -188,6 +193,13 @@ const CreatePost: React.FC = () => {
           <header>
             <h2>Create Post</h2>
           </header>
+          {prevPost && (
+            <div className={classes["cancel-edit"]}>
+              <Button type="button" onClick={cancelEditHandler} danger>
+                CANCEL EDIT
+              </Button>
+            </div>
+          )}
           <form onSubmit={handleSubmit}>
             <section>
               <h3>Heading information</h3>
@@ -240,9 +252,16 @@ const CreatePost: React.FC = () => {
             >
               Add Reference
             </Button>
-            <Button type="submit" className={classes["submit-btn"]}>
-              CREATE
-            </Button>
+            {!prevPost && (
+              <Button type="submit" className={classes["submit-btn"]}>
+                CREATE
+              </Button>
+            )}
+            {prevPost && (
+              <Button type="submit" className={classes["submit-btn"]}>
+                UPDATE
+              </Button>
+            )}
           </form>
         </Card>
       </div>

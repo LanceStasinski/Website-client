@@ -27,6 +27,16 @@
   width: calc(100% - 2rem);
 }
 
+.cancel-edit {
+  display: flex;
+  justify-content: center;
+  background-color: #454545;
+}
+.cancel-edit button {
+  width: 10rem;
+  margin-top: 1rem;
+}
+
 .create-post h2,
 .create-post h3 {
   font-family: "Prompt", sans-serif;
