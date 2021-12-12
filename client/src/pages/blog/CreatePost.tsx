@@ -13,8 +13,10 @@
 import React, {
   useReducer,
   Reducer,
+  useState,
   FormEvent,
   useContext,
+  createRef,
 } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -105,10 +107,13 @@ const CreatePost: React.FC = () => {
   const postCtx = useContext(PostContext);
   const history = useHistory();
   const prevPost = postCtx.post;
+  const [title, setTitle] = useState(prevPost ? prevPost.title : "");
+  const [blurb, setBlurb] = useState(prevPost ? prevPost.blurb : "");
+  const titleRef = createRef<HTMLInputElement>();
+  const blurbRef = createRef<HTMLTextAreaElement>();
 
-  console.log(postCtx.post);
   let numCont: number[] = [];
-  let numRef: number [] = [];
+  let numRef: number[] = [];
   if (prevPost) {
     numCont = prevPost!.content.map((item, index) => index + 1);
     numRef = prevPost!.references.map((item, index) => index + 1);
@@ -140,6 +145,14 @@ const CreatePost: React.FC = () => {
       type: "REMOVE",
       payload: { inputType: "reference", fieldNumber },
     });
+  };
+
+  const titleChangeHandler = () => {
+    setTitle(titleRef.current!.value);
+  };
+
+  const blurbChangeHandler = () => {
+    setBlurb(blurbRef.current!.value);
   };
 
   const handleSubmit = async (event: FormEvent) => {
@@ -179,9 +192,22 @@ const CreatePost: React.FC = () => {
             <section>
               <h3>Heading information</h3>
               <label htmlFor="title">Title:</label>
-              <input type="text" name="title" id="title" />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                ref={titleRef}
+                value={title}
+                onChange={titleChangeHandler}
+              />
               <label htmlFor="blurb">Blurb:</label>
-              <textarea name="blurb" id="blurb" />
+              <textarea
+                name="blurb"
+                id="blurb"
+                ref={blurbRef}
+                value={blurb}
+                onChange={blurbChangeHandler}
+              />
             </section>
 
             {state.contentFields.map((item) => (
