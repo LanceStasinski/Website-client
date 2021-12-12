@@ -1,15 +1,3 @@
-//
-//
-//
-//
-//ADD RESET FORM BUTTON
-//
-//
-//
-//
-//
-//
-
 import React, {
   useReducer,
   Reducer,
@@ -172,9 +160,31 @@ const CreatePost: React.FC = () => {
       formData.append("numContent", state.contentFields.length.toString());
       formData.append("numReferences", state.refFields.length.toString());
 
-      await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
-        Authorization: "Bearer " + authCtx.token,
-      });
+      if (prevPost) {
+        prevPost.content.forEach((item, index) => {
+          if (item.image) {
+            formData.append(`imageKey${index}`, item.image.key);
+          }
+        });
+      }
+
+      if (prevPost) {
+        console.log(formData);
+        await sendRequest(
+          `${REST_API}/blog/update/${prevPost.id}`,
+          "POST",
+          formData,
+          {
+            "Content-Type" : "multipart/form-data",
+            Authorization: "Bearer " + authCtx.token,
+          }
+        );
+      } else {
+        console.log(formData);
+        await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
+          Authorization: "Bearer " + authCtx.token,
+        });
+      }
       history.push("/blog");
     } catch (error) {}
   };
