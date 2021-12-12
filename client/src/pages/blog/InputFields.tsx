@@ -9,12 +9,35 @@ const InputFields: React.FC<{
   onRemove: (fieldNumber: number) => void;
   prevContent?: Content;
 }> = (props) => {
-  const typeRef = createRef<HTMLSelectElement>();
   const [selectValue, setSelectValue] = useState(
     props.prevContent ? props.prevContent.type : "paragraph"
   );
+  const [contentValue, setContentValue] = useState(
+    props.prevContent ? props.prevContent.text : ""
+  );
+  const [altValue, setAltValue] = useState(
+    props.prevContent ? props.prevContent.alt : ""
+  );
+  const [languageValue, setLanguageValue] = useState(
+    props.prevContent ? props.prevContent.language : ""
+  );
+
+  const typeRef = createRef<HTMLSelectElement>();
+  const contentRef = createRef<HTMLTextAreaElement>();
+  const altRef = createRef<HTMLInputElement>();
+  const langRef = createRef<HTMLInputElement>();
+
   const selectChangeHandler = () => {
     setSelectValue(typeRef.current!.value);
+  };
+  const contentChangeHandler = () => {
+    setContentValue(contentRef.current!.value);
+  };
+  const altChangeHandler = () => {
+    setAltValue(altRef.current!.value);
+  };
+  const langChangeHandler = () => {
+    setLanguageValue(langRef.current!.value);
   };
 
   return (
@@ -50,6 +73,9 @@ const InputFields: React.FC<{
       <textarea
         name={`text${props.inputNumber}`}
         id={`text${props.inputNumber}`}
+        ref={contentRef}
+        value={contentValue}
+        onChange={contentChangeHandler}
       />
       <label htmlFor={`image${props.inputNumber}`}>
         Image (if applicable):
@@ -67,6 +93,9 @@ const InputFields: React.FC<{
         type="text"
         name={`alt${props.inputNumber}`}
         id={`alt${props.inputNumber}`}
+        ref={altRef}
+        value={altValue}
+        onChange={altChangeHandler}
       />
       <label htmlFor={`language${props.inputNumber}`}>
         Code language (if applicable):
@@ -75,6 +104,9 @@ const InputFields: React.FC<{
         type="text"
         name={`language${props.inputNumber}`}
         id={`language${props.inputNumber}`}
+        ref={langRef}
+        value={languageValue}
+        onChange={langChangeHandler}
       />
     </section>
   );
