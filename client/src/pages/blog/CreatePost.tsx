@@ -146,46 +146,40 @@ const CreatePost: React.FC = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     let responseData;
+
+    const form = document.forms[0];
+    const formData = new FormData(form);
+
+    const date = new Date();
+    const month = MONTHS[date.getMonth()];
+    const day = date.getDate().toString();
+    const year = date.getFullYear().toString();
+
+    formData.append("month", month);
+    formData.append("day", day);
+    formData.append("year", year);
+    formData.append("numContent", Math.max(...state.contentFields).toString());
+    formData.append("numReferences", Math.max(...state.refFields).toString());
+
+    if (prevPost) {
+      prevPost.content.forEach((item, index) => {
+        if (item.image) {
+          formData.append(`imageKey${index}`, item.image.key);
+        }
+      });
+    }
+
+    const route = prevPost
+      ? `${REST_API}/blog/update/${prevPost!.id}`
+      : `${REST_API}/blog/create-post`;
+
+    const reqType = prevPost ? "PATCH" : "POST";
     try {
-      const form = document.forms[0];
-      const formData = new FormData(form);
-
-      const date = new Date();
-      const month = MONTHS[date.getMonth()];
-      const day = date.getDate().toString();
-      const year = date.getFullYear().toString();
-
-      formData.append("month", month);
-      formData.append("day", day);
-      formData.append("year", year);
-      formData.append("numContent", state.contentFields.length.toString());
-      formData.append("numReferences", state.refFields.length.toString());
-
-      if (prevPost) {
-        prevPost.content.forEach((item, index) => {
-          if (item.image) {
-            formData.append(`imageKey${index}`, item.image.key);
-          }
-        });
-      }
-
-
-      if (prevPost) {
-        responseData = await sendRequest(
-          `${REST_API}/blog/update/${prevPost.id}`,
-          "PATCH",
-          formData,
-          {
-            Authorization: "Bearer " + authCtx.token,
-          }
-        );
-      } else {
-        responseData = await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
-          Authorization: "Bearer " + authCtx.token,
-        });
-      }
-
+      responseData = await sendRequest(route, reqType, formData, {
+        Authorization: "Bearer " + authCtx.token,
+      });
     } catch (error) {}
+
     if (responseData) {
       history.push("/blog");
     }
