@@ -145,6 +145,7 @@ const CreatePost: React.FC = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    let responseData;
     try {
       const form = document.forms[0];
       const formData = new FormData(form);
@@ -168,25 +169,26 @@ const CreatePost: React.FC = () => {
         });
       }
 
+
       if (prevPost) {
-        console.log(formData);
-        await sendRequest(
+        responseData = await sendRequest(
           `${REST_API}/blog/update/${prevPost.id}`,
-          "POST",
+          "PATCH",
           formData,
           {
-            "Content-Type" : "multipart/form-data",
             Authorization: "Bearer " + authCtx.token,
           }
         );
       } else {
-        console.log(formData);
-        await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
+        responseData = await sendRequest(`${REST_API}/blog/create-post`, "POST", formData, {
           Authorization: "Bearer " + authCtx.token,
         });
       }
-      history.push("/blog");
+
     } catch (error) {}
+    if (responseData) {
+      history.push("/blog");
+    }
   };
 
   const cancelEditHandler = () => {
