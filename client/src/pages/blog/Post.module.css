@@ -46,6 +46,23 @@ h3 {
   color: #454545;
 }
 
+.dates {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dates p {
+  text-align: right;
+  margin-top: 0;
+  padding-top: 0;
+  color: #666;
+}
+
+.dates h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .post article {
   display: flex;
   flex-direction: column;

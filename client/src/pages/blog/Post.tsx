@@ -35,6 +35,9 @@ interface PostInfo {
   month: string;
   day: string;
   year: string;
+  updatedMonth: String;
+  updatedDay: String;
+  updatedYear: String;
   content: {
     image?: {
       key: string;
@@ -203,7 +206,15 @@ const Post: React.FC = () => {
         <div className={classes.post}>
           <header>
             <h2>{loadedPost!.title}</h2>
-            <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
+            <div className={classes.dates}>
+              <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
+              {loadedPost.updatedMonth &&
+                loadedPost.month !== loadedPost.updatedMonth &&
+                loadedPost.day !== loadedPost.updatedDay &&
+                loadedPost.year !== loadedPost.updatedYear && (
+                  <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
+                )}
+            </div>
           </header>
           <hr />
           <article>
