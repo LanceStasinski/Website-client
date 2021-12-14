@@ -70,19 +70,45 @@ const DUMMY_LINKS = [
   { _id: "5", title: "Lifing up state" },
   { _id: "6", title: "Using aws s3" },
   { _id: "7", title: "Some longer title of stuff and things" },
-  { _id: "8", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
+  {
+    _id: "8",
+    title:
+      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
+  },
   { _id: "9", title: "Some other title" },
   { _id: "10", title: "Old blog post" },
-  { _id: "11", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
-  { _id: "12", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
-  { _id: "13", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
-  { _id: "14", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
+  {
+    _id: "11",
+    title:
+      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
+  },
+  {
+    _id: "12",
+    title:
+      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
+  },
+  {
+    _id: "13",
+    title:
+      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
+  },
+  {
+    _id: "14",
+    title:
+      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
+  },
 ];
+
+interface PostData {
+  title: string;
+  _id: string;
+}
 
 const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
   const [loadedComments, setLoadedComments] = useState<Comment[]>([]);
+  const [loadedPostLinks, setLoadedPostLinks] = useState<PostData[]>([]);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const history = useHistory();
@@ -98,6 +124,7 @@ const Post: React.FC = () => {
         const responseData = await sendRequest(
           `${REST_API}/blog/posts/${postId}`
         );
+        setLoadedPostLinks(responseData.posts)
         setLoadedPost(responseData.post);
 
         setLoadedComments(responseData.post.comments);
@@ -244,8 +271,12 @@ const Post: React.FC = () => {
               <i className={classes["chevron"]}></i>
             </button>
           )}
-          <PostLinksDrawer onHoverAway={hideLinksHandler} onClick={hideLinksHandler} show={showLinks}>
-            <PostLinks posts={DUMMY_LINKS} />
+          <PostLinksDrawer
+            onHoverAway={hideLinksHandler}
+            onClick={hideLinksHandler}
+            show={showLinks}
+          >
+            <PostLinks posts={loadedPostLinks} />
           </PostLinksDrawer>
           <div className={classes.post}>
             <header>
@@ -253,9 +284,11 @@ const Post: React.FC = () => {
               <div className={classes.dates}>
                 <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
                 {loadedPost.updatedMonth &&
-                  !(loadedPost.month === loadedPost.updatedMonth &&
-                  loadedPost.day === loadedPost.updatedDay &&
-                  loadedPost.year === loadedPost.updatedYear) && (
+                  !(
+                    loadedPost.month === loadedPost.updatedMonth &&
+                    loadedPost.day === loadedPost.updatedDay &&
+                    loadedPost.year === loadedPost.updatedYear
+                  ) && (
                     <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
                   )}
               </div>
