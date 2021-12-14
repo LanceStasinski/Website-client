@@ -1,0 +1,25 @@
+.post-links {
+  text-decoration: none;
+
+}
+
+.post-links ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-links li {
+  margin-top: 1rem;
+}
+
+.post-links a {
+  text-decoration: none;
+  color: white;
+}
+
+.post-links a:hover {
+  cursor: pointer;
+  color: #f7e0ad;
+  border-bottom: 1pt solid #f7e0ad;
+}

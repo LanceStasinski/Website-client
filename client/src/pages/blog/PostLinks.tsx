@@ -11,8 +11,11 @@ interface Props {
 }
 const PostLinks: React.FC<Props> = (props) => {
   return (
-    <aside>
+    <aside className={classes["post-links"]}>
       <ul>
+        <li>
+          <NavLink to={"/blog"}>Blog Home</NavLink>
+        </li>
         {props.posts.map((post) => {
           return (
             <li key={post._id}>

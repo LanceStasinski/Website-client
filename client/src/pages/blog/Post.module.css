@@ -29,9 +29,48 @@
   margin: 0 0 2rem 0;
 }
 
+.post-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.open-links {
+  position: fixed;
+  height: 80vh;
+  width: 1.5rem;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #454545;
+  border: 1pt solid #454545;
+}
+
+.chevron {
+  position: relative;
+  display: block;
+  height: 20px; /*Height should be double border thickness*/
+  margin-left: 5px;
+}
+.chevron::before,
+.chevron::after {
+  position: absolute;
+  display: block;
+  content: "";
+  border: 10px solid transparent; /*Adjust chevron size*/
+}
+/*Change the four instances of 'top' below to rotate chevron*/
+/*Use (top/right/bottom/left) where you want the back of the chevron to be*/
+.chevron::before {
+  right: 0;
+  border-right-color: #f7e0ad; /*Chevron Color*/
+}
+.chevron::after {
+  right: -5px; /*Adjust thickness*/
+  border-right-color: #454545; /*Match chevron background colour*/
+}
+
 .post {
   width: 80%;
-  margin: 7rem 10%;
+  margin: 7rem 10% 0 10%;
 }
 
 .post header {

@@ -34,6 +34,28 @@ code {
   transition: all 300ms;
 }
 
+
+.slide-in-right-enter {
+  transform: translateX(15%);
+}
+
+.slide-in-right-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.slide-in-right-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-in-right-exit-active {
+  transform: translateX(15%);
+  opacity: 0;
+  transition: all 200ms;
+}
+
 .modal-transition-enter {
   transform: translateY(-10rem);
   opacity: 0;

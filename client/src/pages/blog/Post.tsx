@@ -15,6 +15,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 import Modal from "../../shared/components/UIElements/Modal";
 import { PostContext } from "../../shared/context/post-context";
 import PostLinks from "./PostLinks";
+import PostLinksDrawer from "./PostLinksDrawer";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -61,16 +62,20 @@ interface PostInfo {
 }
 
 const DUMMY_LINKS = [
-  { _id: '1', title: "post 1" },
-  { _id: '2', title: "post 2" },
-  { _id: '3', title: "post 3" },
-  { _id: '4', title: "post 4" },
-  { _id: '5', title: "post 5" },
-  { _id: '6', title: "post 6" },
-  { _id: '7', title: "post 7" },
-  { _id: '8', title: "post 8" },
-  { _id: '9', title: "post 9" },
-  { _id: '10', title: "post 10" },
+  { _id: "1", title: "Closures" },
+  { _id: "2", title: "How to use the useEffect hook" },
+  { _id: "3", title: "Using useReducer" },
+  { _id: "4", title: "Object oriented programming" },
+  { _id: "5", title: "Lifing up state" },
+  { _id: "6", title: "Using aws s3" },
+  { _id: "7", title: "Some longer title of stuff and things" },
+  { _id: "8", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
+  { _id: "9", title: "Some other title" },
+  { _id: "10", title: "Old blog post" },
+  { _id: "11", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
+  { _id: "12", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
+  { _id: "13", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
+  { _id: "14", title: "I dont think that a title would get much longer than this but who know. Maybe it'll be this long." },
 ];
 
 const Post: React.FC = () => {
@@ -78,6 +83,7 @@ const Post: React.FC = () => {
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
   const [loadedComments, setLoadedComments] = useState<Comment[]>([]);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showLinks, setShowLinks] = useState(false);
   const history = useHistory();
   const authCtx = useContext(AuthContext);
   const postCtx = useContext(PostContext);
@@ -186,6 +192,14 @@ const Post: React.FC = () => {
     history.push("/blog/create");
   };
 
+  const showLinksHandler = () => {
+    setShowLinks(true);
+  };
+
+  const hideLinksHandler = () => {
+    setShowLinks(false);
+  };
+
   return (
     <React.Fragment>
       <Modal
@@ -217,8 +231,19 @@ const Post: React.FC = () => {
         </div>
       )}
       {loadedPost && (
-        <div>
-          <PostLinks posts={DUMMY_LINKS}/>
+        <div className={classes["post-wrapper"]}>
+          {!showLinks && (
+            <button
+              type="button"
+              onMouseEnter={showLinksHandler}
+              className={classes["open-links"]}
+            >
+              <i className={classes["chevron"]}></i>
+            </button>
+          )}
+          <PostLinksDrawer onHoverAway={hideLinksHandler} show={showLinks}>
+            <PostLinks posts={DUMMY_LINKS} />
+          </PostLinksDrawer>
           <div className={classes.post}>
             <header>
               <h2>{loadedPost!.title}</h2>
