@@ -36,7 +36,8 @@
 
 .open-links {
   position: fixed;
-  height: 80vh;
+  margin-top: 7rem;
+  height: 10vh;
   width: 1.5rem;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
@@ -83,6 +84,8 @@ h3 {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
   color: #454545;
+  margin: 0;
+  padding: 0;
 }
 
 .dates {
@@ -144,6 +147,11 @@ h3 {
 }
 
 @media only screen and (min-width: 990px) {
+  .open-links {
+    height: 80vh;
+    margin-top: 0;
+  }
+
   .post header {
     display: flex;
     flex-direction: row;

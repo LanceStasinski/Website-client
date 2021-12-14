@@ -23,3 +23,9 @@
   color: #f7e0ad;
   border-bottom: 1pt solid #f7e0ad;
 }
+
+.post-links a:active,
+.active-link {
+  color: #f7e0ad;
+  border-bottom: 1pt solid #f7e0ad;
+}

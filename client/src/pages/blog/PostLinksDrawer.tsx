@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 import classes from "./PostLinksDrawer.module.css";
 
-const PostLinksDrawer: React.FC<{ show: boolean; onHoverAway: () => void }> = (
+const PostLinksDrawer: React.FC<{ show: boolean; onHoverAway: () => void; onClick: () => void }> = (
   props
 ) => {
   const nodeRef = useRef(null);
@@ -20,6 +20,7 @@ const PostLinksDrawer: React.FC<{ show: boolean; onHoverAway: () => void }> = (
       <aside
         ref={nodeRef}
         onMouseLeave={props.onHoverAway}
+        onClick={props.onClick}
         className={classes["links-drawer"]}
       >
         {props.children}

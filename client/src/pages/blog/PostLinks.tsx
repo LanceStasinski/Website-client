@@ -11,20 +11,28 @@ interface Props {
 }
 const PostLinks: React.FC<Props> = (props) => {
   return (
-    <aside className={classes["post-links"]}>
+    <nav className={classes["post-links"]}>
       <ul>
         <li>
-          <NavLink to={"/blog"}>Blog Home</NavLink>
+          <NavLink to={"/blog"} activeClassName={classes["active-link"]} exact>
+            Blog Home
+          </NavLink>
         </li>
         {props.posts.map((post) => {
           return (
             <li key={post._id}>
-              <NavLink to={`blog/post/${post._id}`}>{post.title}</NavLink>
+              <NavLink
+                to={`blog/post/${post._id}`}
+                activeClassName={classes["active-link"]}
+                exact
+              >
+                {post.title}
+              </NavLink>
             </li>
           );
         })}
       </ul>
-    </aside>
+    </nav>
   );
 };
 

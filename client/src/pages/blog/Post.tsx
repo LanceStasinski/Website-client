@@ -16,6 +16,7 @@ import Modal from "../../shared/components/UIElements/Modal";
 import { PostContext } from "../../shared/context/post-context";
 import PostLinks from "./PostLinks";
 import PostLinksDrawer from "./PostLinksDrawer";
+import Backdrop from "../../shared/components/UIElements/Backdrop";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -220,6 +221,7 @@ const Post: React.FC = () => {
       >
         Are you sure you want to delete this post?
       </Modal>
+      {showLinks && <Backdrop onClick={hideLinksHandler} />}
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && !loadedPost && <LoadingSpinner asOverlay />}
       {!isLoading && !loadedPost && (
@@ -236,12 +238,13 @@ const Post: React.FC = () => {
             <button
               type="button"
               onMouseEnter={showLinksHandler}
+              onClick={showLinksHandler}
               className={classes["open-links"]}
             >
               <i className={classes["chevron"]}></i>
             </button>
           )}
-          <PostLinksDrawer onHoverAway={hideLinksHandler} show={showLinks}>
+          <PostLinksDrawer onHoverAway={hideLinksHandler} onClick={hideLinksHandler} show={showLinks}>
             <PostLinks posts={DUMMY_LINKS} />
           </PostLinksDrawer>
           <div className={classes.post}>
