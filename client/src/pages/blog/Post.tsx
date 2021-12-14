@@ -14,6 +14,7 @@ import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "../../shared/context/auth-context";
 import Modal from "../../shared/components/UIElements/Modal";
 import { PostContext } from "../../shared/context/post-context";
+import PostLinks from "./PostLinks";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -58,6 +59,19 @@ interface PostInfo {
   }[];
   comments: Comment[];
 }
+
+const DUMMY_LINKS = [
+  { _id: '1', title: "post 1" },
+  { _id: '2', title: "post 2" },
+  { _id: '3', title: "post 3" },
+  { _id: '4', title: "post 4" },
+  { _id: '5', title: "post 5" },
+  { _id: '6', title: "post 6" },
+  { _id: '7', title: "post 7" },
+  { _id: '8', title: "post 8" },
+  { _id: '9', title: "post 9" },
+  { _id: '10', title: "post 10" },
+];
 
 const Post: React.FC = () => {
   const postId = useParams<{ postId: string }>().postId;
@@ -203,78 +217,81 @@ const Post: React.FC = () => {
         </div>
       )}
       {loadedPost && (
-        <div className={classes.post}>
-          <header>
-            <h2>{loadedPost!.title}</h2>
-            <div className={classes.dates}>
-              <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
-              {loadedPost.updatedMonth &&
-                loadedPost.month !== loadedPost.updatedMonth &&
-                loadedPost.day !== loadedPost.updatedDay &&
-                loadedPost.year !== loadedPost.updatedYear && (
-                  <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
-                )}
-            </div>
-          </header>
-          <hr />
-          <article>
-            {loadedPost!.content.map((ct) => {
-              if (ct.type === "paragraph") {
-                return <p key={ct._id}>{ct.text}</p>;
-              } else if (ct.type === "image" || ct.type === "imageUrl") {
-                return <img src={ct.text} alt={ct.alt} key={ct._id} />;
-              } else if (ct.type === "heading") {
-                return <h3 key={ct._id}>{ct.text}</h3>;
-              } else if (ct.type === "code") {
-                return (
-                  <pre key={Math.random()}>
-                    <code>
-                      <Highlight className={ct.language}>{ct.text}</Highlight>
-                    </code>
-                  </pre>
-                );
-              } else {
-                return (
-                  <div
-                    key={Math.random()}
-                  >{`Error: Content type ${ct.type} not supported.`}</div>
-                );
-              }
-            })}
-            <div>
-              <h3>References</h3>
-              <ul>
-                {loadedPost!.references.map((ref) => {
+        <div>
+          <PostLinks posts={DUMMY_LINKS}/>
+          <div className={classes.post}>
+            <header>
+              <h2>{loadedPost!.title}</h2>
+              <div className={classes.dates}>
+                <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
+                {loadedPost.updatedMonth &&
+                  loadedPost.month !== loadedPost.updatedMonth &&
+                  loadedPost.day !== loadedPost.updatedDay &&
+                  loadedPost.year !== loadedPost.updatedYear && (
+                    <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
+                  )}
+              </div>
+            </header>
+            <hr />
+            <article>
+              {loadedPost!.content.map((ct) => {
+                if (ct.type === "paragraph") {
+                  return <p key={ct._id}>{ct.text}</p>;
+                } else if (ct.type === "image" || ct.type === "imageUrl") {
+                  return <img src={ct.text} alt={ct.alt} key={ct._id} />;
+                } else if (ct.type === "heading") {
+                  return <h3 key={ct._id}>{ct.text}</h3>;
+                } else if (ct.type === "code") {
                   return (
-                    <li key={ref.title}>
-                      <cite>
-                        {ref.authors}. ({ref.date}). <i>{ref.title}</i>.
-                        Retrieved from <a href={ref.url}>{ref.url}</a>
-                      </cite>
-                    </li>
+                    <pre key={Math.random()}>
+                      <code>
+                        <Highlight className={ct.language}>{ct.text}</Highlight>
+                      </code>
+                    </pre>
                   );
-                })}
-              </ul>
-            </div>
-          </article>
-          {authCtx.userId === ADMIN && (
-            <div className={classes["admin-buttons"]}>
-              <Button type="button" onClick={editPostHandler}>
-                Edit
-              </Button>
-              <Button type="button" danger onClick={showDeleteWarning}>
-                Delete
-              </Button>
-            </div>
-          )}
-          <section>
-            <CommentSection
-              postId={postId}
-              comments={loadedComments!}
-              onDeleteComment={deleteCommentHandler}
-              onAddComment={addCommentHandler}
-            ></CommentSection>
-          </section>
+                } else {
+                  return (
+                    <div
+                      key={Math.random()}
+                    >{`Error: Content type ${ct.type} not supported.`}</div>
+                  );
+                }
+              })}
+              <div>
+                <h3>References</h3>
+                <ul>
+                  {loadedPost!.references.map((ref) => {
+                    return (
+                      <li key={ref.title}>
+                        <cite>
+                          {ref.authors}. ({ref.date}). <i>{ref.title}</i>.
+                          Retrieved from <a href={ref.url}>{ref.url}</a>
+                        </cite>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </article>
+            {authCtx.userId === ADMIN && (
+              <div className={classes["admin-buttons"]}>
+                <Button type="button" onClick={editPostHandler}>
+                  Edit
+                </Button>
+                <Button type="button" danger onClick={showDeleteWarning}>
+                  Delete
+                </Button>
+              </div>
+            )}
+            <section>
+              <CommentSection
+                postId={postId}
+                comments={loadedComments!}
+                onDeleteComment={deleteCommentHandler}
+                onAddComment={addCommentHandler}
+              ></CommentSection>
+            </section>
+          </div>
         </div>
       )}
     </React.Fragment>
