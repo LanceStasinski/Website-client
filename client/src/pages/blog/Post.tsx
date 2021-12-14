@@ -253,9 +253,9 @@ const Post: React.FC = () => {
               <div className={classes.dates}>
                 <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
                 {loadedPost.updatedMonth &&
-                  loadedPost.month !== loadedPost.updatedMonth &&
-                  loadedPost.day !== loadedPost.updatedDay &&
-                  loadedPost.year !== loadedPost.updatedYear && (
+                  !(loadedPost.month === loadedPost.updatedMonth &&
+                  loadedPost.day === loadedPost.updatedDay &&
+                  loadedPost.year === loadedPost.updatedYear) && (
                     <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
                   )}
               </div>

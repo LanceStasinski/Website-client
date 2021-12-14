@@ -94,7 +94,7 @@ h3 {
 }
 
 .dates p {
-  text-align: right;
+  text-align: left;
   margin-top: 0;
   padding-top: 0;
   color: #666;
@@ -147,6 +147,9 @@ h3 {
 }
 
 @media only screen and (min-width: 990px) {
+  .dates p {
+    text-align: right;
+  }
   .open-links {
     height: 80vh;
     margin-top: 0;
