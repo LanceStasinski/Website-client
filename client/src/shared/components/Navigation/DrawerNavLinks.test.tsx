@@ -22,15 +22,16 @@ describe("DrawerNavLinks component", () => {
 
   test("renders logout button", () => {
     const logout = () => {};
-    const login = () => {};
+    const login = (uid: string, token: string, username: string) => {};
 
     render(
       <AuthContext.Provider value={{
         isLoggedIn: true,
         login: login,
         logout: logout,
-        userId: null,
-        token: null
+        userId: '',
+        token: '',
+        username: ''
       }}>
         <BrowserRouter>
           <Route>

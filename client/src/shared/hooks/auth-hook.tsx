@@ -3,10 +3,10 @@ import { useState, useCallback, useEffect } from "react";
 let logoutTimer: any;
 
 export const useAuth = () => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState('');
   const [tokenExpiration, setTokenExpiration] = useState<Date>();
-  const [userId, setUserId] = useState(null);
-  const [username, setUsername] = useState(null);
+  const [userId, setUserId] = useState('');
+  const [username, setUsername] = useState('');
 
   const login = useCallback((uid, token, username, expirationDate) => {
     setUsername(username);
@@ -43,9 +43,9 @@ export const useAuth = () => {
   }, [login]);
 
   const logout = useCallback(() => {
-    setToken(null);
+    setToken('');
     setTokenExpiration(undefined);
-    setUserId(null);
+    setUserId('');
     localStorage.removeItem("user");
   }, []);
 
