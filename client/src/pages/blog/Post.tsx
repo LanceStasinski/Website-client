@@ -62,43 +62,6 @@ interface PostInfo {
   comments: Comment[];
 }
 
-const DUMMY_LINKS = [
-  { _id: "1", title: "Closures" },
-  { _id: "2", title: "How to use the useEffect hook" },
-  { _id: "3", title: "Using useReducer" },
-  { _id: "4", title: "Object oriented programming" },
-  { _id: "5", title: "Lifing up state" },
-  { _id: "6", title: "Using aws s3" },
-  { _id: "7", title: "Some longer title of stuff and things" },
-  {
-    _id: "8",
-    title:
-      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
-  },
-  { _id: "9", title: "Some other title" },
-  { _id: "10", title: "Old blog post" },
-  {
-    _id: "11",
-    title:
-      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
-  },
-  {
-    _id: "12",
-    title:
-      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
-  },
-  {
-    _id: "13",
-    title:
-      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
-  },
-  {
-    _id: "14",
-    title:
-      "I dont think that a title would get much longer than this but who know. Maybe it'll be this long.",
-  },
-];
-
 interface PostData {
   title: string;
   _id: string;
