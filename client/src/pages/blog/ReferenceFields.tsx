@@ -43,6 +43,7 @@ const ReferenceFields: React.FC<{
         <Button
           type="button"
           danger
+          id={`removeRef${props.refNumber}`}
           onClick={() => props.onRemove(props.refNumber)}
         >
           Remove

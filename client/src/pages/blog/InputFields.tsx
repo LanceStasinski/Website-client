@@ -47,6 +47,7 @@ const InputFields: React.FC<{
         <Button
           type="button"
           danger
+          id={`removeContent${props.inputNumber}`}
           arrayNumber={props.inputNumber}
           onClick={() => {
             props.onRemove(props.inputNumber);
