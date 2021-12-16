@@ -1,9 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter, Route } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 import PostLinksDrawer from "./PostLinksDrawer";
-import userEvent from "@testing-library/user-event";
+
 
 describe("PostLinksDrawer component", () => {
   const body = global.document.querySelector("body");
