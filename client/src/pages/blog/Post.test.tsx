@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Enzyme from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 
@@ -84,7 +83,7 @@ describe("Post component", () => {
     ],
   };
   test("renders a post", async () => {
-    const sendRequest = jest.fn(async () => response)
+    const sendRequest = jest.fn(async () => response);
     jest.spyOn(httpHook, "useHttpClient").mockImplementation(() => {
       return {
         isLoading: false,
@@ -112,8 +111,40 @@ describe("Post component", () => {
       </BrowserRouter>
     );
 
-    const title = await waitFor(() => getByText('Test post'));
+    const title = await waitFor(() => getByText("Test post"));
     expect(title).toBeInTheDocument();
     expect(sendRequest).toHaveBeenCalledTimes(1);
+  });
+  test("renders no post found if no posts are loaded", async () => {
+    const sendRequest = jest.fn(async () => {});
+    jest.spyOn(httpHook, "useHttpClient").mockImplementation(() => {
+      return {
+        isLoading: false,
+        error: undefined,
+        clearError: () => {},
+        sendRequest: sendRequest,
+      };
+    });
+    const { getByText } = render(
+      <BrowserRouter>
+        <Route>
+          <AuthContext.Provider
+            value={{
+              isLoggedIn: false,
+              userId: "",
+              username: "",
+              token: "",
+              login: (uid, token, username) => {},
+              logout: () => {},
+            }}
+          >
+            <Post />
+          </AuthContext.Provider>
+        </Route>
+      </BrowserRouter>
+    );
+
+    const title = await waitFor(() => getByText("Post Not Found!"));
+    expect(title).toBeInTheDocument();
   });
 });
