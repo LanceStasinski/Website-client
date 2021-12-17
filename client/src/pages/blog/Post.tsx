@@ -87,9 +87,8 @@ const Post: React.FC = () => {
         const responseData = await sendRequest(
           `${REST_API}/blog/posts/${postId}`
         );
-        setLoadedPostLinks(responseData.posts)
         setLoadedPost(responseData.post);
-
+        setLoadedPostLinks(responseData.posts);
         setLoadedComments(responseData.post.comments);
         const socket = io(`${REST_SERVER}`);
         socket.on("comments", (data) => {
