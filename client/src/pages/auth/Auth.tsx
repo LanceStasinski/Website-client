@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+
 import classes from "./Auth.module.css";
 import { AuthContext } from "../../shared/context/auth-context";
 import Card from "../../shared/components/UIElements/Card";
@@ -69,6 +70,7 @@ const Auth: React.FC = () => {
           responseData.token,
           responseData.username
         );
+
       } catch (error) {}
     }
   };

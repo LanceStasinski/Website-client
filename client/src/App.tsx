@@ -15,6 +15,7 @@ const Blog = lazy(() => import("./pages/blog/Blog"));
 const Post = lazy(() => import("./pages/blog/Post"));
 const CreatePost = lazy(() => import("./pages/blog/CreatePost"));
 const Cv = lazy(() => import("./pages/cv/Cv"));
+const Contact = lazy(() => import('./pages/contact/Contact'))
 
 function App() {
   const { token, login, logout, userId, username } = useAuth();
@@ -49,7 +50,7 @@ function App() {
             <Post />
           </Route>
         </PostContext.Provider>
-        <Route path="/contact" exact></Route>
+        <Route path="/contact" exact><Contact /></Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -69,7 +70,7 @@ function App() {
         <Route path="/blog/post/:postId" exact>
           <Post />
         </Route>
-        <Route path="/contact" exact></Route>
+        <Route path="/contact" exact><Contact /></Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -89,7 +90,7 @@ function App() {
         <Route path="/blog/post/:postId" exact>
           <Post />
         </Route>
-        <Route path="/contact" exact></Route>
+        <Route path="/contact" exact><Contact /></Route>
         <Route path="/auth" exact>
           <Auth />
         </Route>
