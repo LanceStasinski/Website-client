@@ -34,6 +34,7 @@ const Contact: React.FC = () => {
             type="text"
             id="firstName"
             {...register("firstName", { required: true })}
+            className={errors.firstName && classes['input-error']}
           />
           {errors.firstName && <p>Please provide your first name.</p>}
           <label htmlFor="last-name">Last Name</label>
@@ -41,6 +42,7 @@ const Contact: React.FC = () => {
             type="text"
             id="lastName"
             {...register("lastName", { required: true })}
+            className={errors.lastName && classes['input-error']}
           />
           {errors.lastName && <p>Please provide your last name.</p>}
           <label htmlFor="email">Email</label>
@@ -48,10 +50,12 @@ const Contact: React.FC = () => {
             id="email"
             type="email"
             {...register("email", { required: true })}
+            className={errors.email && classes['input-error']}
           />
           {errors.email && <p>Please provide your email.</p>}
           <label htmlFor="message">Message</label>
-          <textarea id="message" {...register("message", { required: true })} />
+          <textarea id="message" {...register("message", { required: true })}
+          className={errors.message && classes['input-error']} />
           {errors.message && <p>Please provide a message.</p>}
 
             <Button type="submit" disabled={!isValid}>
