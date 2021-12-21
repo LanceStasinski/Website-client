@@ -14,7 +14,7 @@ const Auth = lazy(() => import("./pages/auth/Auth"));
 const Blog = lazy(() => import("./pages/blog/Blog"));
 const Post = lazy(() => import("./pages/blog/Post"));
 const CreatePost = lazy(() => import("./pages/blog/CreatePost"));
-const Cv = lazy(() => import("./pages/cv/Cv"));
+const Resume = lazy(() => import("./pages/resume/Resume"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 
 function App() {
@@ -29,8 +29,8 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact>
-          <Cv />
+        <Route path="/resume" exact>
+          <Resume />
         </Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact>
@@ -63,8 +63,8 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact>
-          <Cv />
+        <Route path="/resume" exact>
+          <Resume />
         </Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact>
@@ -85,8 +85,8 @@ function App() {
         <Route path="/" exact>
           <About />
         </Route>
-        <Route path="/cv" exact>
-          <Cv />
+        <Route path="/resume" exact>
+          <Resume />
         </Route>
         <Route path="/portfolio" exact></Route>
         <Route path="/blog" exact>

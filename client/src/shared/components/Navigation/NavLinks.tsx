@@ -11,7 +11,7 @@ const NavLinks: React.FC = () => {
   return (
     <ul className={classes["nav-links"]}>
       <li>
-        <NavItem to="/cv">CV</NavItem>
+        <NavItem to="/resume">RÉSUMÉ</NavItem>
       </li>
       <li>
         <NavItem to="/portfolio">PORTFOLIO</NavItem>
