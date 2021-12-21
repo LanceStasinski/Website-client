@@ -14,12 +14,25 @@ describe("Contact component", () => {
   body?.appendChild(backdropRoot);
   body?.appendChild(modalRoot);
   const response = { message: "Message recieved" };
-  test("renders a form with 3 inputs and a textarea", () => {
+  test("renders form when header is clicked", () => {
     render(<Contact />);
+    let formElements = document.getElementsByTagName('form');
+    expect(formElements.length).toEqual(0);
+    const headerElement = screen.getByText(/send a message/i);
+    userEvent.click(headerElement)
+    formElements = document.getElementsByTagName('form');
+    expect(formElements.length).toEqual(1);
+  });
+  test("renders 3 inputs, 2 links, and a textarea", () => {
+    render(<Contact />);
+    const headerElement = screen.getByText(/send a message/i);
+    userEvent.click(headerElement)
     const inputElements = document.getElementsByTagName("input");
     const textareaElements = document.getElementsByTagName("textarea");
+    const linkElements = document.getElementsByTagName('a');
     expect(inputElements.length).toEqual(3);
     expect(textareaElements.length).toEqual(1);
+    expect(linkElements.length).toEqual(2);
   });
   test("should send POST request, show modal, and reset form onSubmit", async () => {
     const sendRequest = jest.fn(async () => {
@@ -34,6 +47,8 @@ describe("Contact component", () => {
       };
     });
     render(<Contact />);
+    const headerElement = screen.getByText(/send a message/i);
+    userEvent.click(headerElement)
     fireEvent.input(screen.getByRole("textbox", { name: /first name/i }), {
       target: { value: "Test first name" },
     });
@@ -83,6 +98,8 @@ describe("Contact component", () => {
       };
     });
     render(<Contact />);
+    const headerElement = screen.getByText(/send a message/i);
+    userEvent.click(headerElement)
     const submitBtn = screen.getByText('SEND');
     userEvent.click(submitBtn);
     expect(sendRequest).not.toHaveBeenCalled();
