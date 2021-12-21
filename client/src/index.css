@@ -103,3 +103,27 @@ code {
   max-height: 0px;
   transition: all 200ms;
 }
+
+.slide-down-enter {
+  opacity: 0;
+  max-height: 0px;
+}
+
+.slide-down-enter-active {
+  opacity: 1;
+  height: auto;
+  max-height: 600px;
+  transition: all 300ms;
+}
+
+.slide-down-exit {
+  opacity: 1;
+  max-height: 600px;
+}
+
+.slide-down-exit-active {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0px;
+  transition: all 300ms;
+}
