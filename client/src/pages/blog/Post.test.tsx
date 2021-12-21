@@ -1,14 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { render, waitFor } from "@testing-library/react";
-import Enzyme from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 
 import { AuthContext } from "../../shared/context/auth-context";
 import Post from "./Post";
 import * as httpHook from "../../shared/hooks/http-hook";
 
-Enzyme.configure({ adapter: new Adapter() });
 
 describe("Post component", () => {
   const body = global.document.querySelector("body");
