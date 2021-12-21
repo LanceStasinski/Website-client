@@ -37,7 +37,7 @@ const ModalOverlay: React.FC<Props> = (props) => {
             : (event: FormEvent) => event.preventDefault()
         }
       >
-        <div className={`${classes["modal__content"]} ${props.className}`}>
+        <div className={`${classes["modal__content"]} ${props.contentClass}`}>
           {props.children}
         </div>
         <footer className={`${classes["modal__footer"]} ${props.footerClass}`}>

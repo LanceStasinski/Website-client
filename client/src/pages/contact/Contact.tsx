@@ -25,6 +25,7 @@ const Contact: React.FC = () => {
     register,
     formState: { errors, isValid },
     handleSubmit,
+    reset
   } = useForm({ mode: "onChange" });
 
   const submitFormHandler = async (userData: ContactInput) => {
@@ -44,6 +45,7 @@ const Contact: React.FC = () => {
       );
       if (response.message === "Message recieved") {
         setShowMessageSent(true);
+        reset({firstName: '', lastName: '', email: '', message: ''})
       }
     } catch (error) {}
   };
@@ -58,13 +60,17 @@ const Contact: React.FC = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Modal
+        className={classes.modal}
         show={showMessageSent}
         onCancel={closeModalHandler}
+        header="Message Sent!"
         footer={
-          <div>
-            <Button type="button">Okay</Button>
+          <div className={classes['okay']}>
+            <Button type="button" onClick={closeModalHandler}>OK</Button>
           </div>
         }
+        backdropClass={classes['modal-backdrop']}
+        // contentClass={classes['modal-content']}
       >
         Your message has been recieved. Thank you!
       </Modal>

@@ -38,7 +38,7 @@
 
 .contact-card input,
 .contact-card textarea {
-  color: #555;
+  color: #222;
   padding: 0.25rem;
   margin-top: 0.25rem;
   border: #bbb solid 1pt;
@@ -71,6 +71,29 @@
 .contact-card p {
   color: rgb(255, 0, 0)
 }
+
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  border: 1pt solid #f7e0ad !important;
+}
+
+.modal-content {
+  margin-left: 1rem !important;
+}
+
+.okay {
+  display: flex;
+  justify-content: center;
+}
+
+.okay button {
+  justify-self: center;
+  border: 1pt #f7e0ad solid;
+}
+
 
 @media only screen and (min-width: 990px) {
   .contact-card {
