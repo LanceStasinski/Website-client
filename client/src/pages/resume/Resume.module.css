@@ -1,0 +1,61 @@
+.resume-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 7rem 0 3rem 0;
+}
+
+.page {
+  height: 11in;
+  width: 8.5in;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.page header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #454545;
+  color: #f7e0ad;
+  padding: 1rem;
+}
+
+.headshot {
+  border-radius: 100px;
+  width: 200px;
+  height: 200px;
+}
+
+
+
+.contact-info {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-left: 1pt #f7e0ad solid;
+  padding-left: 1rem;
+}
+
+.contact-info li {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.contact-info li img {
+  height: 16px;
+  width: 16px;
+  margin-right: 1rem;
+  align-self: center;
+}
+
+.contact-info li a {
+  text-decoration: none;
+  color: #f7e0ad;
+}
+
+.contact-info li p {
+  padding: 0;
+  margin: 0;
+}
