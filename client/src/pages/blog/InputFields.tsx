@@ -18,6 +18,9 @@ const InputFields: React.FC<{
   const [altValue, setAltValue] = useState(
     props.prevContent ? props.prevContent.alt : ""
   );
+  const [captionValue, setCaptionValue] = useState(
+    props.prevContent ? props.prevContent.caption : ""
+  );
   const [languageValue, setLanguageValue] = useState(
     props.prevContent ? props.prevContent.language : ""
   );
@@ -25,6 +28,7 @@ const InputFields: React.FC<{
   const typeRef = createRef<HTMLSelectElement>();
   const contentRef = createRef<HTMLTextAreaElement>();
   const altRef = createRef<HTMLInputElement>();
+  const captionRef = createRef<HTMLInputElement>();
   const langRef = createRef<HTMLInputElement>();
 
   const selectChangeHandler = () => {
@@ -36,6 +40,9 @@ const InputFields: React.FC<{
   const altChangeHandler = () => {
     setAltValue(altRef.current!.value);
   };
+  const captionChangeHandler = () => {
+    setCaptionValue(captionRef.current!.value)
+  }
   const langChangeHandler = () => {
     setLanguageValue(langRef.current!.value);
   };
@@ -98,6 +105,17 @@ const InputFields: React.FC<{
         value={altValue}
         onChange={altChangeHandler}
       />
+      <label htmlFor={`caption${props.inputNumber}`}>
+        Caption (if applicable):
+      </label>
+      <input
+        type="text"
+        name={`caption${props.inputNumber}`}
+        id={`caption${props.inputNumber}`}
+        ref={captionRef}
+        value={captionValue}
+        onChange={captionChangeHandler}
+      ></input>
       <label htmlFor={`language${props.inputNumber}`}>
         Code language (if applicable):
       </label>

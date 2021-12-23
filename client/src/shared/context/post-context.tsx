@@ -8,6 +8,10 @@ export const PostContext = createContext({
     id: string,
     title: string,
     blurb: string,
+    tags: string,
+    headImg: string,
+    headImgCaption: string,
+    headImgAlt: string,
     content: Content[],
     references: Reference[]
   ) => {},

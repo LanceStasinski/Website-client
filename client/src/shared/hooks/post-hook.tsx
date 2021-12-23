@@ -8,6 +8,7 @@ export interface Content {
     bucket: string;
   };
   alt?: string;
+  caption?: string;
   _id: string;
   language?: string;
 }
@@ -24,6 +25,10 @@ export interface Post {
   id: string;
   title: string;
   blurb: string;
+  tags: string;
+  headImg: string;
+  headImgCaption: string;
+  headImgAlt: string;
   content: Content[];
   references: Reference[];
 }
@@ -36,10 +41,24 @@ export const usePost = () => {
       id: string,
       title: string,
       blurb: string,
+      tags: string,
+      headImg: string,
+      headImgCaption: string,
+      headImgAlt: string,
       content: Content[],
       references: Reference[]
     ) => {
-      const postContent = {id, title, blurb, content, references };
+      const postContent = {
+        id,
+        title,
+        blurb,
+        tags,
+        headImg,
+        headImgCaption,
+        headImgAlt,
+        content,
+        references,
+      };
       setPost(postContent);
     },
     []

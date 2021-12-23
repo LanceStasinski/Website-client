@@ -35,6 +35,10 @@ interface Comment {
 interface PostInfo {
   title: string;
   blurb: string;
+  tags: string;
+  headImg: string;
+  headImgCaption: string;
+  headImgAlt: string;
   month: string;
   day: string;
   year: string;
@@ -176,6 +180,10 @@ const Post: React.FC = () => {
       postId,
       loadedPost!.title,
       loadedPost!.blurb,
+      loadedPost!.tags,
+      loadedPost!.headImg,
+      loadedPost!.headImgCaption,
+      loadedPost!.headImgAlt,
       loadedPost!.content,
       loadedPost!.references
     );
@@ -253,6 +261,10 @@ const Post: React.FC = () => {
                   ) && (
                     <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
                   )}
+                {loadedPost.tags.split(", ").map((tag, index) => (
+                  <div key={`tag${index}`}>{tag.toLowerCase}</div>
+                ))}
+                <img src="" alt=''/>
               </div>
             </header>
             <hr />

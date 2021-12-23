@@ -97,8 +97,21 @@ const CreatePost: React.FC = () => {
   const prevPost = postCtx.post;
   const [title, setTitle] = useState(prevPost ? prevPost.title : "");
   const [blurb, setBlurb] = useState(prevPost ? prevPost.blurb : "");
+  const [tags, setTags] = useState(prevPost ? prevPost.tags : "");
+  const [headImg, setHeadImg] = useState(prevPost ? prevPost.headImg : "");
+  const [headImgCaption, setHeadImgCaption] = useState(
+    prevPost ? prevPost.headImgCaption : ""
+  );
+  const [headImgAlt, setHeadImgAlt] = useState(
+    prevPost ? prevPost.headImgAlt : ""
+  );
+
   const titleRef = createRef<HTMLInputElement>();
   const blurbRef = createRef<HTMLTextAreaElement>();
+  const tagsRef = createRef<HTMLInputElement>();
+  const headImgRef = createRef<HTMLInputElement>();
+  const headImgCaptionRef = createRef<HTMLInputElement>();
+  const headImgAltRef = createRef<HTMLInputElement>();
 
   let numCont: number[] = [];
   let numRef: number[] = [];
@@ -141,6 +154,22 @@ const CreatePost: React.FC = () => {
 
   const blurbChangeHandler = () => {
     setBlurb(blurbRef.current!.value);
+  };
+
+  const tagChangeHandler = () => {
+    setTags(tagsRef.current!.value);
+  };
+
+  const headImgChangeHandler = () => {
+    setHeadImg(headImgRef.current!.value);
+  };
+
+  const headImgCaptionChangeHandler = () => {
+    setHeadImgCaption(headImgCaptionRef.current!.value);
+  };
+
+  const headImgAltChangeHandler = () => {
+    setHeadImgAlt(headImgAltRef.current!.value);
   };
 
   const handleSubmit = async (event: FormEvent) => {
@@ -225,6 +254,44 @@ const CreatePost: React.FC = () => {
                 ref={blurbRef}
                 value={blurb}
                 onChange={blurbChangeHandler}
+              />
+              <label htmlFor="tags">Tags:</label>
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                placeholder="Tag1, tag2"
+                ref={tagsRef}
+                value={tags}
+                onChange={tagChangeHandler}
+              />
+              <label htmlFor="headImg">Header image URL:</label>
+              <input
+                type="text"
+                id="headImg"
+                name="headImg"
+                ref={headImgRef}
+                value={headImg}
+                onChange={headImgChangeHandler}
+              />
+              <label htmlFor="headImgAlt">Alternative text:</label>
+              <input
+                type="text"
+                id="headImgAlt"
+                name="headImgAlt"
+                ref={headImgAltRef}
+                value={headImgAlt}
+                onChange={headImgAltChangeHandler}
+              />
+              <label htmlFor="headImgCaption">Caption:</label>
+              <input
+                type="text"
+                id="headImgCaption"
+                name="headImgCaption"
+                placeholder="Credit: John Doe from Unsplash"
+                ref={headImgCaptionRef}
+                value={headImgCaption}
+                onChange={headImgCaptionChangeHandler}
               />
             </section>
 
