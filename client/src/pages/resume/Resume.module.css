@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@300;500&display=swap');
+
 .resume-wrapper {
   display: flex;
   justify-content: center;
@@ -25,7 +27,21 @@
   height: 200px;
 }
 
+.first-name {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 
+.last-name {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  letter-spacing:  0.2rem;
+  margin-top: 0;
+  padding-top: 0;
+}
 
 .contact-info {
   list-style-type: none;
@@ -53,6 +69,11 @@
 .contact-info li a {
   text-decoration: none;
   color: #f7e0ad;
+}
+
+.contact-info li a:hover {
+  cursor: pointer;
+  transform: scale(1.01);
 }
 
 .contact-info li p {

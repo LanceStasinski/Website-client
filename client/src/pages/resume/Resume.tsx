@@ -23,8 +23,8 @@ const Resume: React.FC = () => {
           />
 
           <div>
-            <h2>LANCE</h2>
-            <h2>STASINSKI</h2>
+            <h2 className={classes['first-name']}>LANCE</h2>
+            <h2 className={classes['last-name']}>STASINSKI</h2>
             <h3>WEB DEVELOPER</h3>
           </div>
           <ul className={classes["contact-info"]}>
