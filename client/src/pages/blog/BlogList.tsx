@@ -21,16 +21,26 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
           <li key={post._id}>
             <Link to={`/blog/post/${post._id}`}>
               <Card className={classes["blog-card"]}>
-                <header>
-                  <h3 className={classes["blog-title"]}>{post.title}</h3>
-                  <h3
-                    className={classes["blog-title"]}
-                  >{`${post.month} ${post.day}, ${post.year}`}</h3>
-                </header>
-                <article>{post.blurb}</article>
-                <footer>
-                  <p>click to read more</p>
-                </footer>
+                <div className={classes["post-info"]}>
+                  <img
+                    src={post.headImg}
+                    alt={post.headImgAlt}
+                    className={classes["post-img"]}
+                  />
+                  <article>
+                    <h3 className={classes["blog-title"]}>{post.title}</h3>
+                    <p>{post.blurb}</p>
+                    <p className={classes['post-date']}>{`${post.month} ${post.day}, ${post.year}`}</p>
+                    <div className={classes.tags}>
+                      {post.tags.split(", ").map((tag, index) => (
+                        <div className={classes.tag} key={`tag${index}`}>
+                          {tag.toLowerCase()}
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                </div>
+
               </Card>
             </Link>
           </li>
