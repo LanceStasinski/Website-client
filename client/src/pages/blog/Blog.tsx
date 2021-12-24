@@ -17,7 +17,7 @@ export interface PostHeading {
   blurb: string;
   tags: string;
   headImg: string;
-  headImgCaption: string;
+
   headImgAlt: string;
   month: string;
   day: string | number;
@@ -35,7 +35,6 @@ const Blog: React.FC = () => {
       try {
         const responseData = await sendRequest(`${REST_API}/blog/posts`);
         setLoadedPosts(responseData.posts);
-        console.log(responseData)
       } catch (error) {}
     };
     getPosts();

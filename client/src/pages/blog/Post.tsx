@@ -92,6 +92,7 @@ const Post: React.FC = () => {
           `${REST_API}/blog/posts/${postId}`
         );
         setLoadedPost(responseData.post);
+        console.log(responseData);
         setLoadedPostLinks(responseData.posts);
         setLoadedComments(responseData.post.comments);
         const socket = io(`${REST_SERVER}`);
@@ -250,24 +251,47 @@ const Post: React.FC = () => {
           </PostLinksDrawer>
           <div className={classes.post}>
             <header>
-              <h2>{loadedPost!.title}</h2>
-              <div className={classes.dates}>
-                <h2>{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</h2>
+              <div className={classes['header-text']}>
+                <h2>{loadedPost!.title}</h2>
+                <div className={classes.dates}>
+                <time
+                  className={classes["created-date"]}
+                  dateTime={new Date(
+                    `${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`
+                  ).toString()}
+                >{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</time>
                 {loadedPost.updatedMonth &&
                   !(
                     loadedPost.month === loadedPost.updatedMonth &&
                     loadedPost.day === loadedPost.updatedDay &&
                     loadedPost.year === loadedPost.updatedYear
                   ) && (
-                    <p>{`Updated ${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</p>
-                  )}
-                {loadedPost.tags.split(", ").map((tag, index) => (
-                  <div key={`tag${index}`}>{tag.toLowerCase}</div>
-                ))}
-                <img src="" alt=''/>
+                    <p className={classes["updated-date"]}>
+                      Updated{" "}
+                      <time
+                        dateTime={new Date(
+                          `${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`
+                        ).toString()}
+                      >{`${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</time>
+                    </p>
+                  )}</div>
               </div>
+
+              <div className={classes.tags}>
+                {loadedPost.tags.split(", ").map((tag, index) => (
+                  <div key={`tag${index}`} className={classes.tag}>
+                    {tag.toLowerCase()}
+                  </div>
+                ))}
+              </div>
+
+              <img
+                src={loadedPost.headImg}
+                alt={loadedPost.headImgAlt}
+                className={classes.headImg}
+              ></img>
+              <p className={classes.caption}>{loadedPost.headImgCaption}</p>
             </header>
-            <hr />
             <article>
               {loadedPost!.content.map((ct) => {
                 if (ct.type === "paragraph") {

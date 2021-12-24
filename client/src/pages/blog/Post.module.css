@@ -70,13 +70,34 @@
 }
 
 .post {
-  width: 80%;
-  margin: 7rem 10% 0 10%;
+  width: 90%;
+  margin: 7rem 5% 0 5%;
 }
 
 .post header {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.headImg {
+  object-fit: cover;
+  width: 100%;
+  height: 14rem;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+
+.tag {
+  background-color: #454545;
+  color: #f7e0ad;
+  padding: 4px 6px;
+  margin-right: 0.5rem;
+  border-radius: 4px;
 }
 
 .post h2,
@@ -88,22 +109,36 @@ h3 {
   padding: 0;
 }
 
+.header-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .dates {
+  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: flex-end;
+
 }
 
-.dates p {
-  text-align: left;
-  margin-top: 0;
-  padding-top: 0;
+.created-date {
   color: #666;
+  font-size: 24px;
 }
 
-.dates h2 {
-  margin-bottom: 0;
-  padding-bottom: 0;
+.updated-date {
+  color: #666;
+  font-size: smaller;
+  margin: 0;
 }
+
+.caption {
+  margin: 0;
+  align-self: center;
+  color: #666;
+  font-size: 12px;
+}
+
 
 .post article {
   display: flex;
@@ -147,19 +182,22 @@ h3 {
 }
 
 @media only screen and (min-width: 990px) {
-  .dates p {
-    text-align: right;
+  .post {
+    width: 70%;
+    margin: 7rem 15% 0 15%;
   }
+
+
   .open-links {
     height: 80vh;
     margin-top: 0;
   }
 
-  .post header {
+  /* .post header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+  } */
 
   .admin-buttons {
     width: 100%;

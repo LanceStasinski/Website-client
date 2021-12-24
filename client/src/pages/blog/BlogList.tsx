@@ -30,7 +30,12 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
                   <article>
                     <h3 className={classes["blog-title"]}>{post.title}</h3>
                     <p>{post.blurb}</p>
-                    <p className={classes['post-date']}>{`${post.month} ${post.day}, ${post.year}`}</p>
+                    <time
+                      dateTime={new Date(
+                        `${post.month} ${post.day}, ${post.year}`
+                      ).toString()}
+                      className={classes["post-date"]}
+                    >{`${post.month} ${post.day}, ${post.year}`}</time>
                     <div className={classes.tags}>
                       {post.tags.split(", ").map((tag, index) => (
                         <div className={classes.tag} key={`tag${index}`}>
@@ -40,7 +45,6 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
                     </div>
                   </article>
                 </div>
-
               </Card>
             </Link>
           </li>
