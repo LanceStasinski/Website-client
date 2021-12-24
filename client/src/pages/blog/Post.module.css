@@ -36,7 +36,7 @@
 
 .open-links {
   position: fixed;
-  margin-top: 7rem;
+
   height: 10vh;
   width: 1.5rem;
   border-top-left-radius: 12px;
@@ -146,6 +146,16 @@ h3 {
   color: #666;
 }
 
+.post img {
+  max-width: 100%;
+  object-fit: cover;
+  max-height: 600px;
+}
+
+.content-paragraph {
+  line-height: 175% !important;
+}
+
 .references {
   margin: 2rem 0;
 }
@@ -162,10 +172,6 @@ h3 {
 
 .references a {
   word-break: break-all;
-}
-
-.post img {
-  max-width: 100%;
 }
 
 .admin-buttons {
@@ -189,18 +195,6 @@ h3 {
     width: 70%;
     margin: 7rem 15% 0 15%;
   }
-
-
-  .open-links {
-    height: 80vh;
-    margin-top: 0;
-  }
-
-  /* .post header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  } */
 
   .admin-buttons {
     width: 100%;
