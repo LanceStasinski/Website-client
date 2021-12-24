@@ -53,6 +53,7 @@ interface PostInfo {
     type: string;
     text: string;
     alt?: string;
+    caption?: string;
     language?: string;
     _id: string;
   }[];
@@ -251,30 +252,31 @@ const Post: React.FC = () => {
           </PostLinksDrawer>
           <div className={classes.post}>
             <header>
-              <div className={classes['header-text']}>
+              <div className={classes["header-text"]}>
                 <h2>{loadedPost!.title}</h2>
                 <div className={classes.dates}>
-                <time
-                  className={classes["created-date"]}
-                  dateTime={new Date(
-                    `${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`
-                  ).toString()}
-                >{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</time>
-                {loadedPost.updatedMonth &&
-                  !(
-                    loadedPost.month === loadedPost.updatedMonth &&
-                    loadedPost.day === loadedPost.updatedDay &&
-                    loadedPost.year === loadedPost.updatedYear
-                  ) && (
-                    <p className={classes["updated-date"]}>
-                      Updated{" "}
-                      <time
-                        dateTime={new Date(
-                          `${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`
-                        ).toString()}
-                      >{`${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</time>
-                    </p>
-                  )}</div>
+                  <time
+                    className={classes["created-date"]}
+                    dateTime={new Date(
+                      `${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`
+                    ).toString()}
+                  >{`${loadedPost.month} ${loadedPost.day}, ${loadedPost.year}`}</time>
+                  {loadedPost.updatedMonth &&
+                    !(
+                      loadedPost.month === loadedPost.updatedMonth &&
+                      loadedPost.day === loadedPost.updatedDay &&
+                      loadedPost.year === loadedPost.updatedYear
+                    ) && (
+                      <p className={classes["updated-date"]}>
+                        Updated{" "}
+                        <time
+                          dateTime={new Date(
+                            `${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`
+                          ).toString()}
+                        >{`${loadedPost.updatedMonth} ${loadedPost.updatedDay}, ${loadedPost.updatedYear}`}</time>
+                      </p>
+                    )}
+                </div>
               </div>
 
               <div className={classes.tags}>
@@ -297,7 +299,12 @@ const Post: React.FC = () => {
                 if (ct.type === "paragraph") {
                   return <p key={ct._id}>{ct.text}</p>;
                 } else if (ct.type === "image" || ct.type === "imageUrl") {
-                  return <img src={ct.text} alt={ct.alt} key={ct._id} />;
+                  return (
+                    <React.Fragment>
+                      <img src={ct.text} alt={ct.alt} key={ct._id} />
+                      <p className={classes.caption}>{ct.caption}</p>
+                    </React.Fragment>
+                  );
                 } else if (ct.type === "heading") {
                   return <h3 key={ct._id}>{ct.text}</h3>;
                 } else if (ct.type === "code") {
@@ -316,7 +323,7 @@ const Post: React.FC = () => {
                   );
                 }
               })}
-              <div>
+              <section className={classes.references}>
                 <h3>References</h3>
                 <ul>
                   {loadedPost!.references.map((ref) => {
@@ -330,7 +337,7 @@ const Post: React.FC = () => {
                     );
                   })}
                 </ul>
-              </div>
+              </section>
             </article>
             {authCtx.userId === ADMIN && (
               <div className={classes["admin-buttons"]}>

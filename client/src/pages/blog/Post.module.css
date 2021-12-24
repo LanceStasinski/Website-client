@@ -139,7 +139,6 @@ h3 {
   font-size: 12px;
 }
 
-
 .post article {
   display: flex;
   flex-direction: column;
@@ -147,17 +146,21 @@ h3 {
   color: #666;
 }
 
-.post ul {
+.references {
+  margin: 2rem 0;
+}
+
+.references ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.post cite {
+.references cite {
   font-style: normal;
 }
 
-.post a {
+.references a {
   word-break: break-all;
 }
 
