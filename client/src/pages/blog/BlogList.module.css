@@ -5,6 +5,10 @@
   padding-left: 0;
 }
 
+.posts li {
+  margin: 0.5rem 0;
+}
+
 .blog-card {
   margin-top: 2rem !important;
 }
@@ -18,7 +22,8 @@
   margin: 0;
 }
 
-.post-info {
+.post-info,
+.post-info-reverse {
   display: flex;
   flex-direction: column;
 }
@@ -29,7 +34,8 @@
   object-fit: cover;
 }
 
-.post-info article {
+.post-info article,
+.post-info-reverse article {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,14 +43,14 @@
   padding: 0.5rem 1rem;
 }
 
-.post-info p {
-  margin: 1rem 1rem 0 0;
+.post-info p,
+.post-info-reverse p{
   padding-right: 1rem;
 }
 
 .post-date {
   font-size: 12px;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .tags {
@@ -74,6 +80,10 @@
 @media only screen and (min-width: 990px) {
   .post-info {
     flex-direction: row;
+  }
+
+  .post-info-reverse {
+    flex-direction: row-reverse;
   }
 
   .post-img {

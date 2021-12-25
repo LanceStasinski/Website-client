@@ -16,12 +16,18 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
 
   return (
     <ul className={classes.posts}>
-      {props.posts?.map((post) => {
+      {props.posts?.map((post, index) => {
         return (
           <li key={post._id}>
             <Link to={`/blog/post/${post._id}`}>
               <Card className={classes["blog-card"]}>
-                <div className={classes["post-info"]}>
+                <div
+                  className={
+                    index % 2 === 0
+                      ? classes["post-info"]
+                      : classes["post-info-reverse"]
+                  }
+                >
                   <img
                     src={post.headImg}
                     alt={post.headImgAlt}
