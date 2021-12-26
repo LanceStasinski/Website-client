@@ -9,7 +9,6 @@ import globeIcon from "../../assets/social-icons/globe.png";
 import linkedinIcon from "../../assets/social-icons/linkedin2.png";
 import githubIcon from "../../assets/social-icons/github2.png";
 
-
 const WEBSITE_URL = process.env.REACT_APP_WEBSITE_URL;
 
 const Resume: React.FC = () => {
@@ -44,17 +43,31 @@ const Resume: React.FC = () => {
               </li>
               <li>
                 <img src={globeIcon} alt="website icon" />
-                <a href={`${WEBSITE_URL}`}>lancestasinski.com</a>
+                <a
+                  href={`${WEBSITE_URL}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  lancestasinski.com
+                </a>
               </li>
               <li>
                 <img src={linkedinIcon} alt="LinkedIn icon" />
-                <a href="https://www.linkedin.com/in/lance-stasinski/">
+                <a
+                  href="https://www.linkedin.com/in/lance-stasinski/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   linkedin.com/in/lance-stasinski
                 </a>
               </li>
               <li>
                 <img src={githubIcon} alt="Github icon" />
-                <a href="https://github.com/LanceStasinski">
+                <a
+                  href="https://github.com/LanceStasinski"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   github.com/LanceStasinski
                 </a>
               </li>
