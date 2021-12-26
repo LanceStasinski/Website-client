@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 import classes from "./Resume.module.css";
 import headshot from "../../assets/headshot-4.jpg";
@@ -8,7 +8,7 @@ import locationIcon from "../../assets/social-icons/location.png";
 import globeIcon from "../../assets/social-icons/globe.png";
 import linkedinIcon from "../../assets/social-icons/linkedin2.png";
 import githubIcon from "../../assets/social-icons/github2.png";
-import React from "react";
+
 
 const WEBSITE_URL = process.env.REACT_APP_WEBSITE_URL;
 
