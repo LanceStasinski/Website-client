@@ -1,6 +1,6 @@
 .posts {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   list-style-type: none;
   padding-left: 0;
 }
