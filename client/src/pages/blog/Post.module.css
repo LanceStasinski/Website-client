@@ -154,6 +154,7 @@ h3 {
 
 .content-paragraph {
   line-height: 175% !important;
+  margin: 0.5rem 0;
 }
 
 .references {
