@@ -14,7 +14,6 @@
 }
 
 .page header {
-  /* filter: url('#goo'); */
   position: relative;
   height: 20%;
   display: flex;
@@ -22,40 +21,26 @@
   justify-content: space-between;
   background-color: #454545;
   color: #f7e0ad;
-  /* padding: 1rem; */
   clip-path: polygon(
     0% 0%,
-    27% 0%,
+    28% 0%,
     31% 10%,
     100% 10%,
     100% 100%,
-    15% 100%,
+    13.5% 100%,
     0% 50%
   );
-  /* border-bottom-left-radius: 120px; */
 }
 
-/* .page header::before {
-  content: '';
-  position: absolute;
-  right: 0%;
-  height: 211px;
-  top: -90%;
-  overflow: hidden;
-  width: 70%;
-  background-color: white;
-  border-bottom-left-radius: 50px;
-} */
-
 .headshot {
-  clip-path: polygon(0% 0%, 75% 0%, 100% 20%, 100% 100%, 25% 100%, 0% 80%);
+  clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
   width: 140px;
   height: 140px;
   margin: 1.5rem 0 3rem 4rem;
 }
 
 .title {
-  margin-top: 1.75rem;
+  margin-top: 1.35rem;
 }
 
 .first-name {
@@ -77,9 +62,9 @@
 
 .profession {
   margin: 0;
-  font-size: smaller;
   font-family: "Prompt", sans-serif;
   font-weight: 500;
+  margin-top: 0.4rem;
 }
 
 .contact-info {
