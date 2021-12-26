@@ -63,12 +63,13 @@
 .profession {
   margin: 0;
   font-family: "Prompt", sans-serif;
+  color: #f7e0ad !important;
   font-weight: 500;
   margin-top: 0.4rem;
 }
 
 .contact-info {
-  margin: 2.5rem 1rem 1rem 0;
+  margin: 2.25rem 1rem 1rem 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
