@@ -10,7 +10,7 @@
   height: 11in;
   width: 8.5in;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
+  overflow: hidden;
 }
 
 .page header {
@@ -32,7 +32,7 @@
     0% 100%,
     0% 50%
   ); */
-  border-bottom-left-radius: 150px;
+  border-bottom-left-radius: 120px;
 
 }
 
@@ -40,7 +40,9 @@
   content: '';
   position: absolute;
   right: 0%;
-  height: 12%;
+  height: 211px;
+  top: -90%;
+  overflow: hidden;
   width: 70%;
   background-color: white;
   border-bottom-left-radius: 50px;
@@ -54,7 +56,7 @@
 }
 
 .title {
-  margin-top: 1rem;
+  margin-top: 1.75rem;
 }
 
 .first-name {
@@ -84,12 +86,11 @@
 .contact-info {
   margin: 2.5rem 1rem 1rem 0;
   list-style-type: none;
-  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   border-left: 1pt #f7e0ad solid;
-  padding-left: 1rem;
+  padding: 0 3rem 0 1rem;
 }
 
 .contact-info li {
