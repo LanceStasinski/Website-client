@@ -93,7 +93,7 @@ const Post: React.FC = () => {
           `${REST_API}/blog/posts/${postId}`
         );
         setLoadedPost(responseData.post);
-        console.log(responseData);
+        document.title = responseData.post.title || "";
         setLoadedPostLinks(responseData.posts);
         setLoadedComments(responseData.post.comments);
         const socket = io(`${REST_SERVER}`);
@@ -295,38 +295,44 @@ const Post: React.FC = () => {
               <p className={classes.caption}>{loadedPost.headImgCaption}</p>
             </header>
             <article>
-                {loadedPost!.content.map((ct) => {
-                  if (ct.type === "paragraph") {
-                    return <p className={classes['content-paragraph']} key={ct._id}>{ct.text}</p>;
-                  } else if (ct.type === "image" || ct.type === "imageUrl") {
-                    return (
-                      <React.Fragment>
-                        <img src={ct.text} alt={ct.alt} key={ct._id} />
-                        <p className={classes.caption}>{ct.caption}</p>
-                      </React.Fragment>
-                    );
-                  } else if (ct.type === "heading") {
-                    return <h3 key={ct._id}>{ct.text}</h3>;
-                  } else if (ct.type === "code") {
-                    return (
-                      <pre key={Math.random()}>
-                        <code>
-                          <Highlight className={ct.language}>
-                            {ct.text}
-                          </Highlight>
-                        </code>
-                      </pre>
-                    );
-                  } else {
-                    return (
-                      <div
-                        key={Math.random()}
-                      >{`Error: Content type ${ct.type} not supported.`}</div>
-                    );
-                  }
-                })}
+              {loadedPost!.content.map((ct) => {
+                if (ct.type === "paragraph") {
+                  return (
+                    <p className={classes["content-paragraph"]} key={ct._id}>
+                      {ct.text}
+                    </p>
+                  );
+                } else if (ct.type === "image" || ct.type === "imageUrl") {
+                  return (
+                    <React.Fragment>
+                      <img src={ct.text} alt={ct.alt} key={ct._id} />
+                      <p className={classes.caption}>{ct.caption}</p>
+                    </React.Fragment>
+                  );
+                } else if (ct.type === "heading") {
+                  return (
+                    <h3 className={classes["content-header"]} key={ct._id}>
+                      {ct.text}
+                    </h3>
+                  );
+                } else if (ct.type === "code") {
+                  return (
+                    <pre key={Math.random()}>
+                      <code>
+                        <Highlight className={ct.language}>{ct.text}</Highlight>
+                      </code>
+                    </pre>
+                  );
+                } else {
+                  return (
+                    <div
+                      key={Math.random()}
+                    >{`Error: Content type ${ct.type} not supported.`}</div>
+                  );
+                }
+              })}
               <section className={classes.references}>
-                <h3>References</h3>
+                <h3>Further Reading</h3>
                 <ul>
                   {loadedPost!.references.map((ref) => {
                     return (
