@@ -33,6 +33,7 @@ interface Comment {
 }
 
 interface PostInfo {
+  _id: string;
   title: string;
   blurb: string;
   tags: string;
@@ -73,7 +74,7 @@ interface PostData {
 }
 
 const Post: React.FC = () => {
-  const postId = useParams<{ postId: string }>().postId;
+  const postTitle = useParams<{ postId: string }>().postId;
   const [loadedPost, setLoadedPost] = useState<PostInfo>();
   const [loadedComments, setLoadedComments] = useState<Comment[]>([]);
   const [loadedPostLinks, setLoadedPostLinks] = useState<PostData[]>([]);
@@ -90,7 +91,7 @@ const Post: React.FC = () => {
     const getPost = async () => {
       try {
         const responseData = await sendRequest(
-          `${REST_API}/blog/posts/${postId}`
+          `${REST_API}/blog/posts/${postTitle}`
         );
         setLoadedPost(responseData.post);
         document.title = responseData.post.title || "";
@@ -107,7 +108,7 @@ const Post: React.FC = () => {
       } catch (error) {}
     };
     getPost();
-  }, [sendRequest, postId]);
+  }, [sendRequest, postTitle]);
 
   const addComment = (comment: Comment) => {
     setLoadedComments((prevComments) => [...prevComments!, comment]);
@@ -128,7 +129,7 @@ const Post: React.FC = () => {
           JSON.stringify({
             newComment: commentData.newComment,
             userId: authCtx.userId,
-            postId: postId,
+            postId: loadedPost?._id,
             date: new Date().toLocaleDateString(),
           }),
           {
@@ -138,7 +139,7 @@ const Post: React.FC = () => {
         );
       } catch (error) {}
     },
-    [authCtx.token, authCtx.userId, postId, sendRequest]
+    [authCtx.token, authCtx.userId, loadedPost?._id, sendRequest]
   );
 
   const deleteCommentHandler = useCallback(
@@ -158,7 +159,7 @@ const Post: React.FC = () => {
   const deletePostHandler = async () => {
     try {
       await sendRequest(
-        `${REST_API}/blog/delete/${postId}`,
+        `${REST_API}/blog/delete/${loadedPost?._id}`,
         "DELETE",
         {},
         {
@@ -179,7 +180,7 @@ const Post: React.FC = () => {
 
   const editPostHandler = () => {
     postCtx.setContext(
-      postId,
+      loadedPost!._id,
       loadedPost!.title,
       loadedPost!.blurb,
       loadedPost!.tags,
@@ -359,7 +360,7 @@ const Post: React.FC = () => {
             )}
             <section>
               <CommentSection
-                postId={postId}
+                postId={loadedPost._id}
                 comments={loadedComments!}
                 onDeleteComment={deleteCommentHandler}
                 onAddComment={addCommentHandler}
