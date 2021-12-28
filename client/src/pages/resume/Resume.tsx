@@ -73,6 +73,14 @@ const Resume: React.FC = () => {
               </li>
             </ul>
           </header>
+          <div className={classes['resume-body']}>
+            <section className={classes.skills}>
+              x
+            </section>
+            <section>
+
+            </section>
+          </div>
         </div>
       </div>
     </React.Fragment>

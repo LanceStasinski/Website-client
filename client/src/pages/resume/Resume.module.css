@@ -105,3 +105,31 @@
   padding: 0;
   margin: 0;
 }
+
+.resume-body {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-top: 1.5rem;}
+
+.skills {
+  background-color: #454545;
+  height: 2000px;
+  position: relative;
+}
+
+.skills::before {
+  content: '';
+  border: solid transparent;
+  bottom: 100%;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: transparent;
+  border-bottom-color: #454545;
+  border-left-color: #454545;
+  border-width: 53px;
+  left: 0%;
+  margin-left: -10px;
+}
+
