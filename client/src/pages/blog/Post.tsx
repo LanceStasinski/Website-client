@@ -91,7 +91,7 @@ const Post: React.FC = () => {
     const getPost = async () => {
       try {
         const responseData = await sendRequest(
-          `${REST_API}/blog/posts/${postTitle}`
+          `${REST_API}/blog/posts/${postTitle.replaceAll('-', ' ')}`
         );
         setLoadedPost(responseData.post);
         document.title = responseData.post.title || "";
