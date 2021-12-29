@@ -10,6 +10,7 @@ import twitterIcon from "../../assets/social-icons/twitter.png";
 import headshot from "../../assets/headshot-3.jpg";
 
 const About: React.FC = () => {
+  document.title = "Lance Stasinski";
   return (
     <React.Fragment>
       <div className={classes.headshot}>

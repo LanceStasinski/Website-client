@@ -19,6 +19,7 @@ interface AuthInput {
 const REST_API = process.env.REACT_APP_REST_API;
 
 const Auth: React.FC = () => {
+  document.title = 'Login | Lance Stasinski'
   const authCtx = useContext(AuthContext);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();

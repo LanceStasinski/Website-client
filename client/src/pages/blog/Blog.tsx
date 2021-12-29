@@ -25,6 +25,7 @@ export interface PostHeading {
 }
 
 const Blog: React.FC = () => {
+  document.title = "Blog | Lance Stasinski";
   const authCtx = useContext(AuthContext);
   const isAdmin = authCtx.token && authCtx.userId === ADMIN_USER;
   const [loadedPosts, setLoadedPosts] = useState<PostHeading[]>();

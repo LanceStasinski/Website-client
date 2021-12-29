@@ -20,6 +20,7 @@ interface ContactInput {
 const REST_API = process.env.REACT_APP_REST_API;
 
 const Contact: React.FC = () => {
+  document.title = "Contact | Lance Stasinski";
   const [showMessageSent, setShowMessageSent] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();

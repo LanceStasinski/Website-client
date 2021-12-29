@@ -12,6 +12,7 @@ import githubIcon from "../../assets/social-icons/github2.png";
 const WEBSITE_URL = process.env.REACT_APP_WEBSITE_URL;
 
 const Resume: React.FC = () => {
+  document.title = "Resume | Lance Stasinski";
   return (
     <React.Fragment>
       <div className={classes["resume-wrapper"]}>
@@ -73,13 +74,9 @@ const Resume: React.FC = () => {
               </li>
             </ul>
           </header>
-          <div className={classes['resume-body']}>
-            <section className={classes.skills}>
-              x
-            </section>
-            <section>
-
-            </section>
+          <div className={classes["resume-body"]}>
+            <section className={classes.skills}>x</section>
+            <section></section>
           </div>
         </div>
       </div>
