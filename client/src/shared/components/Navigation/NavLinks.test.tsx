@@ -14,7 +14,7 @@ describe("NavLinks component", () => {
         </Route>
       </BrowserRouter>
     );
-    const CVLink = screen.getByText(/cv/i);
+    const CVLink = screen.getByText(/resume/i);
     expect(CVLink).toBeInTheDocument();
     const portfolioLink = screen.getByText(/portfolio/i);
     expect(portfolioLink).toBeInTheDocument();
@@ -35,8 +35,9 @@ describe("NavLinks component", () => {
         isLoggedIn: true,
         login: login,
         logout: logout,
-        userId: null,
-        token: null
+        userId: 'u1',
+        token: 'token',
+        username: 'user1'
       }}>
         <BrowserRouter>
           <Route>
