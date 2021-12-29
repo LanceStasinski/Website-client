@@ -6,7 +6,7 @@ import classes from "./BlogList.module.css";
 import { PostHeading } from "./Blog";
 
 const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
-  if (props.posts?.length === 0) {
+  if (!props.posts || props.posts?.length === 0) {
     return (
       <Card className={classes["blog-404"]}>
         <h2>No posts found.</h2>
@@ -19,7 +19,7 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
       {props.posts?.map((post, index) => {
         return (
           <li key={post._id}>
-            <Link to={`/blog/post/${post.title.replaceAll(' ', '-')}`}>
+            <Link to={`/blog/post/${post.title.replace(/\s/g, '-')}`}>
               <Card className={classes["blog-card"]}>
                 <div
                   className={

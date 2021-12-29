@@ -17,7 +17,6 @@ export interface PostHeading {
   blurb: string;
   tags: string;
   headImg: string;
-
   headImgAlt: string;
   month: string;
   day: string | number;
