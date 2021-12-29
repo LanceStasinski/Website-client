@@ -31,7 +31,7 @@ describe("CreatePost component", () => {
     const inputElements = document.getElementsByTagName("input");
     const selectElements = document.getElementsByTagName("select");
     const textareaElements = document.getElementsByTagName("textarea");
-    expect(inputElements.length).toEqual(8);
+    expect(inputElements.length).toEqual(13);
     expect(selectElements.length).toEqual(1);
     expect(textareaElements.length).toEqual(2);
   });
@@ -51,10 +51,10 @@ describe("CreatePost component", () => {
     const addReferenceBtn = screen.getByText(/add reference/i);
     userEvent.click(addContentBtn);
     let inputElements = document.getElementsByTagName("input");
-    expect(inputElements.length).toEqual(11);
+    expect(inputElements.length).toEqual(17);
     userEvent.click(addReferenceBtn);
     inputElements = document.getElementsByTagName("input");
-    expect(inputElements.length).toEqual(15);
+    expect(inputElements.length).toEqual(21);
   });
   test("remove buttons remove input elements from page", () => {
     render(
@@ -76,12 +76,12 @@ describe("CreatePost component", () => {
     ) as HTMLButtonElement;
     userEvent.click(removeContentBtn);
     let inputElements = document.getElementsByTagName("input");
-    expect(inputElements.length).toEqual(5);
+    expect(inputElements.length).toEqual(9);
     userEvent.click(removeRefBtn);
     inputElements = document.getElementsByTagName("input");
-    expect(inputElements.length).toEqual(1);
+    expect(inputElements.length).toEqual(5);
   });
-  test("renders populated Title and Blog input fields", () => {
+  test("renders populated post header input fields", () => {
     render(
       <PostContext.Provider
         value={{
@@ -89,6 +89,10 @@ describe("CreatePost component", () => {
             id: "p1",
             title: "Post 1",
             blurb: "This is post 1",
+            tags: "testTag",
+            headImg: "testImg",
+            headImgAlt: "image for testing",
+            headImgCaption: "test caption",
             content: [
               {
                 _id: "c1",
@@ -114,7 +118,17 @@ describe("CreatePost component", () => {
     );
     const titleElement = document.getElementById("title") as HTMLInputElement;
     const blogElement = document.getElementById("blurb") as HTMLTextAreaElement;
+    const tagsElement = document.getElementById("tags") as HTMLInputElement;
+    const headImgField = document.getElementById("headImg") as HTMLInputElement;
+    const altField = document.getElementById("headImgAlt") as HTMLInputElement;
+    const captionField = document.getElementById(
+      "headImgCaption"
+    ) as HTMLInputElement;
     expect(titleElement.value).toBe("Post 1");
     expect(blogElement.value).toBe("This is post 1");
+    expect(tagsElement.value).toBe("testTag");
+    expect(headImgField.value).toBe("testImg");
+    expect(altField.value).toBe("image for testing");
+    expect(captionField.value).toBe("test caption");
   });
 });
