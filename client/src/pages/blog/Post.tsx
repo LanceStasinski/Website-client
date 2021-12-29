@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-
 import { io } from "socket.io-client";
 import { useParams, useHistory } from "react-router-dom";
 import Highlight from "react-highlight";
@@ -17,6 +16,7 @@ import { PostContext } from "../../shared/context/post-context";
 import PostLinks from "./PostLinks";
 import PostLinksDrawer from "./PostLinksDrawer";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
+import DisplayHTML from "./DisplayHTML";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -91,7 +91,7 @@ const Post: React.FC = () => {
     const getPost = async () => {
       try {
         const responseData = await sendRequest(
-          `${REST_API}/blog/posts/${postTitle.replaceAll('-', ' ')}`
+          `${REST_API}/blog/posts/${postTitle.replaceAll("-", " ")}`
         );
         setLoadedPost(responseData.post);
         document.title = responseData.post.title || "";
@@ -299,9 +299,11 @@ const Post: React.FC = () => {
               {loadedPost!.content.map((ct) => {
                 if (ct.type === "paragraph") {
                   return (
-                    <p className={classes["content-paragraph"]} key={ct._id}>
-                      {ct.text}
-                    </p>
+                    <DisplayHTML
+                      key={ct._id}
+                      className={classes["content-paragraph"]}
+                      text={ct.text}
+                    />
                   );
                 } else if (ct.type === "image" || ct.type === "imageUrl") {
                   return (

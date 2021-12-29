@@ -162,6 +162,12 @@ h3 {
   margin: 0.5rem 0;
 }
 
+.content-paragraph code {
+  background-color: #eee;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+
 .content-header {
   margin-top: 1rem !important;
 }
