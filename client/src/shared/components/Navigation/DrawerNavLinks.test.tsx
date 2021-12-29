@@ -8,7 +8,7 @@ import DrawerNavLinks from "./DrawerNavLinks";
 describe("DrawerNavLinks component", () => {
   test("renders all links", () => {
     render(<BrowserRouter><Route><DrawerNavLinks /></Route></BrowserRouter>);
-    const CVLink = screen.getByText(/cv/i);
+    const CVLink = screen.getByText(/resume/i);
     expect(CVLink).toBeInTheDocument();
     const portfolioLink = screen.getByText(/portfolio/i);
     expect(portfolioLink).toBeInTheDocument();

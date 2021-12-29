@@ -12,7 +12,7 @@ describe("InputFields component", () => {
     const inputElements = document.getElementsByTagName("input");
     expect(selectElements.length).toEqual(1);
     expect(textAreaElements.length).toEqual(1);
-    expect(inputElements.length).toEqual(3);
+    expect(inputElements.length).toEqual(4);
   });
   test("remove function is called on click", () => {
     const onRemove = jest.fn();
