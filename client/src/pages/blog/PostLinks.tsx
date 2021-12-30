@@ -22,7 +22,7 @@ const PostLinks: React.FC<Props> = (props) => {
           return (
             <li key={post._id}>
               <NavLink
-                to={`${post._id}`}
+                to={`${post.title.replace(/\s/, '-')}`}
                 activeClassName={classes["active-link"]}
                 exact
               >

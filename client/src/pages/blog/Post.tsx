@@ -94,7 +94,7 @@ const Post: React.FC = () => {
           `${REST_API}/blog/posts/${postTitle.replaceAll("-", " ")}`
         );
         setLoadedPost(responseData.post);
-        document.title = responseData.post.title || "";
+        document.title = responseData.post.title || "Post Not Found";
         setLoadedPostLinks(responseData.posts);
         setLoadedComments(responseData.post.comments);
         const socket = io(`${REST_SERVER}`);

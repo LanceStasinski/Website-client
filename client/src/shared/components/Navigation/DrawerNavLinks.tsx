@@ -10,7 +10,7 @@ const DrawerNavLinks: React.FC = () => {
   return (
     <ul className={classes["drawer-nav-links"]}>
       <li>
-        <DrawerNavItem to="/resume">RÉSUMÉ</DrawerNavItem>
+        <DrawerNavItem to="/resume">RESUME</DrawerNavItem>
       </li>
       <li>
         <DrawerNavItem to="/portfolio">PORTFOLIO</DrawerNavItem>
