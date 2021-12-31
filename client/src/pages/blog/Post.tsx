@@ -232,7 +232,7 @@ const Post: React.FC = () => {
           </Card>
         </div>
       )}
-      {loadedPost && (
+      {!isLoading && loadedPost && (
         <div className={classes["post-wrapper"]}>
           {!showLinks && (
             <button
@@ -254,7 +254,7 @@ const Post: React.FC = () => {
           <div className={classes.post}>
             <header>
               <div className={classes["header-text"]}>
-                <h2>{loadedPost!.title}</h2>
+                <h2 id="title" >{loadedPost!.title}</h2>
                 <div className={classes.dates}>
                   <time
                     className={classes["created-date"]}

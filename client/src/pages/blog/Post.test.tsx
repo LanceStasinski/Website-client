@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { render, waitFor, screen, fireEvent } from "@testing-library/react";
+import { render, waitFor, screen, act } from "@testing-library/react";
 
 import { AuthContext } from "../../shared/context/auth-context";
 import Post from "./Post";
@@ -94,34 +94,34 @@ describe("Post component", () => {
         isLoading: false,
         error: undefined,
         clearError: () => {},
-        sendRequest: sendRequest,
+        sendRequest: jest.fn(async () => response),
       };
     });
-    render(
-      <BrowserRouter>
-        <Route>
-          <AuthContext.Provider
-            value={{
-              isLoggedIn: false,
-              userId: "",
-              username: "",
-              token: "",
-              login: (uid, token, username) => {},
-              logout: () => {},
-            }}
-          >
-            <Post />
-          </AuthContext.Provider>
-        </Route>
-      </BrowserRouter>
-    );
+    jest.spyOn(React, "useEffect").mockImplementation((f) => f());
 
+    await act(async () => {
+      render(
+        <BrowserRouter>
+          <Route>
+            <AuthContext.Provider
+              value={{
+                isLoggedIn: false,
+                userId: "",
+                username: "",
+                token: "",
+                login: (uid, token, username) => {},
+                logout: () => {},
+              }}
+            >
+              <Post />
+            </AuthContext.Provider>
+          </Route>
+        </BrowserRouter>
+      );
+    });
 
-    // const title = await waitFor(() => screen.getByText("Test post"), {
-    //   timeout: 2000,
-    // });
-    // expect(title).toBeInTheDocument();
-    expect(sendRequest).toHaveBeenCalledTimes(1);
+    // expect(sendRequest).toHaveBeenCalled();
+    expect(screen.getByText("Test post")).toBeInTheDocument();
   });
   test("renders no post found if no posts are loaded", async () => {
     const sendRequest = jest.fn(async () => {});
