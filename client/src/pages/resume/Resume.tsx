@@ -8,6 +8,7 @@ import locationIcon from "../../assets/social-icons/location.png";
 import globeIcon from "../../assets/social-icons/globe.png";
 import linkedinIcon from "../../assets/social-icons/linkedin2.png";
 import githubIcon from "../../assets/social-icons/github2.png";
+import SkillsSection from "./SkillsSection";
 
 const WEBSITE_URL = process.env.REACT_APP_WEBSITE_URL;
 
@@ -75,7 +76,25 @@ const Resume: React.FC = () => {
             </ul>
           </header>
           <div className={classes["resume-body"]}>
-            <section className={classes.skills}>x</section>
+            <section className={classes.skills}>
+              <SkillsSection heading="EDUCATION">
+                <ul>
+                  <li>
+                    <p>M.S.</p>
+                    <p>Botany and Plant Pathology</p>
+                    <p>University of Maine</p>
+                    <div>
+                      <img src="" alt="" />
+                      <p>September 2019 - December 2021</p>
+                    </div>
+                    <div>
+                      <img src="" alt="" />
+                      <p>Orono, ME</p>
+                    </div>
+                  </li>
+                </ul>
+              </SkillsSection>
+            </section>
             <section></section>
           </div>
         </div>
