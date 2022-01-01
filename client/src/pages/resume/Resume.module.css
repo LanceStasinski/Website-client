@@ -147,18 +147,18 @@
 }
 
 .education-section p,
-.education-section div {
+.education-section-div {
   margin: 0.15rem 0 0 0;
   padding: 0;
   color: #ddd;
 }
 
-.education-section div {
+.education-section-div {
   display: flex;
   flex-direction: row;
 }
 
-.education-section div p {
+.education-section-div p {
   font-size: smaller;
 }
 

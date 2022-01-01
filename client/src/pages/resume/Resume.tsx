@@ -10,6 +10,7 @@ import linkedinIcon from "../../assets/social-icons/linkedin2.png";
 import githubIcon from "../../assets/social-icons/github2.png";
 import calendarIcon from "../../assets/social-icons/calendar.png";
 import SkillsSection from "./SkillsSection";
+import CodingSkill from "./CodingSkill";
 
 const WEBSITE_URL = process.env.REACT_APP_WEBSITE_URL;
 
@@ -83,11 +84,11 @@ const Resume: React.FC = () => {
                   <li>
                     <p>M.S. - Botany and Plant Pathology</p>
                     <p><b>University of Maine</b></p>
-                    <div>
+                    <div className={classes['education-section-div']}>
                       <img src={calendarIcon} alt="Calendar icon" />
                       <p>September 2019 - December 2021</p>
                     </div>
-                    <div>
+                    <div className={classes['education-section-div']}>
                       <img src={locationIcon} alt="Location icon" />
                       <p>Orono, ME</p>
                     </div>
@@ -95,11 +96,11 @@ const Resume: React.FC = () => {
                   <li>
                     <p>B.S. - Biology</p>
                     <p><b>Chadron State College</b></p>
-                    <div>
+                    <div className={classes['education-section-div']}>
                       <img src={calendarIcon} alt="Calendar icon" />
                       <p>September 2015 - May 2019</p>
                     </div>
-                    <div>
+                    <div className={classes['education-section-div']}>
                       <img src={locationIcon} alt="Location icon" />
                       <p>Chadron, NE</p>
                     </div>
@@ -107,7 +108,7 @@ const Resume: React.FC = () => {
                 </ul>
               </SkillsSection>
               <SkillsSection heading="SKILLS">
-
+                <CodingSkill experience={70} skillName="JavaScript" />
               </SkillsSection>
             </section>
             <section></section>

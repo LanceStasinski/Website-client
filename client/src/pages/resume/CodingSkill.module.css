@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prompt:wght@300;500&display=swap');
+
+.coding-skill {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.skill {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.experience-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.dot {
+  width: 20px;
+  height: 20px;
+  border-color: #f7e0ad;
+  border-radius: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.experience {
+  height: 1px;
+  background-color: #f7e0ad;
+}
+
+.remainder {
+  height: 1px;
+  background-color: #aaa;
+}
