@@ -1,8 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@300;500&display=swap");
+
 .skills-section {
   margin: 1rem;
-  border: 1pt white solid;
 }
 
 .skills-section h3 {
-  color: white;
+  color: #ddd;
+  padding: 0;
+  margin: 0;
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
 }
