@@ -80,27 +80,31 @@ const Resume: React.FC = () => {
           <div className={classes["resume-body"]}>
             <section className={classes.skills}>
               <SkillsSection heading="EDUCATION">
-                <ul className={classes['education-section']}>
+                <ul className={classes["education-section"]}>
                   <li>
                     <p>M.S. - Botany and Plant Pathology</p>
-                    <p><b>University of Maine</b></p>
-                    <div className={classes['education-section-div']}>
+                    <p>
+                      <b>University of Maine</b>
+                    </p>
+                    <div className={classes["education-section-div"]}>
                       <img src={calendarIcon} alt="Calendar icon" />
                       <p>September 2019 - December 2021</p>
                     </div>
-                    <div className={classes['education-section-div']}>
+                    <div className={classes["education-section-div"]}>
                       <img src={locationIcon} alt="Location icon" />
                       <p>Orono, ME</p>
                     </div>
                   </li>
                   <li>
                     <p>B.S. - Biology</p>
-                    <p><b>Chadron State College</b></p>
-                    <div className={classes['education-section-div']}>
+                    <p>
+                      <b>Chadron State College</b>
+                    </p>
+                    <div className={classes["education-section-div"]}>
                       <img src={calendarIcon} alt="Calendar icon" />
                       <p>September 2015 - May 2019</p>
                     </div>
-                    <div className={classes['education-section-div']}>
+                    <div className={classes["education-section-div"]}>
                       <img src={locationIcon} alt="Location icon" />
                       <p>Chadron, NE</p>
                     </div>
@@ -108,7 +112,9 @@ const Resume: React.FC = () => {
                 </ul>
               </SkillsSection>
               <SkillsSection heading="SKILLS">
-                <CodingSkill experience={70} skillName="JavaScript" />
+                <ul className={classes['skill-list']}>
+                  <CodingSkill experience={70} skillName="JavaScript" />
+                </ul>
               </SkillsSection>
             </section>
             <section></section>

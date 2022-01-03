@@ -4,22 +4,28 @@
   width: 100%;
   display: grid;
   grid-template-columns: 40% 60%;
+  padding: 0;
+  margin: 0 0 0 0.5rem;
 }
 
 .skill {
   font-family: 'Montserrat', sans-serif;
+  color: #ddd;
+  margin: 0 0 0 0.5rem;
 }
 
 .experience-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  align-items: center;
 }
+
 .dot {
-  width: 20px;
-  height: 20px;
-  border-color: #f7e0ad;
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: #f7e0ad;
   border-radius: 50px;
-  margin: 0;
+  margin: 0 0 0.03rem 0;
   padding: 0;
 }
 
