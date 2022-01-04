@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prompt:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prompt:wght@300;500&display=swap");
 
 .coding-skill {
   width: 100%;
@@ -9,7 +9,7 @@
 }
 
 .skill {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #ddd;
   margin: 0 0 0 0.5rem;
 }
@@ -20,6 +20,18 @@
   margin-right: 0.5rem;
 }
 
+.experience-bar-inner {
+  height: 2px;
+  width: 100%;
+  background-color: #aaa;
+  display: flex;
+}
+
+.experience-bar-fill {
+  height: 100%;
+  background-color: #f7e0ad;
+}
+
 .dot {
   display: block;
   width: 2px;
@@ -27,14 +39,4 @@
   background-color: #f7e0ad;
   align-self: center;
   padding: 0;
-}
-
-.experience {
-  height: 2px;
-  background-color: #f7e0ad;
-}
-
-.remainder {
-  height: 2px;
-  background-color: #aaa;
 }
