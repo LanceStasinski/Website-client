@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 40% 60%;
   padding: 0;
-  margin: 0 0 0 0.5rem;
+  margin: 0.5rem 0 0 0.5rem;
 }
 
 .skill {
@@ -17,24 +17,24 @@
 .experience-bar {
   display: flex;
   align-items: center;
+  margin-right: 0.5rem;
 }
 
 .dot {
   display: block;
-  width: 6px;
+  width: 2px;
   height: 6px;
   background-color: #f7e0ad;
-  border-radius: 50px;
-  margin: 0 0 0.03rem 0;
+  align-self: center;
   padding: 0;
 }
 
 .experience {
-  height: 1px;
+  height: 2px;
   background-color: #f7e0ad;
 }
 
 .remainder {
-  height: 1px;
+  height: 2px;
   background-color: #aaa;
 }

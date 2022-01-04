@@ -112,8 +112,30 @@ const Resume: React.FC = () => {
                 </ul>
               </SkillsSection>
               <SkillsSection heading="SKILLS">
-                <ul className={classes['skill-list']}>
-                  <CodingSkill experience={70} skillName="JavaScript" />
+                <h4 className={classes["skill-category"]}>Frontend</h4>
+                <ul className={classes["skill-list"]}>
+                  <CodingSkill experience={90} skillName="JavaScript" />
+                  <CodingSkill experience={80} skillName="TypeScript" />
+                  <CodingSkill experience={90} skillName="HTML5" />
+                  <CodingSkill experience={85} skillName="CSS3" />
+                  <CodingSkill experience={75} skillName="SASS" />
+                  <CodingSkill experience={85} skillName="React.js" />
+                  <CodingSkill experience={80} skillName="Jest.js" />
+                  <CodingSkill experience={60} skillName="Figma" />
+                </ul>
+                <h4 className={classes["skill-category"]}>Backend</h4>
+                <ul className={classes["skill-list"]}>
+                  <CodingSkill experience={75} skillName="Node.js" />
+                  <CodingSkill experience={75} skillName="Express.js" />
+                  <CodingSkill experience={50} skillName="Mocha.js" />
+                  <CodingSkill experience={50} skillName="Chai.js" />
+                  <CodingSkill experience={60} skillName="MongoDB" />
+                </ul>
+                <h4 className={classes["skill-category"]}>Other</h4>
+                <ul className={classes["skill-list"]}>
+                  <CodingSkill experience={80} skillName="R" />
+                  <CodingSkill experience={20} skillName="Python" />
+                  <CodingSkill experience={10} skillName="Java" />
                 </ul>
               </SkillsSection>
             </section>

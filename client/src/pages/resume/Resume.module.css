@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prompt:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Prompt:wght@300;500&display=swap");
 
 .resume-wrapper {
   display: flex;
@@ -115,6 +115,7 @@
 
 .skills {
   background-color: #454545;
+  border: 1pt solid #454545;
   height: 2000px;
   position: relative;
 }
@@ -176,5 +177,13 @@
 .skill-list {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.skill-category {
+  margin: 0.75rem 0 0 0;
+  color: #ddd;
+  width: fit-content;
+  border-bottom: 1pt solid #f7e0ad;
+  font-family: "Montserrat", sans-serif;
 }
