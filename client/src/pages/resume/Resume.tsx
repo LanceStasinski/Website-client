@@ -133,13 +133,19 @@ const Resume: React.FC = () => {
                 </ul>
                 <h4 className={classes["skill-category"]}>Other</h4>
                 <ul className={classes["skill-list"]}>
+                  <CodingSkill experience={85} skillName="Git" />
                   <CodingSkill experience={80} skillName="R" />
                   <CodingSkill experience={20} skillName="Python" />
                   <CodingSkill experience={10} skillName="Java" />
                 </ul>
               </SkillsSection>
             </section>
-            <section></section>
+            <section>
+              <div className={classes.summary}>
+                <h3>SUMMARY</h3>
+                <p>something</p>
+              </div>
+            </section>
           </div>
         </div>
       </div>

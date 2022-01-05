@@ -22,7 +22,7 @@ const CodingSkill: React.FC<{ skillName: string; experience: number }> = (
             style={{
               maxWidth: `${props.experience}%`,
               animationName: "expand",
-              animationDuration: "1s",
+              animationDuration: "2s",
               animationTimingFunction: "ease",
               animationFillMode: "forwards",
             }}
