@@ -188,18 +188,60 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.summary {
+.main {
   margin: 1rem;
 }
 
-.summary h3 {
+.main h3 {
   margin: 0;
   padding: 0;
   font-family: "Prompt", sans-serif;
   font-weight: 500;
   color: #454545;
+  letter-spacing: 0.1rem;
 }
 
 .summary p {
   color: #666;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 130%;
+}
+
+.project-item {
+  list-style-type: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+}
+
+.project-item h4 {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  color: #454545;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+}
+
+.project-item span {
+  color: #777;
+}
+
+.project-description {
+  list-style-type:disc;
+  color: #666;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0 0 0 1rem;
+}
+
+.project-description li {
+  margin-top: 0.2rem;
+  line-height: 130%;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #666;
+  font-weight: 700;
 }

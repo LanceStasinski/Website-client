@@ -96,17 +96,17 @@ const Resume: React.FC = () => {
                     </div>
                   </li>
                   <li>
-                    <p>B.S. - Biology</p>
+                    <p>Nanodegree - Front End Web Development</p>
                     <p>
-                      <b>Chadron State College</b>
+                      <b>Udacity</b>
                     </p>
                     <div className={classes["education-section-div"]}>
                       <img src={calendarIcon} alt="Calendar icon" />
-                      <p>September 2015 - May 2019</p>
+                      <p>March 2021 - July 2021</p>
                     </div>
                     <div className={classes["education-section-div"]}>
                       <img src={locationIcon} alt="Location icon" />
-                      <p>Chadron, NE</p>
+                      <p>Remote</p>
                     </div>
                   </li>
                 </ul>
@@ -140,10 +140,114 @@ const Resume: React.FC = () => {
                 </ul>
               </SkillsSection>
             </section>
-            <section>
+            <section className={classes.main}>
               <div className={classes.summary}>
                 <h3>SUMMARY</h3>
-                <p>something</p>
+                <p>
+                  Software developer with years of programming experience and
+                  over 1000 hours applied to learning JavaScript, CSS, HTML,
+                  React, Node, and related technologies. Fast learner with
+                  strong communication and quantitive skills aquired from a
+                  background in biological research. Eager to exercise my
+                  passion of creating visually pleasing, responsive, and
+                  accessible web applications while helping your company deliver
+                  software that your users will appreciate.
+                </p>
+              </div>
+              <div>
+                <h3>PROJECTS</h3>
+                <ul className={classes["project-item"]}>
+                  <li>
+                    <h4>
+                      Personal Website and Blog -{" "}
+                      <span>Creator, Designer, Developer</span>
+                    </h4>
+                    <ul className={classes["project-description"]}>
+                      <li>
+                        Developed frontend as an SPA using React, React Router,
+                        TypeScript, and CSS modules. Pages designed with Figma.
+                      </li>
+                      <li>
+                        Blog posts created via a dynamic form that accepts
+                        various data types. The data is parsed on a Node/Express
+                        REST API. String data is stored in a MongoDB collection
+                        and images are stored in an AWS S3 bucket. Comments from
+                        different users are stored in a MongoDB collection and
+                        Websockets are used to update the frontend in real time.
+                      </li>
+                      <li>
+                        Simple HTML, CSS, and JavaScript portfolio projects are
+                        served via the Node.js server.
+                      </li>
+                      <li>
+                        Client side application deployed on Firebase and REST
+                        API deployed on Heroku.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>
+                      Travel App - <span>Creator, Designer, Developer</span>
+                    </h4>
+                    <ul className={classes["project-description"]}>
+                      <li>
+                        Responsive frontend application built with JavaScript,
+                        HTML, SASS, Webpack, and local storage.
+                      </li>
+                      <li>
+                        Backend built with Node/Express and makes POST and GET
+                        requests to the external APIs Geonames, WeatherBit,
+                        Pixabay, and REST Countries.
+                      </li>
+                      <li>
+                        This application lets the user build a list of trips and
+                        provides information about the country and the current
+                        weather forecast.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>
+                      Scientific Publication - <span>Lead Researcher</span>
+                    </h4>
+                    <ul className={classes["project-description"]}>
+                      <li>
+                        Used the R statistical programming language to run
+                        machine learning algorithms to classify individual
+                        plants into genomically defined populations using the
+                        spectra reflected from their leaves.
+                      </li>
+                      <li>
+                        Collaborated with and led a team of reseachers to
+                        achieve research and timeline goals prescribed by grants
+                        funding the project.
+                      </li>
+                      <li>
+                        Lead author on paper titled{" "}
+                        <i>
+                          Reading light: Leaf spectra capture fine-scale
+                          diversity of closely related, hybridizing arctic
+                          shrubs
+                        </i>{" "}
+                        published in{" "}
+                        <a
+                          className={classes["project-link"]}
+                          href="https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.17731"
+                        >
+                          New Phytologist
+                        </a>{" "}
+                        and featured by{" "}
+                        <a
+                          className={classes["project-link"]}
+                          href="https://edition.cnn.com/2021/10/19/world/ray-guns-plants-biodiversity-climate-scn/index.html"
+                        >
+                          CNN
+                        </a>
+                        .
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
             </section>
           </div>
