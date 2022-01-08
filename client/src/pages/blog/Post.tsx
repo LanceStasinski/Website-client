@@ -335,14 +335,14 @@ const Post: React.FC = () => {
                 }
               })}
               <section className={classes.references}>
-                <h3>Further Reading</h3>
+                <h3>Additional Resources</h3>
                 <ul>
                   {loadedPost!.references.map((ref) => {
                     return (
                       <li key={ref.title}>
                         <cite>
                           {ref.authors}. ({ref.date}). <i>{ref.title}</i>.
-                          Retrieved from <a href={ref.url}>{ref.url}</a>
+                          URL: <a href={ref.url}>{ref.url}</a>
                         </cite>
                       </li>
                     );
