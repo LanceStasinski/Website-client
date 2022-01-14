@@ -7,45 +7,46 @@
 }
 
 .page {
-  height: 11in;
-  width: 8.5in;
+  width: 90%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   overflow: hidden;
 }
 
 .page header {
   position: relative;
-  height: 20%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #454545;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
   color: #f7e0ad;
-  clip-path: polygon(
-    0% 0%,
-    28% 0%,
-    31% 10%,
-    100% 10%,
-    100% 100%,
-    13.5% 100%,
-    0% 50%
-  );
 }
 
 .headshot {
-  clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
-  width: 140px;
-  height: 140px;
-  margin: 1.5rem 0 3rem 4rem;
+  clip-path: polygon(
+    0% 25%,
+    25% 0%,
+    75% 0%,
+    100% 25%,
+    100% 75%,
+    75% 100%,
+    25% 100%,
+    0% 75%
+  );
+  width: 50%;
+  margin: 2rem 0 1rem 0;
+  padding: 1rem;
+  border: 2pt solid #454545;
 }
 
 .title {
-  margin-top: 1.35rem;
+  margin-top: 0;
 }
 
 .first-name {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
+  color: #454545;
+  text-align: center;
   letter-spacing: 0.2rem;
   font-size: 32px;
   margin-bottom: -10px;
@@ -53,29 +54,32 @@
 
 .last-name {
   font-family: "Prompt", sans-serif;
+  color: #454545;
   font-weight: 300;
   letter-spacing: 0.2rem;
   margin-top: -10px;
   font-size: 32px;
   margin-bottom: 0;
+  text-align: center;
 }
 
 .profession {
   margin: 0;
   font-family: "Prompt", sans-serif;
-  color: #f7e0ad !important;
+  color: #454545;
   font-weight: 500;
   margin-top: 0.4rem;
+  text-align: center;
 }
 
 .contact-info {
-  margin: 2.25rem 1rem 1rem 0;
+  background-color: #454545;
+  padding: 1rem;
+  margin: 1rem 0 0 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border-left: 1pt #f7e0ad solid;
-  padding: 0 3rem 0 1rem;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -204,7 +208,7 @@
 .summary p {
   color: #666;
   font-size: 12px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 130%;
 }
 
@@ -227,9 +231,9 @@
 }
 
 .project-description {
-  list-style-type:disc;
+  list-style-type: disc;
   color: #666;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   margin: 0;
   padding: 0 0 0 1rem;
@@ -244,4 +248,64 @@
   text-decoration: none;
   color: #666;
   font-weight: 700;
+}
+
+@media only screen and (min-width: 990px) {
+  .page {
+    height: 11in;
+    width: 8.5in;
+  }
+
+  .page header {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #454545;
+    clip-path: polygon(
+      0% 0%,
+      28% 0%,
+      31% 10%,
+      100% 10%,
+      100% 100%,
+      13.5% 100%,
+      0% 50%
+    );
+  }
+
+  .headshot {
+    clip-path: polygon(0% 0%, 75% 0%, 100% 25%, 100% 100%, 25% 100%, 0% 75%);
+    width: 140px;
+    height: 140px;
+    padding: 0;
+    margin: 1.5rem 0 3rem 4rem;
+  }
+
+  .title {
+    margin-top: 0.9rem;
+  }
+
+  .first-name {
+    color: #f7e0ad;
+    text-align: start;
+    margin-top: 0;
+  }
+
+  .last-name {
+    color: #f7e0ad;
+    text-align: start;
+  }
+
+  .profession {
+    color: #f7e0ad;
+    text-align: start;
+  }
+
+  .contact-info {
+    margin: 2.25rem 1rem 1rem 0;
+    display: flex;
+    border-left: 1pt #f7e0ad solid;
+    padding: 0 3rem 0 1rem;
+    font-family: "Montserrat", sans-serif;
+  }
 }
