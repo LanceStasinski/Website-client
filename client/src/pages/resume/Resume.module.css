@@ -33,7 +33,7 @@
     0% 75%
   );
   width: 50%;
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 0 0;
   padding: 1rem;
   border: 2pt solid #454545;
 }
@@ -81,6 +81,16 @@
   flex-direction: column;
   justify-content: space-evenly;
   font-family: "Montserrat", sans-serif;
+  clip-path: polygon(
+    0% 10%,
+    5% 0%,
+    95% 0%,
+    100% 10%,
+    100% 90%,
+    95% 100%,
+    5% 100%,
+    0% 90%
+  );
 }
 
 .contact-info li {
@@ -114,7 +124,7 @@
 .resume-body {
   display: flex;
   flex-direction: column;
-  margin-top: 6rem;
+  margin-top: 3.5rem;
 }
 
 .skills {
@@ -134,9 +144,9 @@
   border-color: transparent;
   border-bottom-color: #454545;
   border-left-color: #454545;
-  border-width: 53px;
-  left: 1%;
-  margin-left: -10px;
+  border-width: 30px;
+  left: 0%;
+  margin-left: -2px;
 }
 
 .skills::after {
@@ -150,14 +160,14 @@
   border-color: transparent;
   border-bottom-color: #454545;
   border-right-color: #454545;
-  border-width: 53px;
-  right: -0.25%;
-  margin-left: -10px;
+  border-width: 30px;
+  right: 0%;
+  margin-right: -2px;
 }
 
 .education-section {
   list-style-type: none;
-  margin: 0.15 0 0 0;
+  margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
   display: flex;
@@ -211,7 +221,7 @@
 }
 
 .main {
-  margin: 1rem;
+  margin: 2rem 1rem 0 1rem;
 }
 
 .main h3 {
@@ -323,6 +333,7 @@
     margin: 2.25rem 1rem 1rem 0;
     border-left: 1pt #f7e0ad solid;
     padding: 0 3rem 0 1rem;
+    clip-path: none;
   }
 
   .resume-body {
@@ -332,11 +343,19 @@
   }
 
   .skills {
-    height: 2000-x;
+    height: 2000px;
+  }
+
+  .skills::before {
+    border-width: 50px;
   }
 
   .skills::after {
     border-bottom-color: transparent;
     border-right-color: transparent;
+  }
+
+  .main {
+    margin: 1rem 1rem;
   }
 }

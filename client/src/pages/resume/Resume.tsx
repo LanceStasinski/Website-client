@@ -119,16 +119,16 @@ const Resume: React.FC = () => {
                   <CodingSkill experience={90} skillName="HTML5" />
                   <CodingSkill experience={85} skillName="CSS3" />
                   <CodingSkill experience={75} skillName="SASS" />
-                  <CodingSkill experience={85} skillName="React.js" />
-                  <CodingSkill experience={80} skillName="Jest.js" />
+                  <CodingSkill experience={85} skillName="React" />
+                  <CodingSkill experience={80} skillName="Jest" />
                   <CodingSkill experience={60} skillName="Figma" />
                 </ul>
                 <h4 className={classes["skill-category"]}>Backend</h4>
                 <ul className={classes["skill-list"]}>
-                  <CodingSkill experience={75} skillName="Node.js" />
-                  <CodingSkill experience={75} skillName="Express.js" />
-                  <CodingSkill experience={50} skillName="Mocha.js" />
-                  <CodingSkill experience={50} skillName="Chai.js" />
+                  <CodingSkill experience={75} skillName="Node" />
+                  <CodingSkill experience={75} skillName="Express" />
+                  <CodingSkill experience={50} skillName="Mocha/Chai" />
+
                   <CodingSkill experience={60} skillName="MongoDB" />
                 </ul>
                 <h4 className={classes["skill-category"]}>Other</h4>
