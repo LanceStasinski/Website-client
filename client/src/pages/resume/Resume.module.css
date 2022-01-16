@@ -263,6 +263,7 @@
   color: #666;
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
+  line-height: 130%;
   margin: 0;
   padding: 0 0 0 1rem;
 }
@@ -276,6 +277,32 @@
   text-decoration: none;
   color: #666;
   font-weight: 700;
+}
+
+.download {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 4rem 0rem;
+}
+
+.download button {
+  background-color: #454545;
+  border-radius: 6px;
+  border: 1pt solid #454545;
+  padding: 1rem 0;
+  color: #f7e0ad
+}
+
+.download button a {
+  text-decoration: none;
+  padding: 1rem;
+  color: inherit;
+}
+
+.download button:hover {
+  cursor: pointer;
+  background-color: #f7e0ad;
+  color: #454545;
 }
 
 @media only screen and (min-width: 990px) {
