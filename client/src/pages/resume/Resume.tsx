@@ -144,10 +144,10 @@ const Resume: React.FC = () => {
               <div className={classes.summary}>
                 <h3>SUMMARY</h3>
                 <p>
-                  Software developer with years of programming experience and
-                  over 1000 hours applied to learning JavaScript, CSS, HTML,
-                  React, Node, and related technologies. Fast learner with
-                  strong communication and quantitive skills aquired from a
+                  Software developer with more than two years of programming
+                  experience and over 1000 hours applied to learning JavaScript,
+                  CSS, HTML, React, Node, and related technologies. Fast learner
+                  with strong communication and quantitive skills aquired from a
                   background in biological research. Eager to exercise my
                   passion of creating visually pleasing, responsive, and
                   accessible web applications while helping your company deliver
