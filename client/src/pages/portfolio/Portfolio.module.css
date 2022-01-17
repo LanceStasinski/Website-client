@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
+
+.portfolio {
+  width: 90vw;
+  margin-left: 5vw;
+  margin-top: 7rem;
+}
+
+.portfolio h1 {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 500;
+  color: #454545;
+}
+
+
+@media only screen and (min-width: 990px) {
+  .portfolio {
+   width: 70vw;
+   margin-left: 15vw;
+  }
+ }
