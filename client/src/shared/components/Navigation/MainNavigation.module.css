@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap");
 
 .menu-btn {
   width: 1.5rem;
@@ -18,17 +18,17 @@
   background: white;
 }
 
-.main-title a {
+.main-title {
   text-decoration: none;
   color: #f7e0ad;
   font-family: "Prompt", sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.2rem;
+  font-size: 20px;
+  letter-spacing: 0.25rem;
 }
 
-.main-title a:hover {
+.main-title:hover {
   color: white;
 }
 
@@ -37,26 +37,9 @@
 }
 
 @media only screen and (min-width: 370px) {
-  .main-title a {
-    font-size: 25px;
-    letter-spacing: 0.3rem;
-  }
-
   .menu-btn {
     width: 2.5rem;
     height: 2.5rem;
-  }
-}
-
-@media only screen and (min-width: 672px) {
-  .main-title a {
-    font-size: 30px;
-    letter-spacing: 0.8rem;
-  }
-
-  .menu-btn {
-    width: 4rem;
-    height: 4rem;
   }
 }
 
@@ -68,17 +51,5 @@
   .main-nav {
     display: block;
     padding-left: 0;
-  }
-
-  .main-title a{
-    font-size: 23px;
-    letter-spacing: 0.5rem;
-  }
-}
-
-@media only screen and (min-width: 1335px) {
-  .main-title a {
-    font-size: 45px;
-    letter-spacing: 1rem;
   }
 }

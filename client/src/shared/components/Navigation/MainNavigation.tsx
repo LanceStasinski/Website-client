@@ -17,21 +17,22 @@ const MainNavigation: React.FC = () => {
   };
 
   const closeDrawerHander = () => {
-    setDrawerIsOpen(false)
-  }
+    setDrawerIsOpen(false);
+  };
 
   return (
     <React.Fragment>
       {drawerIsOpen && <Backdrop onClick={closeDrawerHander} />}
       <SideDrawer show={drawerIsOpen} onClick={closeDrawerHander}>
-          <nav>
-            <DrawerNavLinks />
-          </nav>
+        <nav>
+          <DrawerNavLinks />
+        </nav>
       </SideDrawer>
       <MainHeader>
-        <h1 className={classes["main-title"]}>
-          <Link to="/">LANCE STASINSKI</Link>
-        </h1>
+        <Link to="/" className={classes["main-title"]}>
+          LANCE STASINSKI
+        </Link>
+
         <button className={classes["menu-btn"]} onClick={openDrawerHandler}>
           <span />
           <span />

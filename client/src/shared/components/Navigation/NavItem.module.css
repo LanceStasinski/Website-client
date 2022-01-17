@@ -1,5 +1,4 @@
 .active-link {
-  background: white !important;
-  border-color: #292929 !important;
-  color: #292929 !important;
+  border-bottom: 1pt #f7e0ad solid !important;
+  color: #f7e0ad !important;
 }
