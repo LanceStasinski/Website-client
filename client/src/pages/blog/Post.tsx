@@ -254,7 +254,7 @@ const Post: React.FC = () => {
           <div className={classes.post}>
             <header>
               <div className={classes["header-text"]}>
-                <h2 id="title" >{loadedPost!.title}</h2>
+                <h1 id="title" >{loadedPost!.title}</h1>
                 <div className={classes.dates}>
                   <time
                     className={classes["created-date"]}
@@ -314,9 +314,9 @@ const Post: React.FC = () => {
                   );
                 } else if (ct.type === "heading") {
                   return (
-                    <h3 className={classes["content-header"]} key={ct._id}>
+                    <h2 className={classes["content-header"]} key={ct._id}>
                       {ct.text}
-                    </h3>
+                    </h2>
                   );
                 } else if (ct.type === "code") {
                   return (
@@ -335,7 +335,7 @@ const Post: React.FC = () => {
                 }
               })}
               <section className={classes.references}>
-                <h3>Additional Resources</h3>
+                <h2>Additional Resources</h2>
                 <ul>
                   {loadedPost!.references.map((ref) => {
                     return (

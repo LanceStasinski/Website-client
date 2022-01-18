@@ -43,7 +43,7 @@ const Blog: React.FC = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <div className={classes.blog}>
-        <h2>BLOG</h2>
+        <h1>BLOG</h1>
         <hr />
         {isLoading && <LoadingSpinner asOverlay={false} />}
         {!isLoading && <BlogList posts={loadedPosts} />}

@@ -34,7 +34,7 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
                     className={classes["post-img"]}
                   />
                   <article>
-                    <h3 className={classes["blog-title"]}>{post.title}</h3>
+                    <h2 className={classes["blog-title"]}>{post.title}</h2>
                     <p>{post.blurb}</p>
                     <time
                       dateTime={new Date(

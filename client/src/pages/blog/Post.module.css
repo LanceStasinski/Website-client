@@ -102,8 +102,8 @@
   border-radius: 4px;
 }
 
-.post h2,
-h3 {
+.post h1,
+h2 {
   font-family: "Prompt", sans-serif;
   font-weight: 500;
   color: #454545;
@@ -111,7 +111,11 @@ h3 {
   padding: 0;
 }
 
-.post h3 {
+.post h1 {
+  font-size: 24px;
+}
+
+.post h2 {
   font-size: 22px;
 }
 
@@ -218,7 +222,7 @@ h3 {
 
   .header-text {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 65% 1fr;
   }
 
   .dates {

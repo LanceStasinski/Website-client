@@ -32,7 +32,7 @@ const About: React.FC = () => {
         }}
       ></div>
       <div className={classes.about}>
-        <h2>Hello World</h2>
+        <h1>Hello World</h1>
         <p>
           My name is Lance Stasinski and welcome to my personal website. I'm a
           quantitative biologist turned self-taught web developer. I gained an
