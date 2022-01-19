@@ -64,12 +64,3 @@
     color: #f7e0ad;
   }
 }
-
-@media only screen and (min-width: 1670px) {
-  .nav-links a,
-  .nav-links button {
-    width: 90px;
-    font-size: 15px;
-    margin-right: 1rem;
-  }
-}

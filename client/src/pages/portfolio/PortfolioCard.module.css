@@ -2,6 +2,11 @@
 
 .project-card {
   margin: 1rem 0;
+  animation: removeShadow 0.25s linear forwards;
+}
+
+.project-card:hover {
+  animation: drawShadow 0.25s linear forwards;
 }
 
 .project-thumbnail {
@@ -11,26 +16,28 @@
 }
 
 .project-info {
-  margin: 0 1rem;
+  margin: 0 1rem 5rem 1rem;
   color: #454545;
 }
 
 .project-info h2 {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   font-weight: 500;
 }
 
 .project-info p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .project-links {
+  position: absolute;
+  width: 100%;
   background-color: #454545;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  justify-self: end;
+  bottom: 0;
 }
 
 .project-links a {
@@ -56,6 +63,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 2rem;
 }
 
 .github img {
@@ -71,4 +79,27 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+@keyframes drawShadow {
+  0% {
+    box-shadow: 0;
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+}
+
+@keyframes removeShadow {
+  0% {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  100% {
+    box-shadow: 0;
+    transform: scale(1);
+  }
+
 }

@@ -4,7 +4,6 @@ import classes from "./Portfolio.module.css";
 import PortfolioCard from "./PortfolioCard";
 import websiteImage from '../../assets/project-images/website.JPG'
 
-
 import fillerImg from '../../assets/headshot-4.jpg'
 
 
