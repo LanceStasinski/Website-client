@@ -2,10 +2,9 @@ import React from "react";
 
 import classes from "./Portfolio.module.css";
 import PortfolioCard from "./PortfolioCard";
-import websiteImage from '../../assets/project-images/website.JPG'
+import websiteImage from "../../assets/project-images/website.JPG";
 
-import fillerImg from '../../assets/headshot-4.jpg'
-
+import fillerImg from "../../assets/headshot-4.jpg";
 
 const Portfolio: React.FC = () => {
   document.title = "Portfolio | Lance Stasinski";
@@ -20,8 +19,8 @@ const Portfolio: React.FC = () => {
           external={true}
           projectUrl="http//:localhost:3000"
           title="This Website"
-          description="My personal website was is a single page web application that connects to a REST API. The blog portion is a fullstack application in itself. I write individual post using a dynamic form and data is stored in MongoDB and an AWS S3 bucket. Click 'visit' to learn more."
-          technologies="TypeScript, React, CSS Modules, Node.js, Express.js, MongoDB, AWS S3"
+          description="My personal website is a single page web application that connects to a REST API. The blog portion is a fullstack application in itself. I write individual posts using a dynamic form and data is stored in MongoDB and an AWS S3 bucket. Click 'visit' to learn more."
+          technologies="TypeScript, React, CSS Modules, Node.js, Express.js, MongoDB, AWS S3, Jest, Mocha, Chai"
         />
         <PortfolioCard
           image={fillerImg}

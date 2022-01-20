@@ -78,7 +78,7 @@ const Auth: React.FC = () => {
 
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
     watch,
   } = useForm({ mode: "onChange" });
@@ -126,7 +126,7 @@ const Auth: React.FC = () => {
             {!isLoggingIn && errors.confirmPassword && (
               <p>{errors.confirmPassword.message}</p>
             )}
-            <Button type="submit" disabled={!isValid}>
+            <Button type="submit">
               submit
             </Button>
           </form>
