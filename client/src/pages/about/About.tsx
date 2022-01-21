@@ -35,17 +35,17 @@ const About: React.FC = () => {
         <h1>Hello World</h1>
         <p>
           My name is Lance Stasinski and welcome to my personal website. I'm a
-          quantitative biologist turned self-taught web developer. I gained an
-          appreciation for programming while analyzing high-dimensional datasets
-          in the R statistical computing language. Since then, I have
-          transitioned my programming expertise to building full stack web
-          applications, and I have found a passion for building elegant user
-          interfaces along the way.
+          self-taught web developer with a background in quantitative biology. I
+          gained an appreciation for programming while analyzing
+          high-dimensional datasets in the R statistical computing language.
+          Since then, I have transitioned my programming expertise to building
+          full stack web applications, and I have found a passion for building
+          elegant user interfaces along the way.
         </p>
         <p>
           While you're here, feel free to peruse my CV and resume, explore and
           test my portfolio projects, or read my blog that details concepts that
-          I have found challenging and have overcome. You can get in touch with
+          I have found challenging or important. You can get in touch with
           me by visiting the contact page or you can connect with me over social
           media linked below.
         </p>
