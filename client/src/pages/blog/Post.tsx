@@ -20,7 +20,7 @@ import DisplayHTML from "./DisplayHTML";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
-const REST_SERVER = process.env.REACT_APP_REST_SERVER;
+const SERVER = process.env.REACT_APP_SERVER;
 
 interface Comment {
   comment: string;
@@ -97,7 +97,7 @@ const Post: React.FC = () => {
         document.title = responseData.post.title || "Post Not Found";
         setLoadedPostLinks(responseData.posts);
         setLoadedComments(responseData.post.comments);
-        const socket = io(`${REST_SERVER}`);
+        const socket = io(`${SERVER}`);
         socket.on("comments", (data) => {
           if (data.action === "create") {
             addComment(data.comment);
