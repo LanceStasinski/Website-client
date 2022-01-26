@@ -11,12 +11,21 @@
 }
 
 .social-background:hover {
-  background-color: #f7e0ad;
+  animation: addColor 400ms ease-in forwards;
 }
 
 @media only screen and (min-width: 990px) {
   .social-background {
     margin-right: 20px;
     background-color: #ccc;
+  }
+}
+
+@keyframes addColor {
+  from {
+    background-color: #ccc;
+  }
+  to {
+    background-color: #f7e0ad;
   }
 }
