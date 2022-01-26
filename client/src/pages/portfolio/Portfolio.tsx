@@ -4,8 +4,7 @@ import classes from "./Portfolio.module.css";
 import PortfolioCard from "./PortfolioCard";
 import websiteImage from "../../assets/project-images/website.JPG";
 import travelAppImage from "../../assets/project-images/travel-app.JPG";
-
-import fillerImg from "../../assets/headshot-4.jpg";
+import nlpAppImage from "../../assets/project-images/NLP-app.JPG";
 
 const SERVER = process.env.REACT_APP_SERVER;
 
@@ -31,17 +30,17 @@ const Portfolio: React.FC = () => {
           external={true}
           projectUrl={`${SERVER}/travel-app`}
           title="Travel App"
-          description="This app takes in a location and arrival and departure dates for a trip and returns the weather forecast, information about the country to be visited, and an image of the location. This app makes HTTP requests to four external APIs to gather the necessary information."
-          technologies="HTML, SCSS, JavaScript, Node/Express, Webpack, Service workers, Axios, Jest"
+          description="This app takes in a location and arrival and departure dates for a trip and returns the weather forecast, information about the country to be visited, and an image of the location. This app makes HTTP requests to four external APIs in specific order to gather the necessary information."
+          technologies="HTML, SCSS, JavaScript, Node/Express, Webpack, Service Workers, Axios, Jest"
         />
         <PortfolioCard
-          image={fillerImg}
-          gitHubLink="https://github.com/LanceStasinski/Website-client"
-          external={false}
-          projectUrl="http//:localhost:3000"
-          title="Test3"
-          description="testing testing testing testing testing testing"
-          technologies="TypeScript, React, CSS Modules, Node.js, Express.js, MongoDB, AWS S3"
+          image={nlpAppImage}
+          gitHubLink="https://github.com/LanceStasinski/FEND-04-EvaluateNewsApp"
+          external={true}
+          projectUrl={`${SERVER}/sentiment-analysis-app`}
+          title="Sentiment Analysis App"
+          description="This app takes a in a URL and the UI is updated based on a sentiment analysis of the text at that URL. The sentiment analysis is performed by a natural language processor at a third party API."
+          technologies="HTML, SCSS, JavaScript, Node/Express, Webpack, Service Workers, Axios"
         />
       </div>
     </div>
