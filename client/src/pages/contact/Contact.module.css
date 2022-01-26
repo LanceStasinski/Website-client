@@ -40,6 +40,11 @@
   display: flex;
   flex-direction: column;
   align-content: flex-start;
+  animation: removeShadow 0.25s linear forwards;
+}
+
+.contact-card:hover {
+  animation: drawShadow 0.25s linear forwards;
 }
 
 .contact-card-header {
@@ -48,9 +53,9 @@
   text-align: center;
 }
 
-.contact-card-header:hover {
+/* .contact-card-header:hover {
   transform: scale(1.01);
-}
+} */
 
 .contact-card-header h2,
 .contact-card h3 {
@@ -136,5 +141,27 @@
   }
   .contact-card {
     width: 100%;
+  }
+}
+
+@keyframes drawShadow {
+  0% {
+    box-shadow: 0;
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+}
+
+@keyframes removeShadow {
+  0% {
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+  100% {
+    box-shadow: 0;
+    transform: scale(1);
   }
 }
