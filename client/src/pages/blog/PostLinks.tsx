@@ -10,6 +10,7 @@ interface Props {
   }[];
 }
 const PostLinks: React.FC<Props> = (props) => {
+  const posts = props.posts.reverse();
   return (
     <nav className={classes["post-links"]}>
       <ul>
@@ -18,7 +19,7 @@ const PostLinks: React.FC<Props> = (props) => {
             Blog Home
           </NavLink>
         </li>
-        {props.posts.map((post) => {
+        {posts.map((post) => {
           return (
             <li key={post._id}>
               <NavLink
