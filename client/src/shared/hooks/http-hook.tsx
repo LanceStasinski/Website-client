@@ -21,6 +21,7 @@ export const useHttpClient = () => {
 
         const responseData = await response.json();
 
+        //cancel any http requests if you navigate away from page
         activeHttpRequests.current = activeHttpRequests.current.filter(
           (reqCtrl) => reqCtrl !== httpAbortCtrl
         );
@@ -44,6 +45,7 @@ export const useHttpClient = () => {
   };
 
   useEffect(() => {
+    //abort any current requests before request is made
     return () => {
       activeHttpRequests.current.forEach((abortCtrl) => abortCtrl.abort());
     };

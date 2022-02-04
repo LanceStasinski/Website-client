@@ -254,7 +254,7 @@ const Post: React.FC = () => {
           <div className={classes.post}>
             <header>
               <div className={classes["header-text"]}>
-                <h1 id="title" >{loadedPost!.title}</h1>
+                <h1 id="title">{loadedPost!.title}</h1>
                 <div className={classes.dates}>
                   <time
                     className={classes["created-date"]}
@@ -341,8 +341,14 @@ const Post: React.FC = () => {
                     return (
                       <li key={ref.title}>
                         <cite>
-                          {ref.authors}. ({ref.date}). <i>{ref.title}</i>.
-                          URL: <a href={ref.url}>{ref.url}</a>
+                          {ref.authors}. ({ref.date}). <i>{ref.title}</i>. URL:{" "}
+                          <a
+                            href={ref.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {ref.url}
+                          </a>
                         </cite>
                       </li>
                     );
