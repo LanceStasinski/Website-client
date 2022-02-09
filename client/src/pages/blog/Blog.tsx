@@ -45,7 +45,7 @@ const Blog: React.FC = () => {
       <div className={classes.blog}>
         <h1>BLOG</h1>
         <hr />
-        {isLoading && <LoadingSpinner asOverlay={false} />}
+        {/* {isLoading && <LoadingSpinner asOverlay={false} />} */}
         {!isLoading && <BlogList posts={loadedPosts} />}
         {isAdmin && (
           <div className={classes["add-post"]}>

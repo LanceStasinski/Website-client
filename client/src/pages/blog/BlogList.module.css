@@ -10,6 +10,7 @@
 }
 
 .blog-card {
+  opacity: 1;
   margin-top: 2rem !important;
   animation: removeShadow 0.25s linear forwards;
 }
@@ -22,6 +23,7 @@
   color: #454545;
   margin: 0;
   font-size: 20px;
+  margin-right: 1rem;
 }
 
 .post-info,
@@ -58,6 +60,7 @@
 .tags {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin-top: 1rem;
 }
 
@@ -66,6 +69,7 @@
   color: #f7e0ad;
   padding: 4px 6px;
   margin-right: 0.5rem;
+  margin-top: 0.5rem;
   border-radius: 4px;
 }
 

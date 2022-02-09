@@ -11,8 +11,12 @@ import headshot from "../../assets/headshot-3.jpg";
 
 const About: React.FC = () => {
   document.title = "Lance Stasinski";
+
+
+
   return (
     <React.Fragment>
+
       <div className={classes.headshot}>
         <img src={headshot} alt="Lance Stasinski" />
       </div>
@@ -45,9 +49,9 @@ const About: React.FC = () => {
         <p>
           While you're here, feel free to peruse my CV and resume, explore and
           test my portfolio projects, or read my blog that details concepts that
-          I have found challenging or important. You can get in touch with
-          me by visiting the contact page or you can connect with me over social
-          media linked below.
+          I have found challenging or important. You can get in touch with me by
+          visiting the contact page or you can connect with me over social media
+          linked below.
         </p>
         <ul className={classes["social-links"]}>
           <li>

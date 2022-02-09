@@ -16,11 +16,29 @@ const BlogList: React.FC<{ posts: PostHeading[] | undefined }> = (props) => {
 
   return (
     <ul className={classes.posts}>
-      {props.posts?.map((post, index) => {
+      {props.posts.map((post, index) => {
         return (
           <li key={post._id}>
             <Link to={`/blog/post/${post.title.replace(/\s/g, "-")}`}>
-              <Card className={classes["blog-card"]}>
+              <Card
+                className={classes["blog-card"]}
+                // style={
+                //   index % 2
+                //     ? {
+                //         animation: "slideInRight 1s ease-out forwards",
+                //         animationDelay: `${
+                //           (props.posts!.length - 1 - index) * 0.25
+                //         }s`,
+                //         animationIterationCount: '1'
+                //       }
+                //     : {
+                //         animation: "slideInLeft 1s ease-out forwards",
+                //         animationDelay: `${
+                //           (props.posts!.length - 1 - index) * 0.25
+                //         }s`,
+                //       }
+                // }
+              >
                 <div
                   className={
                     index % 2 === 0
