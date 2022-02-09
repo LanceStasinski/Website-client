@@ -15,7 +15,6 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 
-const WEBSITE_URL = process.env.REACT_APP_WEBSITE_URL;
 const REST_API = process.env.REACT_APP_REST_API;
 
 const Resume: React.FC = () => {
@@ -69,11 +68,11 @@ const Resume: React.FC = () => {
                   <li>
                     <img src={globeIcon} alt="website icon" />
                     <a
-                      href={`${WEBSITE_URL}`}
+                      href="https://lancestasinski.herokuapp.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      lancestasinski.com
+                      lancestasinski.herokuapp.com
                     </a>
                   </li>
                   <li>
@@ -166,7 +165,7 @@ const Resume: React.FC = () => {
                     <h3>SUMMARY</h3>
                     <p>
                       Software developer with more than two years of programming
-                      experience and over 1000 hours applied to learning
+                      experience and over 900 hours applied to learning
                       JavaScript, CSS, HTML, React, Node, and related
                       technologies. Fast learner with strong communication and
                       quantitive skills aquired from a background in biological
@@ -200,12 +199,17 @@ const Resume: React.FC = () => {
                             update the frontend in real time.
                           </li>
                           <li>
-                            Simple HTML, CSS, and JavaScript portfolio projects
+                            Smaller HTML, CSS, and JavaScript portfolio projects
                             are served via the Node.js server.
                           </li>
                           <li>
-                            Client side application deployed on Firebase and
-                            REST API deployed on Heroku.
+                            Deployed on Heroku at{" "}
+                            <a
+                              className={classes["project-link"]}
+                              href="https://lancestasinski.herokuapp.com/"
+                            >
+                              lancestasinski.herokuapp.com
+                            </a>
                           </li>
                         </ul>
                       </li>
@@ -226,7 +230,14 @@ const Resume: React.FC = () => {
                           <li>
                             This application lets the user build a list of trips
                             and provides information about the country and the
-                            current weather forecast.
+                            current weather forecast. Deployed{" "}
+                            <a
+                              className={classes["project-link"]}
+                              href="https://lancestasinski.herokuapp.com/travel-app/"
+                            >
+                              here
+                            </a>
+                            .
                           </li>
                         </ul>
                       </li>
@@ -239,15 +250,16 @@ const Resume: React.FC = () => {
                             Used the R statistical programming language to run
                             machine learning algorithms to classify individual
                             plants into genomically defined populations using
-                            the spectra reflected from their leaves.
+                            high dimensional datasets - the spectra reflected
+                            from their leaves.
                           </li>
                           <li>
                             Collaborated with and led a team of reseachers to
                             achieve research and timeline goals prescribed by
-                            grants funding the project.
+                            grants funding the project and journal editors.
                           </li>
                           <li>
-                            Lead author on paper titled{" "}
+                            Co-first author on paper titled{" "}
                             <i>
                               Reading light: Leaf spectra capture fine-scale
                               diversity of closely related, hybridizing arctic
