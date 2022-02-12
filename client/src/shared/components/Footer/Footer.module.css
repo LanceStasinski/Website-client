@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  padding: 1rem 0;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-family: 'Montserrat', sans-serif;
+}

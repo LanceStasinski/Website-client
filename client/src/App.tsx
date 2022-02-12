@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 import "./App.css";
+import Footer from "./shared/components/Footer/Footer";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 import { AuthContext } from "./shared/context/auth-context";
@@ -131,6 +132,7 @@ function App() {
             {routes}
           </Suspense>
         </main>
+        <Footer />
       </BrowserRouter>
     </AuthContext.Provider>
   );
