@@ -76,7 +76,7 @@ const PortfolioCard: React.FC<{
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={githubIcon} alt="Github icon" />
+            <img title="Github repo" src={githubIcon} alt="Github icon" />
           </a>
         </div>
       </Card>

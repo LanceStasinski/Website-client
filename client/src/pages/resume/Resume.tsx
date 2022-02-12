@@ -207,6 +207,8 @@ const Resume: React.FC = () => {
                             <a
                               className={classes["project-link"]}
                               href="https://lancestasinski.herokuapp.com/"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               lancestasinski.herokuapp.com
                             </a>
@@ -234,6 +236,8 @@ const Resume: React.FC = () => {
                             <a
                               className={classes["project-link"]}
                               href="https://lancestasinski.herokuapp.com/travel-app/"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               here
                             </a>
@@ -269,6 +273,8 @@ const Resume: React.FC = () => {
                             <a
                               className={classes["project-link"]}
                               href="https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.17731"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               New Phytologist
                             </a>{" "}
@@ -276,6 +282,8 @@ const Resume: React.FC = () => {
                             <a
                               className={classes["project-link"]}
                               href="https://edition.cnn.com/2021/10/19/world/ray-guns-plants-biodiversity-climate-scn/index.html"
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
                               CNN
                             </a>

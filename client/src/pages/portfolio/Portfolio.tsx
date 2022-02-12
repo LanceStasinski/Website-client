@@ -5,6 +5,7 @@ import PortfolioCard from "./PortfolioCard";
 import websiteImage from "../../assets/project-images/website.JPG";
 import travelAppImage from "../../assets/project-images/travel-app.JPG";
 import nlpAppImage from "../../assets/project-images/NLP-app.JPG";
+import weatherAppImage from "../../assets/project-images/weather-journal-app.JPG";
 import Modal from "../../shared/components/UIElements/Modal";
 import Button from "../../shared/components/FormElements/Button";
 
@@ -45,6 +46,15 @@ const Portfolio: React.FC = () => {
         <h1>PORTFOLIO</h1>
         <hr />
         <div className={classes.projects}>
+          <PortfolioCard
+            image={weatherAppImage}
+            gitHubLink="https://github.com/LanceStasinski/FEND-03-WeatherJournalApp-React"
+            external={true}
+            projectUrl={`${SERVER}/weather-journal-app`}
+            title='Weather Journal'
+            description="This app generates a journal entry that contains text input by the user and weather data for the selected zip code. The user has access to complete CRUD operations and they can change their zip code or their prefered measurement units at any time."
+            technologies="TypeScript, React, styled components, Node/Express, MongoDB, Axios"
+          />
           <PortfolioCard
             image={websiteImage}
             gitHubLink="https://github.com/LanceStasinski/Website-client"
