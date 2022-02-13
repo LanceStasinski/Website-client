@@ -88,7 +88,12 @@ const Contact: React.FC = () => {
         {isLoading && <LoadingSpinner asOverlay />}
         <h2 className={classes.title}>Get in touch with me</h2>
         <ul>
-          <li>
+          <li
+            style={{
+              animation: "slideInRight 1s ease-out forwards",
+              animationDelay: "0s",
+            }}
+          >
             <Card className={classes["contact-card"]}>
               <a
                 className={classes["contact-card-header"]}
@@ -100,7 +105,12 @@ const Contact: React.FC = () => {
               </a>
             </Card>
           </li>
-          <li>
+          <li
+            style={{
+              animation: "slideInLeft 1s ease-out forwards",
+              animationDelay: "0.25s",
+            }}
+          >
             <Card className={classes["contact-card"]}>
               <a
                 className={classes["contact-card-header"]}
@@ -112,7 +122,12 @@ const Contact: React.FC = () => {
               </a>
             </Card>
           </li>
-          <li>
+          <li
+            style={{
+              animation: "slideInRight 1s ease-out forwards",
+              animationDelay: "0.5s",
+            }}
+          >
             <Card className={classes["contact-card"]}>
               <div
                 className={classes["contact-card-header"]}
