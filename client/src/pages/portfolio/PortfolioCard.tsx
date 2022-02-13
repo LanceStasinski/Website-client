@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
 import classes from "./PortfolioCard.module.css";
 import Card from "../../shared/components/UIElements/Card";
 import githubIcon from "../../assets/social-icons/github2.png";
-import Modal from "../../shared/components/UIElements/Modal";
 import Button from "../../shared/components/FormElements/Button";
 
 const PortfolioCard: React.FC<{
@@ -16,35 +14,8 @@ const PortfolioCard: React.FC<{
   external: boolean;
   projectUrl: string;
 }> = (props) => {
-  const [showModal, setShowModal] = useState(false);
-
-  const exitSPAHandler = () => {
-    setShowModal(true);
-  };
-
-  const cancelExitHandler = () => {
-    setShowModal(false);
-  };
-
   return (
     <React.Fragment>
-      <Modal
-        show={showModal}
-        onCancel={cancelExitHandler}
-        header="NOTICE: LEAVING SPA"
-        footer={
-          <React.Fragment>
-            <Button href={props.projectUrl}>OKAY</Button>
-            <Button type="button" onClick={cancelExitHandler}>
-              CANCEL
-            </Button>
-          </React.Fragment>
-        }
-        backdropClass={classes["modal-backdrop"]}
-      >
-        Please note: you are leaving the Single Page Application portion of this
-        website.
-      </Modal>
       <Card className={classes["project-card"]}>
         <img
           className={classes["project-thumbnail"]}
@@ -60,14 +31,20 @@ const PortfolioCard: React.FC<{
         </div>
         <div className={classes["project-links"]}>
           {props.external && (
-            <button type="button" onClick={exitSPAHandler}>
+            <Button
+              className={classes["project-links-button"]}
+              href={props.projectUrl}
+            >
               Visit
-            </button>
+            </Button>
           )}
           {!props.external && (
-            <Link to={props.projectUrl}>
-              <button>Visit</button>
-            </Link>
+            <Button
+              className={classes["project-links-button"]}
+              to={props.projectUrl}
+            >
+              Visit
+            </Button>
           )}
 
           <a

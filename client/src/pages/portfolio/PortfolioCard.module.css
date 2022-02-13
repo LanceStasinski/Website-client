@@ -45,19 +45,19 @@
   text-decoration: none;
 }
 
-.project-links button {
-  border: 1pt solid #f7e0ad;
-  background-color: #454545;
+.project-links-button {
+  border: 1pt solid #f7e0ad !important;
+  background-color: #454545 !important;
   border-radius: 6px;
   color: #f7e0ad;
   font-size: 16px;
   padding: 0.5rem;
 }
 
-.project-links button:hover {
+.project-links-button:hover {
   cursor: pointer;
-  color: #454545;
-  background-color: #f7e0ad;
+  color: #454545 !important;
+  background-color: #f7e0ad !important;
 }
 
 .github {

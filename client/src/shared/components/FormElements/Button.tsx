@@ -15,7 +15,7 @@ type Props = {
   onClick?: any;
   disabled?: boolean;
   className?: string;
-  arrayNumber?: number
+  arrayNumber?: number;
 };
 
 const Button: React.FC<Props> = (props) => {
@@ -31,6 +31,8 @@ const Button: React.FC<Props> = (props) => {
         `}
         href={props.href}
         id={props.id}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {props.children}
       </a>

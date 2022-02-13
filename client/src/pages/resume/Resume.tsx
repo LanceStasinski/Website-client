@@ -35,7 +35,7 @@ const Resume: React.FC = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && !resumeLink && <LoadingSpinner asOverlay />}
+      {isLoading && !resumeLink && <LoadingSpinner asOverlay={false} />}
       {!isLoading && resumeLink && (
         <React.Fragment>
           <div className={classes["resume-wrapper"]}>
