@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   margin: 7rem 0 3rem 0;
+  opacity: 0;
+  animation: appear 0.5s linear forwards;
 }
 
 .page {
@@ -384,5 +386,14 @@
 
   .main {
     margin: 1rem 1rem;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
