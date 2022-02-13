@@ -9,15 +9,18 @@
   margin: 0.5rem 0;
 }
 
-.blog-card {
+.post {
   opacity: 0;
+}
+
+.blog-card {
+  opacity: 1;
   margin-top: 2rem !important;
   animation: removeShadow 0.25s linear forwards;
 }
 
 .blog-card:hover {
-  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.4);
-  transition: all 250ms linear;
+  animation: drawShadow 0.25s linear forwards;
 }
 
 .blog-title {
