@@ -223,7 +223,7 @@ const Post: React.FC = () => {
       </Modal>
       {showLinks && <Backdrop onClick={hideLinksHandler} />}
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && !loadedPost && <LoadingSpinner asOverlay />}
+      {isLoading && !loadedPost && <LoadingSpinner asOverlay={false} />}
       {!isLoading && !loadedPost && (
         <div className={classes["post-not-found-wrapper"]}>
           <Card className={classes["post-not-found"]}>

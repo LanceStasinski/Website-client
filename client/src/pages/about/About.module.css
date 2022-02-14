@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
 
+.about-wrapper {
+  margin-bottom: 7rem;
+}
+
 .about {
   color: #777;
   width: 70%;
@@ -17,7 +21,7 @@
 .about h1 {
   color: #555;
   text-align: center;
-  letter-spacing: .15rem;
+  letter-spacing: 0.15rem;
   font-family: "Prompt", sans-serif;
   font-weight: 500;
 }
@@ -41,7 +45,7 @@
 .headshot img {
   max-width: 70%;
   max-height: 500px;
-  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.7) ;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.7);
 }
 
 @media only screen and (min-width: 990px) {

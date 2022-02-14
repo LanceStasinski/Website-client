@@ -5,6 +5,8 @@ import PortfolioCard from "./PortfolioCard";
 import websiteImage from "../../assets/project-images/website.JPG";
 import travelAppImage from "../../assets/project-images/travel-app.JPG";
 import nlpAppImage from "../../assets/project-images/NLP-app.JPG";
+import landPageImage from '../../assets/project-images/landing-page.JPG';
+import blogImage from '../../assets/project-images/blog.JPG'
 import weatherAppImage from "../../assets/project-images/weather-journal-app.JPG";
 import Modal from "../../shared/components/UIElements/Modal";
 import Button from "../../shared/components/FormElements/Button";
@@ -71,7 +73,7 @@ const Portfolio: React.FC = () => {
             projectUrl={`${SERVER}/travel-app`}
             title="Travel App"
             description="This app takes in a location and arrival and departure dates for a trip and returns the weather forecast, information about the country to be visited, and an image of the location. This app makes HTTP requests to four external APIs in specific order to gather the necessary information."
-            technologies="HTML, SCSS, JavaScript, Node/Express, Webpack, Service Workers, Axios, Jest"
+            technologies="HTML5, SCSS, JavaScript, Node/Express, Webpack, Service Workers, Axios, Jest"
           />
           <PortfolioCard
             image={nlpAppImage}
@@ -80,7 +82,25 @@ const Portfolio: React.FC = () => {
             projectUrl={`${SERVER}/sentiment-analysis-app`}
             title="Sentiment Analysis App"
             description="This app takes a in a URL and the UI is updated based on a sentiment analysis of the text at that URL. The sentiment analysis is performed by a natural language processor at a third party API."
-            technologies="HTML, SCSS, JavaScript, Node/Express, Webpack, Service Workers, Axios"
+            technologies="HTML5, SCSS, JavaScript, Node/Express, Webpack, Service Workers, Axios"
+          />
+          <PortfolioCard
+            image={landPageImage}
+            gitHubLink="https://github.com/LanceStasinski/FEND-02-LandingPage"
+            external={true}
+            projectUrl={`${SERVER}/landing-page`}
+            title="Landing Page"
+            description="This project is a responsive landing page with CSS animations and dynamic styles that are applied when different sections of the page come into view."
+            technologies="HTML5, CSS3, JavaScript"
+          />
+          <PortfolioCard
+            image={blogImage}
+            gitHubLink="https://github.com/LanceStasinski/FEND-01-BlogPost"
+            external={true}
+            projectUrl={`${SERVER}/my-first-blog`}
+            title="Blog Site"
+            description="This project was the first website I built with HTML and CSS. It is a responsive and accessible blog that was built to become accustomed to the structure of HTML and to learn how to work with CSS Grid and Flexbox."
+            technologies="HTML5, CSS3"
           />
         </div>
       </div>
