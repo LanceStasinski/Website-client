@@ -72,6 +72,8 @@
 .post {
   width: 90%;
   margin: 7rem 5% 0 5%;
+  opacity: 0;
+  animation: appear 500ms linear forwards;
 }
 
 .post header {
@@ -238,5 +240,14 @@ h2 {
   .admin-buttons button {
     width: auto;
     margin-top: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback, FormEvent } from "react";
 import { io } from "socket.io-client";
 import { useParams, useHistory } from "react-router-dom";
 import Highlight from "react-highlight";
@@ -17,6 +17,7 @@ import PostLinks from "./PostLinks";
 import PostLinksDrawer from "./PostLinksDrawer";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
 import DisplayHTML from "./DisplayHTML";
+import AuthModal from "../auth/AuthModal";
 
 const REST_API = process.env.REACT_APP_REST_API;
 const ADMIN = process.env.REACT_APP_ADMIN_USER;
@@ -80,6 +81,7 @@ const Post: React.FC = () => {
   const [loadedPostLinks, setLoadedPostLinks] = useState<PostData[]>([]);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const [loginIsOpen, setLoginIsOpen] = useState(false);
   const history = useHistory();
   const authCtx = useContext(AuthContext);
   const postCtx = useContext(PostContext);
@@ -109,6 +111,15 @@ const Post: React.FC = () => {
     };
     getPost();
   }, [sendRequest, postTitle]);
+
+  const openLoginModal = (e: FormEvent) => {
+    e.preventDefault();
+    setLoginIsOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setLoginIsOpen(false);
+  };
 
   const addComment = (comment: Comment) => {
     setLoadedComments((prevComments) => [...prevComments!, comment]);
@@ -222,6 +233,7 @@ const Post: React.FC = () => {
         Are you sure you want to delete this post?
       </Modal>
       {showLinks && <Backdrop onClick={hideLinksHandler} />}
+      <AuthModal show={loginIsOpen} onCancel={closeLoginModal} />
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && !loadedPost && <LoadingSpinner asOverlay={false} />}
       {!isLoading && !loadedPost && (
@@ -372,6 +384,7 @@ const Post: React.FC = () => {
                 comments={loadedComments!}
                 onDeleteComment={deleteCommentHandler}
                 onAddComment={addCommentHandler}
+                onOpenLogin={openLoginModal}
               ></CommentSection>
             </section>
           </div>

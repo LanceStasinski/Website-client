@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { FormEvent, useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import Comment from "./Comment";
@@ -23,6 +22,7 @@ interface Props {
   comments: CommentInterface[];
   onDeleteComment: (commentId: string) => Promise<void>;
   onAddComment: (commentData: { newComment: string }) => Promise<void>;
+  onOpenLogin: (e: FormEvent) => void;
 }
 
 interface CommentInput {
@@ -83,10 +83,12 @@ const CommentSection: React.FC<Props> = (props) => {
           />
           {authCtx.isLoggedIn ? (
             <Button type="submit" disabled={!isValid}>
-              submit
+              Submit
             </Button>
           ) : (
-            <Link to="/auth">LOGIN</Link>
+            <Button type="button" onClick={props.onOpenLogin}>
+              Login
+            </Button>
           )}
         </form>
       </Card>

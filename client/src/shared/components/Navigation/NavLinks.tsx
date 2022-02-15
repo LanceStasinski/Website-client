@@ -4,7 +4,6 @@ import NavItem from "./NavItem";
 import classes from "./NavLinks.module.css";
 import { AuthContext } from "../../context/auth-context";
 
-
 const NavLinks: React.FC = () => {
   const authCtx = useContext(AuthContext);
 
@@ -20,16 +19,16 @@ const NavLinks: React.FC = () => {
         <NavItem to="/blog">BLOG</NavItem>
       </li>
       <li>
-        <NavItem to="/contact">CONTACT</NavItem>
+        <NavItem
+          style={{ marginRight: authCtx.isLoggedIn ? "0.5rem" : "0" }}
+          to="/contact"
+        >
+          CONTACT
+        </NavItem>
       </li>
       {authCtx.isLoggedIn && (
         <li>
           <button onClick={authCtx.logout}>LOGOUT</button>
-        </li>
-      )}
-      {!authCtx.isLoggedIn && (
-        <li className={classes['nav-links_auth']}>
-          <NavItem to='/auth' authLink={true}>LOGIN</NavItem>
         </li>
       )}
     </ul>

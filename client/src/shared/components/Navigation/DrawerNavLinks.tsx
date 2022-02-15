@@ -21,16 +21,6 @@ const DrawerNavLinks: React.FC = () => {
       <li>
         <DrawerNavItem to="/contact">CONTACT</DrawerNavItem>
       </li>
-      {!authCtx.isLoggedIn && (
-        <li className={classes["drawer-nav-links-auth"]}>
-          <DrawerNavItem
-            to="/auth"
-            important={true}
-          >
-            LOGIN
-          </DrawerNavItem>
-        </li>
-      )}
       {authCtx.isLoggedIn && (
         <li>
           <button onClick={authCtx.logout}>LOGOUT</button>
