@@ -3,6 +3,8 @@
 .wrapper {
   display: flex;
   justify-content: center;
+  opacity: 0;
+  animation: appear 500ms linear forwards;
 }
 
 .create-post {
@@ -59,7 +61,6 @@
 .section-header {
   display: flex;
   flex-direction: column-reverse;
-
 }
 
 .section-header button {
@@ -142,5 +143,14 @@
 
   .create-post select {
     width: 20%;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

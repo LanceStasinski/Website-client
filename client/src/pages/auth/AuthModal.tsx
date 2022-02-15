@@ -4,7 +4,6 @@ import { CSSTransition } from "react-transition-group";
 import classes from "./AuthModal.module.css";
 import AuthCard from "./AuthCard";
 import Backdrop from "../../shared/components/UIElements/Backdrop";
-import Card from "../../shared/components/UIElements/Card";
 
 interface Props {
   show: boolean;
