@@ -83,6 +83,21 @@ const MoreInfo = () => {
             the front and backend, their message will emailed to me via{" "}
             <span>SendGrid</span> with all of the information they entered.
           </p>
+          <h2>My Code</h2>
+          <ul>
+            <li>
+              Front end -{" "}
+              <a href="https://github.com/LanceStasinski/Website-client">
+                github.com/LanceStasinski/Website-client
+              </a>
+            </li>
+            <li>
+              Back end -{" "}
+              <a href="https://github.com/LanceStasinski/Website-server">
+                github.com/LanceStasinski/Website-server
+              </a>
+            </li>
+          </ul>
         </section>
       </div>
     </React.Fragment>

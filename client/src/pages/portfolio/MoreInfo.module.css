@@ -25,7 +25,7 @@
 
 .info-section p {
   font-family: 'Montserrat', sans-serif;
-  color: #777;
+  color: #666;
   line-height: 150%;
 }
 
@@ -36,6 +36,25 @@
 .info-section video {
   border: 3pt solid #454545;
   width: 100%;
+}
+
+.info-section ul {
+  margin: 0;
+}
+
+.info-section li {
+  color: #666;
+  margin: 0.5rem 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.info-section a {
+  text-decoration: none;
+  color: #454545;
+}
+
+.info-section a:hover {
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 990px) {
