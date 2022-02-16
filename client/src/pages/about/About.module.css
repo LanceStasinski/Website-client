@@ -2,6 +2,8 @@
 
 .about-wrapper {
   margin-bottom: 7rem;
+  animation: appear 500ms linear forwards;
+  opacity: 0;
 }
 
 .about {
@@ -49,6 +51,11 @@
 }
 
 @media only screen and (min-width: 990px) {
+  .about-wrapper {
+    animation: none;
+    opacity: 1;
+  }
+
   .about {
     margin-left: 0;
     left: 0px;
@@ -95,5 +102,14 @@
   100% {
     opacity: 1;
     width: 50wv;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
