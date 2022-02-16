@@ -91,10 +91,10 @@ const AuthCard: React.FC<{ onCancel?: () => void }> = (props) => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      {!error && (
+      {isLoading && <LoadingSpinner asOverlay={false} />}
+      {!error && !isLoading && (
         <React.Fragment>
           <Card className={classes["auth-card"]}>
-            {isLoading && <LoadingSpinner asOverlay />}
             <div className={classes["auth-card-header"]}>
               <h2>{isLoggingIn ? "LOGIN" : "SIGNUP"}</h2>
             </div>
