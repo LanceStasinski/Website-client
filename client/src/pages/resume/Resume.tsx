@@ -68,11 +68,11 @@ const Resume: React.FC = () => {
                   <li>
                     <img src={globeIcon} alt="website icon" />
                     <a
-                      href="https://lancestasinski.herokuapp.com/"
+                      href="https://www.lancestasinski.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      lancestasinski.herokuapp.com
+                      www.lancestasinski.com
                     </a>
                   </li>
                   <li>
@@ -206,42 +206,46 @@ const Resume: React.FC = () => {
                             Deployed on Heroku at{" "}
                             <a
                               className={classes["project-link"]}
-                              href="https://lancestasinski.herokuapp.com/"
+                              href="https://www.lancestasinski.com/"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              lancestasinski.herokuapp.com
+                              www.lancestasinski.com
                             </a>
                           </li>
                         </ul>
                       </li>
                       <li>
                         <h4>
-                          Travel App - <span>Designer, Developer</span>
+                          Weather Journal - <span>Designer, Developer</span>
                         </h4>
                         <ul className={classes["project-description"]}>
                           <li>
-                            Responsive frontend application built with
-                            JavaScript, HTML, SASS, Webpack, and local storage.
+                            Responsive SPA built with React, TypeScript, React
+                            Router, styled components, and the useContext hook.
                           </li>
                           <li>
-                            Backend built with Node/Express and makes POST and
-                            GET requests to the external APIs Geonames,
-                            WeatherBit, Pixabay, and REST Countries.
+                            Backend REST API built with Node/Express and
+                            MongoDB. Users have access to complete CRUD
+                            opeartions. Weather data is retrieved using POST
+                            requests to OpenWeatherMap via axios.
                           </li>
                           <li>
-                            This application lets the user build a list of trips
-                            and provides information about the country and the
-                            current weather forecast. Deployed{" "}
+                            Users can create journal entries that combine a text
+                            entry with weather data from their desired ZIP code.
+                            The ZIP code and measurement units can be changed at
+                            any time.
+                          </li>
+                          <li>
+                            Deployed at{" "}
                             <a
                               className={classes["project-link"]}
-                              href="https://lancestasinski.herokuapp.com/travel-app/"
+                              href="https://www.lancestasinski.com/weather-journal-app/"
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              here
-                            </a>
-                            .
+                              www.lancestasinski.com/weather-journal-app
+                            </a>.
                           </li>
                         </ul>
                       </li>
