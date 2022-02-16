@@ -14,7 +14,7 @@ const ErrorModal: React.FC<{ error: string | undefined; onClear: () => void }> =
         footer={<Button inverse onClick={props.onClear}>Okay</Button>}
         backdropClass={classes['error-backdrop']}
         footerClass={classes['error-footer']}
-        style={{"border": "1pt solid #f7e0ad"}}
+        style={{border: "1pt solid #f7e0ad", zIndex: 500}}
       >
         <p>{props.error}</p>
       </Modal>

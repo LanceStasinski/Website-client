@@ -17,7 +17,7 @@ interface AuthInput {
 
 const REST_API = process.env.REACT_APP_REST_API;
 
-const AuthCard: React.FC<{onCancel?: () => void}> = (props) => {
+const AuthCard: React.FC<{ onCancel?: () => void }> = (props) => {
   const authCtx = useContext(AuthContext);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -91,53 +91,59 @@ const AuthCard: React.FC<{onCancel?: () => void}> = (props) => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <Card className={classes["auth-card"]}>
-        {isLoading && <LoadingSpinner asOverlay />}
-        <div className={classes["auth-card-header"]}>
-          <h2>{isLoggingIn ? "LOGIN" : "SIGNUP"}</h2>
-        </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className={classes["auth-form"]}
-        >
-          <label htmlFor="username">Username</label>
-          <input
-            {...register("username", { required: true })}
-            className={errors.username && classes["input-error"]}
-          />
-          {errors.username && <p>Username required.</p>}
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            {...register("password", { required: true, minLength: 6 })}
-            className={errors.username && classes["input-error"]}
-          />
-          {errors.password && <p>Password must be at least 6 characters.</p>}
-          {!isLoggingIn && (
-            <label htmlFor="confirmPassword">Confirm password</label>
-          )}
-          {!isLoggingIn && (
-            <input
-              type="password"
-              {...register("confirmPassword", {
-                validate: (value) =>
-                  value === password.current || "Passwords must match.",
-              })}
-            />
-          )}
-          {!isLoggingIn && errors.confirmPassword && (
-            <p>{errors.confirmPassword.message}</p>
-          )}
-          <Button type="submit">submit</Button>
-        </form>
-      </Card>
-      <Button
-        inverse
-        onClick={switchViewHandler}
-        className={classes["switch-btn"]}
-      >
-        {isLoggingIn ? "SIGNUP" : "LOGIN"}
-      </Button>
+      {!error && (
+        <React.Fragment>
+          <Card className={classes["auth-card"]}>
+            {isLoading && <LoadingSpinner asOverlay />}
+            <div className={classes["auth-card-header"]}>
+              <h2>{isLoggingIn ? "LOGIN" : "SIGNUP"}</h2>
+            </div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={classes["auth-form"]}
+            >
+              <label htmlFor="username">Username</label>
+              <input
+                {...register("username", { required: true })}
+                className={errors.username && classes["input-error"]}
+              />
+              {errors.username && <p>Username required.</p>}
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                {...register("password", { required: true, minLength: 6 })}
+                className={errors.username && classes["input-error"]}
+              />
+              {errors.password && (
+                <p>Password must be at least 6 characters.</p>
+              )}
+              {!isLoggingIn && (
+                <label htmlFor="confirmPassword">Confirm password</label>
+              )}
+              {!isLoggingIn && (
+                <input
+                  type="password"
+                  {...register("confirmPassword", {
+                    validate: (value) =>
+                      value === password.current || "Passwords must match.",
+                  })}
+                />
+              )}
+              {!isLoggingIn && errors.confirmPassword && (
+                <p>{errors.confirmPassword.message}</p>
+              )}
+              <Button type="submit">submit</Button>
+            </form>
+          </Card>
+          <Button
+            inverse
+            onClick={switchViewHandler}
+            className={classes["switch-btn"]}
+          >
+            {isLoggingIn ? "SIGNUP" : "LOGIN"}
+          </Button>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 };
