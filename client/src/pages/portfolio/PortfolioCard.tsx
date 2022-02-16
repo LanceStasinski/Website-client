@@ -43,7 +43,7 @@ const PortfolioCard: React.FC<{
               className={classes["project-links-button"]}
               to={props.projectUrl}
             >
-              Visit
+              More Info
             </Button>
           )}
 

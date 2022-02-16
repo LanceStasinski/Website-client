@@ -18,7 +18,7 @@ const CreatePost = lazy(() => import("./pages/blog/CreatePost"));
 const Resume = lazy(() => import("./pages/resume/Resume"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const Portfolio = lazy(() => import("./pages/portfolio/Portfolio"));
-
+const MoreInfo = lazy(() => import("./pages/portfolio/MoreInfo"));
 function App() {
   const { token, login, logout, userId, username } = useAuth();
   const { post, setContext, clearContext } = usePost();
@@ -36,6 +36,9 @@ function App() {
         </Route>
         <Route path="/portfolio" exact>
           <Portfolio />
+        </Route>
+        <Route path="/portfolio/more-info" exact>
+          <MoreInfo />
         </Route>
         <Route path="/blog" exact>
           <Blog />
@@ -73,6 +76,9 @@ function App() {
         <Route path="/portfolio" exact>
           <Portfolio />
         </Route>
+        <Route path="/portfolio/more-info" exact>
+          <MoreInfo />
+        </Route>
         <Route path="/blog" exact>
           <Blog />
         </Route>
@@ -96,6 +102,9 @@ function App() {
         </Route>
         <Route path="/portfolio" exact>
           <Portfolio />
+        </Route>
+        <Route path="/portfolio/more-info" exact>
+          <MoreInfo />
         </Route>
         <Route path="/blog" exact>
           <Blog />

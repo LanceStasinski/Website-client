@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Prompt:wght@500&display=swap");
+
+.more-info {
+  width: 90vw;
+  margin-left: 5vw;
+  margin-top: 7rem;
+  opacity: 0;
+  animation: appear 0.5s forwards linear;
+}
+
+.more-info h1, .more-info h2 {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  color: #454545;
+}
+
+.info-section h2 {
+  margin: 0.5rem 0;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;;
+}
+
+.info-section p {
+  font-family: 'Montserrat', sans-serif;
+  color: #777;
+  line-height: 150%;
+}
+
+.info-section span {
+  text-decoration: underline;
+}
+
+.info-section video {
+  border: 3pt solid #454545;
+  width: 100%;
+}
+
+@media only screen and (min-width: 990px) {
+  .more-info {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+}
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

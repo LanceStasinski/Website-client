@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import classes from "./Portfolio.module.css";
 import PortfolioCard from "./PortfolioCard";
@@ -8,42 +8,14 @@ import nlpAppImage from "../../assets/project-images/NLP-app.JPG";
 import landPageImage from '../../assets/project-images/landing-page.JPG';
 import blogImage from '../../assets/project-images/blog.JPG'
 import weatherAppImage from "../../assets/project-images/weather-journal-app.JPG";
-import Modal from "../../shared/components/UIElements/Modal";
-import Button from "../../shared/components/FormElements/Button";
 
 const SERVER = process.env.REACT_APP_SERVER;
 
 const Portfolio: React.FC = () => {
   document.title = "Portfolio | Lance Stasinski";
 
-  const [showModal, setShowModal] = useState(false);
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  useEffect(() => {
-    setShowModal(true);
-  }, []);
-
   return (
     <React.Fragment>
-      <Modal
-        show={showModal}
-        onCancel={closeModal}
-        header="NOTICE"
-        footer={
-          <Button inverse onClick={closeModal}>
-            Okay
-          </Button>
-        }
-        backdropClass={classes.backdrop}
-      >
-        <p>
-          This page is still under development. More projects will be added
-          soon!
-        </p>
-      </Modal>
       <div className={classes.portfolio}>
         <h1>PORTFOLIO</h1>
         <hr />
@@ -61,7 +33,7 @@ const Portfolio: React.FC = () => {
             image={websiteImage}
             gitHubLink="https://github.com/LanceStasinski/Website-client"
             external={false}
-            projectUrl={`${process.env.REACT_APP_WEBSITE_URL}`}
+            projectUrl={'/portfolio/more-info'}
             title="This Website"
             description="My personal website is a single page web application that connects to a REST API. The blog portion is a fullstack application in itself. I write individual posts using a dynamic form and data is stored in MongoDB and an AWS S3 bucket."
             technologies="TypeScript, React, CSS Modules, Node/Express, MongoDB, AWS S3, Jest, Mocha, Chai"
