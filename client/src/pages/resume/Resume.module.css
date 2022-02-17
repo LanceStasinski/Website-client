@@ -321,8 +321,8 @@
     background-color: #454545;
     clip-path: polygon(
       0% 0%,
-      28% 0%,
-      31% 10%,
+      24% 0%,
+      27% 10%,
       100% 10%,
       100% 100%,
       13.5% 100%,
@@ -339,27 +339,31 @@
   }
 
   .title {
-    margin-top: 0.9rem;
+    margin-top: 0.35rem;
   }
 
   .first-name {
     color: #f7e0ad;
     text-align: start;
     margin-top: 0;
+    padding: 0;
   }
 
   .last-name {
     color: #f7e0ad;
     text-align: start;
+    margin: 0;
+    padding: 0;
   }
 
   .profession {
     color: #f7e0ad;
     text-align: start;
+    margin-top: 0.75rem;
   }
 
   .contact-info {
-    margin: 2.25rem 1rem 1rem 0;
+    margin: 1.5rem 1rem 1rem 0;
     border-left: 1pt #f7e0ad solid;
     padding: 0 3rem 0 1rem;
     clip-path: none;

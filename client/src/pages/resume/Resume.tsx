@@ -50,7 +50,7 @@ const Resume: React.FC = () => {
                 <div className={classes.title}>
                   <h2 className={classes["first-name"]}>LANCE</h2>
                   <h2 className={classes["last-name"]}>STASINSKI</h2>
-                  <h3 className={classes.profession}>WEB DEVELOPER</h3>
+                  <h3 className={classes.profession}>SOFTWARE DEVELOPER</h3>
                 </div>
                 <ul className={classes["contact-info"]}>
                   <li>
