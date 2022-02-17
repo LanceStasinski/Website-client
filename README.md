@@ -82,6 +82,10 @@ In hindsight, using NextJS would have improved SEO of this website via server si
 
 The proccess of adding a blog to this website could potentially be improved by embedding a text editor instead of using a dynamic form.
 
+## License
+
+This project is licensed under the GNU GPLv3 License - [https://www.gnu.org/licenses/quick-guide-gplv3.html](https://www.gnu.org/licenses/quick-guide-gplv3.html)
+
 ## Acknowledgements
 
 - [TypeScript](https://www.typescriptlang.org/) for helping me reduce TypeErrors and for IDE support
