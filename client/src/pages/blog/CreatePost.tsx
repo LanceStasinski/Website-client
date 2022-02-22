@@ -190,6 +190,8 @@ const CreatePost: React.FC = () => {
     formData.append("numContent", Math.max(...state.contentFields).toString());
     formData.append("numReferences", Math.max(...state.refFields).toString());
 
+    // if updating a post, re-attach the AWS image keys to the form data
+    // (if stored images were present in the post)
     if (prevPost) {
       prevPost.content.forEach((item, index) => {
         if (item.image) {
