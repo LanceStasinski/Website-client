@@ -1,3 +1,6 @@
+// This code creates a dynamic form that can take in different data types to
+// build a new blog post. You can see this form in action here:
+// https://www.lancestasinski.com/portfolio/more-info
 import React, {
   useReducer,
   Reducer,
@@ -45,6 +48,8 @@ type Action = {
   payload: { inputType: "content" | "reference"; fieldNumber?: number };
 };
 
+// reducer function that controls the number of content and reference fields in
+// the form
 const reducer: Reducer<State, Action> = (state: State, action: Action) => {
   switch (action.type) {
     case "ADD":
@@ -94,7 +99,9 @@ const CreatePost: React.FC = () => {
   const authCtx = useContext(AuthContext);
   const postCtx = useContext(PostContext);
   const history = useHistory();
-  const prevPost = postCtx.post;
+  const prevPost = postCtx.post; // if updating a post, prevPost will not be undefined
+
+  // set up two-way binding for information in the heading of a post
   const [title, setTitle] = useState(prevPost ? prevPost.title : "");
   const [blurb, setBlurb] = useState(prevPost ? prevPost.blurb : "");
   const [tags, setTags] = useState(prevPost ? prevPost.tags : "");
@@ -105,7 +112,6 @@ const CreatePost: React.FC = () => {
   const [headImgAlt, setHeadImgAlt] = useState(
     prevPost ? prevPost.headImgAlt : ""
   );
-
   const titleRef = createRef<HTMLInputElement>();
   const blurbRef = createRef<HTMLTextAreaElement>();
   const tagsRef = createRef<HTMLInputElement>();
@@ -115,6 +121,8 @@ const CreatePost: React.FC = () => {
 
   let numCont: number[] = [];
   let numRef: number[] = [];
+  // display the correct number of content and reference fields when updating
+  // a post
   if (prevPost) {
     numCont = prevPost!.content.map((item, index) => index + 1);
     numRef = prevPost!.references.map((item, index) => index + 1);
@@ -148,6 +156,7 @@ const CreatePost: React.FC = () => {
     });
   };
 
+  // onChange Handlers for two-way binding
   const titleChangeHandler = () => {
     setTitle(titleRef.current!.value);
   };
@@ -172,6 +181,8 @@ const CreatePost: React.FC = () => {
     setHeadImgAlt(headImgAltRef.current!.value);
   };
 
+  // create a FormData object for multipart content and send a POST request to the
+  // REST API if creating a post, and a PATCH request if updating the post
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     let responseData;
