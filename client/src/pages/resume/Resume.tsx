@@ -50,7 +50,7 @@ const Resume: React.FC = () => {
                 <div className={classes.title}>
                   <h2 className={classes["first-name"]}>LANCE</h2>
                   <h2 className={classes["last-name"]}>STASINSKI</h2>
-                  <h3 className={classes.profession}>SOFTWARE DEVELOPER</h3>
+                  <h3 className={classes.profession}>SOFTWARE ENGINEER</h3>
                 </div>
                 <ul className={classes["contact-info"]}>
                   <li>
@@ -102,7 +102,7 @@ const Resume: React.FC = () => {
                   <SkillsSection heading="EDUCATION">
                     <ul className={classes["education-section"]}>
                       <li>
-                        <p>M.S. - Botany and Plant Pathology</p>
+                        <p>M.S. - Biology and Ecology</p>
                         <p>
                           <b>University of Maine</b>
                         </p>
@@ -132,7 +132,6 @@ const Resume: React.FC = () => {
                     </ul>
                   </SkillsSection>
                   <SkillsSection heading="SKILLS">
-                    <h4 className={classes["skill-category"]}>Frontend</h4>
                     <ul className={classes["skill-list"]}>
                       <CodingSkill experience={90} skillName="JavaScript" />
                       <CodingSkill experience={80} skillName="TypeScript" />
@@ -140,23 +139,18 @@ const Resume: React.FC = () => {
                       <CodingSkill experience={85} skillName="CSS3" />
                       <CodingSkill experience={75} skillName="SASS" />
                       <CodingSkill experience={85} skillName="React" />
-                      <CodingSkill experience={80} skillName="Jest" />
-                      <CodingSkill experience={60} skillName="Figma" />
-                    </ul>
-                    <h4 className={classes["skill-category"]}>Backend</h4>
-                    <ul className={classes["skill-list"]}>
                       <CodingSkill experience={75} skillName="Node" />
                       <CodingSkill experience={75} skillName="Express" />
-                      <CodingSkill experience={50} skillName="Mocha/Chai" />
-
                       <CodingSkill experience={60} skillName="MongoDB" />
-                    </ul>
-                    <h4 className={classes["skill-category"]}>Other</h4>
-                    <ul className={classes["skill-list"]}>
+                      <CodingSkill experience={80} skillName="Jest" />
+                      <CodingSkill experience={50} skillName="Mocha" />
+                      <CodingSkill experience={50} skillName="Chai" />
                       <CodingSkill experience={85} skillName="Git" />
-                      <CodingSkill experience={80} skillName="R" />
+                      <CodingSkill experience={60} skillName="Figma" />
+                      <CodingSkill experience={25} skillName="AWS" />
                       <CodingSkill experience={30} skillName="Python" />
                       <CodingSkill experience={20} skillName="Java" />
+                      <CodingSkill experience={80} skillName="R" />
                     </ul>
                   </SkillsSection>
                 </section>
@@ -164,15 +158,10 @@ const Resume: React.FC = () => {
                   <div className={classes.summary}>
                     <h3>SUMMARY</h3>
                     <p>
-                      Software developer with more than two years of programming
-                      experience and over 900 hours applied to learning
-                      JavaScript, CSS, HTML, React, Node, and related
-                      technologies. Fast learner with strong communication and
-                      quantitive skills aquired from a background in biological
-                      research. Eager to exercise my passion of creating
-                      visually pleasing, responsive, and accessible web
-                      applications while helping your company deliver software
-                      that your users will appreciate.
+                      Dedicated software engineer with more than two years of
+                      programming experience. Fast learner with strong
+                      communication and quantitive skills aquired from a
+                      background in biological research.
                     </p>
                   </div>
                   <div>
@@ -190,17 +179,16 @@ const Resume: React.FC = () => {
                             with Figma.
                           </li>
                           <li>
-                            Blog posts created via a dynamic form that accepts
-                            various data types. The data is parsed on a
+                            Created a dynamic form that accepts various data
+                            types to construct a post. Data is parsed on a
                             Node/Express REST API. String data is stored in a
                             MongoDB collection and images are stored in an AWS
                             S3 bucket. Comments from different users are stored
-                            in a MongoDB collection and Websockets are used to
+                            in a MongoDB collection and websockets are used to
                             update the frontend in real time.
                           </li>
                           <li>
-                            Smaller HTML, CSS, and JavaScript portfolio projects
-                            are served via the Node.js server.
+                            Served most portfolio projects via the Node server.
                           </li>
                           <li>
                             Deployed on Heroku at{" "}
@@ -221,11 +209,12 @@ const Resume: React.FC = () => {
                         </h4>
                         <ul className={classes["project-description"]}>
                           <li>
-                            Responsive SPA built with React, TypeScript, React
-                            Router, styled components, and the useContext hook.
+                            Developed responsive SPA with React, TypeScript,
+                            React Router, styled components, and the useContext
+                            hook.
                           </li>
                           <li>
-                            Backend REST API built with Node/Express and
+                            Built backend REST API with Node/Express and
                             MongoDB. Users have access to complete CRUD
                             opeartions. Weather data is retrieved using POST
                             requests to OpenWeatherMap via axios.
@@ -237,7 +226,7 @@ const Resume: React.FC = () => {
                             any time.
                           </li>
                           <li>
-                            Deployed at{" "}
+                            Deployed on Heroku at{" "}
                             <a
                               className={classes["project-link"]}
                               href="https://www.lancestasinski.com/weather-journal-app/"
@@ -245,21 +234,29 @@ const Resume: React.FC = () => {
                               rel="noopener noreferrer"
                             >
                               www.lancestasinski.com/weather-journal-app
-                            </a>.
+                            </a>
+                            .
                           </li>
                         </ul>
                       </li>
+                    </ul>
+                  </div>
+                  <div style={{marginTop: '1rem'}}>
+                    <h3>EXPERIENCE</h3>
+                    <ul className={classes["project-item"]}>
                       <li>
                         <h4>
-                          Scientific Publication - <span>Lead Researcher</span>
+                          Graduate Assistant - <span>University of Maine</span>
                         </h4>
+                        <p className={classes["experience-date"]}>
+                          September 2019 - December 2021
+                        </p>
                         <ul className={classes["project-description"]}>
                           <li>
-                            Used the R statistical programming language to run
-                            machine learning algorithms to classify individual
-                            plants into genomically defined populations using
-                            high dimensional datasets - the spectra reflected
-                            from their leaves.
+                            Conducted machine learning analyses to classify
+                            individual plants into genomically defined
+                            populations from high dimensional datasets using the
+                            R statistical programming language.
                           </li>
                           <li>
                             Collaborated with and led a team of reseachers to
@@ -267,7 +264,7 @@ const Resume: React.FC = () => {
                             grants funding the project and journal editors.
                           </li>
                           <li>
-                            Co-first author on paper titled{" "}
+                            Published paper titled{" "}
                             <i>
                               Reading light: Leaf spectra capture fine-scale
                               diversity of closely related, hybridizing arctic
@@ -281,8 +278,8 @@ const Resume: React.FC = () => {
                               rel="noopener noreferrer"
                             >
                               New Phytologist
-                            </a>{" "}
-                            and featured by{" "}
+                            </a>
+                            . Study featured by{" "}
                             <a
                               className={classes["project-link"]}
                               href="https://edition.cnn.com/2021/10/19/world/ray-guns-plants-biodiversity-climate-scn/index.html"

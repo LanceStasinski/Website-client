@@ -237,7 +237,7 @@
 
 .summary p {
   color: #666;
-  font-size: 12px;
+  font-size: 13px;
   font-family: "Montserrat", sans-serif;
   line-height: 150%;
 }
@@ -279,6 +279,13 @@
   text-decoration: none;
   color: #666;
   font-weight: 700;
+}
+
+.experience-date {
+  margin: 0;
+  padding: 0;
+  color: #777;
+  font-size: 12px;
 }
 
 .download {
