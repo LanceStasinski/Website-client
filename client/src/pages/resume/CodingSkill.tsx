@@ -25,6 +25,7 @@ const CodingSkill: React.FC<{ skillName: string; experience: number }> = (
               animationDuration: "2s",
               animationTimingFunction: "ease",
               animationFillMode: "forwards",
+              animationDelay: '1.25s'
             }}
           ></div>
           <div className={classes.dot}></div>

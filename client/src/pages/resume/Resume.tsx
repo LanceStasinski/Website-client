@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import classes from "./Resume.module.css";
-import headshot from "../../assets/headshot-4.jpg";
 import emailIcon from "../../assets/social-icons/email.png";
 import phoneIcon from "../../assets/social-icons/phone.png";
 import locationIcon from "../../assets/social-icons/location.png";
@@ -41,12 +40,16 @@ const Resume: React.FC = () => {
           <div className={classes["resume-wrapper"]}>
             <div className={classes.page}>
               <header>
-                <img
+                {/* <img
                   src={headshot}
                   className={classes.headshot}
                   alt="Headshot of Lance Stasinski"
-                />
-
+                /> */}
+                <div className={classes.logo}>
+                  <div className={classes["logo-inner"]}>
+                    <div className={classes['logo-text']}>LS</div>
+                  </div>
+                </div>
                 <div className={classes.title}>
                   <h2 className={classes["first-name"]}>LANCE</h2>
                   <h2 className={classes["last-name"]}>STASINSKI</h2>
@@ -241,7 +244,7 @@ const Resume: React.FC = () => {
                       </li>
                     </ul>
                   </div>
-                  <div style={{marginTop: '1rem'}}>
+                  <div style={{ marginTop: "1rem" }}>
                     <h3>EXPERIENCE</h3>
                     <ul className={classes["project-item"]}>
                       <li>
