@@ -38,14 +38,14 @@ describe("BlogList component", () => {
       </BrowserRouter>
     );
     const cards = document.getElementsByTagName("a");
-    const h3Elements = document.getElementsByTagName("h3");
+    const h2Elements = document.getElementsByTagName("h2");
     const pElements = document.getElementsByTagName("p");
     const timeElements = document.getElementsByTagName("time");
     const tag1 = screen.getByText("tag1");
     const tag2 = screen.getByText("tag2");
     const imageElements = document.getElementsByTagName("img");
     expect(cards.length).toEqual(2);
-    expect(h3Elements.length).toEqual(2);
+    expect(h2Elements.length).toEqual(2);
     expect(pElements.length).toEqual(2);
     expect(timeElements.length).toEqual(2);
     expect(tag1).toBeInTheDocument();
