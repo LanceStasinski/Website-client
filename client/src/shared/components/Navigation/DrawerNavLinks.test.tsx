@@ -16,8 +16,6 @@ describe("DrawerNavLinks component", () => {
     expect(blogLink).toBeInTheDocument();
     const contactLink = screen.getByText(/contact/i);
     expect(contactLink).toBeInTheDocument();
-    const loginLink = screen.getByText(/login/i);
-    expect(loginLink).toBeInTheDocument();
   });
 
   test("renders logout button", () => {
