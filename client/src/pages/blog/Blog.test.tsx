@@ -37,10 +37,10 @@ describe("Blog component", () => {
         </Route>
       </BrowserRouter>
     );
-    const h2Element = document.getElementsByTagName("h2");
+    const h1Element = document.getElementsByTagName("h1");
     const hrElement = document.getElementsByTagName("hr");
     const buttonElement = screen.getByText(/add post/i);
-    expect(h2Element.length).toEqual(2);
+    expect(h1Element.length).toEqual(1);
     expect(hrElement.length).toEqual(1);
     expect(buttonElement).toBeInTheDocument();
     await waitFor(() => expect(sendRequest).toHaveBeenCalled());
