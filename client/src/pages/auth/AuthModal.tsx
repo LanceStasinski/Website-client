@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
 import classes from "./AuthModal.module.css";
@@ -13,10 +14,14 @@ interface Props {
 }
 
 const AuthModalOverlay: React.FC<Props> = (props) => {
-  return (
-    <div className={classes['auth-modal']} ref={props.nodeRef}>
-      <AuthCard onCancel={props.onCancel}/>
+  const content = (
+    <div className={classes["auth-modal"]} ref={props.nodeRef}>
+      <AuthCard onCancel={props.onCancel} />
     </div>
+  );
+  return ReactDOM.createPortal(
+    content,
+    document.getElementById("auth-hook") as HTMLElement
   );
 };
 
@@ -25,10 +30,7 @@ const AuthModal: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       {props.show && (
-        <Backdrop
-          onClick={props.onCancel}
-          backdropClass={classes.backdrop}
-        />
+        <Backdrop onClick={props.onCancel} backdropClass={classes.backdrop} />
       )}
       <CSSTransition
         in={props.show}

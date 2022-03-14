@@ -266,7 +266,7 @@ const Post: React.FC = () => {
           <div className={classes.post}>
             <header>
               <div className={classes["header-text"]}>
-                <h1 id="title">{loadedPost!.title}</h1>
+                <h1 data-testid='title' id="title">{loadedPost!.title}</h1>
                 <div className={classes.dates}>
                   <time
                     className={classes["created-date"]}
