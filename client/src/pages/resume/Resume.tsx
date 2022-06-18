@@ -26,7 +26,9 @@ const Resume: React.FC = () => {
       try {
         const responseData = await sendRequest(`${REST_API}/resume`);
         setResumeLink(responseData.pdfUrl);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     };
     getResume();
   }, [sendRequest]);
@@ -47,7 +49,7 @@ const Resume: React.FC = () => {
                 /> */}
                 <div className={classes.logo}>
                   <div className={classes["logo-inner"]}>
-                    <div className={classes['logo-text']}>LS</div>
+                    <div className={classes["logo-text"]}>LS</div>
                   </div>
                 </div>
                 <div className={classes.title}>
@@ -66,7 +68,7 @@ const Resume: React.FC = () => {
                   </li>
                   <li>
                     <img src={locationIcon} alt="location icon" />
-                    <p>Bangor, ME</p>
+                    <p>Portland, ME</p>
                   </li>
                   <li>
                     <img src={globeIcon} alt="website icon" />
@@ -142,12 +144,11 @@ const Resume: React.FC = () => {
                       <CodingSkill experience={85} skillName="CSS3" />
                       <CodingSkill experience={75} skillName="SASS" />
                       <CodingSkill experience={85} skillName="React" />
+                      <CodingSkill experience={60} skillName="Ember" />
                       <CodingSkill experience={75} skillName="Node" />
                       <CodingSkill experience={75} skillName="Express" />
                       <CodingSkill experience={60} skillName="MongoDB" />
                       <CodingSkill experience={80} skillName="Jest" />
-                      <CodingSkill experience={50} skillName="Mocha" />
-                      <CodingSkill experience={50} skillName="Chai" />
                       <CodingSkill experience={85} skillName="Git" />
                       <CodingSkill experience={60} skillName="Figma" />
                       <CodingSkill experience={25} skillName="AWS" />
@@ -161,92 +162,42 @@ const Resume: React.FC = () => {
                   <div className={classes.summary}>
                     <h3>SUMMARY</h3>
                     <p>
-                      Dedicated software engineer with more than two years of
+                      Dedicated software engineer with more three years of
                       programming experience. Fast learner with strong
                       communication and quantitive skills aquired from a
                       background in biological research.
                     </p>
                   </div>
-                  <div>
-                    <h3>PROJECTS</h3>
-                    <ul className={classes["project-item"]}>
-                      <li>
-                        <h4>
-                          Personal Website and Blog -{" "}
-                          <span>Designer, Developer</span>
-                        </h4>
-                        <ul className={classes["project-description"]}>
-                          <li>
-                            Developed frontend as an SPA using React, React
-                            Router, TypeScript, and CSS modules. Pages designed
-                            with Figma.
-                          </li>
-                          <li>
-                            Created a dynamic form that accepts various data
-                            types to construct a post. Data is parsed on a
-                            Node/Express REST API. String data is stored in a
-                            MongoDB collection and images are stored in an AWS
-                            S3 bucket. Comments from different users are stored
-                            in a MongoDB collection and websockets are used to
-                            update the frontend in real time.
-                          </li>
-                          <li>
-                            Served most portfolio projects via the Node server.
-                          </li>
-                          <li>
-                            Deployed on Heroku at{" "}
-                            <a
-                              className={classes["project-link"]}
-                              href="https://www.lancestasinski.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              www.lancestasinski.com
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <h4>
-                          Weather Journal - <span>Designer, Developer</span>
-                        </h4>
-                        <ul className={classes["project-description"]}>
-                          <li>
-                            Developed responsive SPA with React, TypeScript,
-                            React Router, styled components, and the useContext
-                            hook.
-                          </li>
-                          <li>
-                            Built backend REST API with Node/Express and
-                            MongoDB. Users have access to complete CRUD
-                            opeartions. Weather data is retrieved using POST
-                            requests to OpenWeatherMap via axios.
-                          </li>
-                          <li>
-                            Users can create journal entries that combine a text
-                            entry with weather data from their desired ZIP code.
-                            The ZIP code and measurement units can be changed at
-                            any time.
-                          </li>
-                          <li>
-                            Deployed on Heroku at{" "}
-                            <a
-                              className={classes["project-link"]}
-                              href="https://www.lancestasinski.com/weather-journal-app/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              www.lancestasinski.com/weather-journal-app
-                            </a>
-                            .
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
                   <div style={{ marginTop: "1rem" }}>
                     <h3>EXPERIENCE</h3>
                     <ul className={classes["project-item"]}>
+                      <li>
+                        <h4>
+                          Frontend Developer Intern - <span>ESRI</span>
+                        </h4>
+                        <p className={classes["experience-date"]}>
+                          May 2022 - Present
+                        </p>
+                        <ul className={classes["project-description"]}>
+                          <li>
+                            Investigated if the ArcGIS WorkForce dispatcher web
+                            app could be rebuilt in ArcGIS Experience Builder
+                            which would allow customers to customize their
+                            WorkForce implementations.
+                          </li>
+                          <li>
+                            Built a custom Experience Builder widget using
+                            React, the ArcGIS JavaScript and REST APIs,
+                            Emotion.js, and the jimu libraries specific to
+                            Experience Builder.
+                          </li>
+                          <li>
+                            Attended intern events that detailed the various
+                            departments at ESRI and the scope of the ArcGIS
+                            platform.
+                          </li>
+                        </ul>
+                      </li>
                       <li>
                         <h4>
                           Graduate Assistant - <span>University of Maine</span>
@@ -294,6 +245,56 @@ const Resume: React.FC = () => {
                             .
                           </li>
                         </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>PROJECTS</h3>
+                    <ul className={classes["project-item"]}>
+                      <li>
+                        <h4>
+                          WakeSkate? - <span>Designer, Developer</span>
+                        </h4>
+                        <ul className={classes["project-description"]}>
+                          <li>
+                            Developed frontend as an SPA built with Ember, Ember
+                            Wormhole, Tailwind. Pages designed with Figma.
+                          </li>
+                          <li>
+                            Backend REST API and server built with Node and
+                            Express. POST requests for geocoding or weather data
+                            handled by middleware that makes requests to the
+                            Google Maps API and the Open Weather Map API.
+                          </li>
+                          <li>
+                            Custom algorithm used to rate weather conditions for
+                            water skiing.
+                          </li>
+                          <li>
+                            Deployed on Heroku at{" "}
+                            <a
+                              className={classes["project-link"]}
+                              href="https://wakeskate.herokuapp.com/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              wakeskate.herokuapp.com
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h4>
+                          More projects -{" "}
+                          <span>
+                            <a
+                              className={classes["portfolio-link"]}
+                              href="https://www.lancestasinski.com/portfolio"
+                            >
+                              www.lancestasinski.com/portfolio
+                            </a>
+                          </span>
+                        </h4>
                       </li>
                     </ul>
                   </div>

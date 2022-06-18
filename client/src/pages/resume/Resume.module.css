@@ -297,6 +297,11 @@
   line-height: 130%;
 }
 
+.portfolio-link {
+  text-decoration: none;
+  color: #777;
+}
+
 .project-link {
   text-decoration: none;
   color: #666;
