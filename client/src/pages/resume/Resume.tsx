@@ -162,7 +162,7 @@ const Resume: React.FC = () => {
                   <div className={classes.summary}>
                     <h3>SUMMARY</h3>
                     <p>
-                      Dedicated software engineer with more three years of
+                      Dedicated software engineer with three years of
                       programming experience. Fast learner with strong
                       communication and quantitive skills aquired from a
                       background in biological research.
